@@ -1,0 +1,146 @@
+{
+  "main": {
+    "id": "b292f6cb117aaebc",
+    "type": "split",
+    "children": [
+      {
+        "id": "78ecfd2f5b55b2b7",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "000 Home.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "417445787efacd8e",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Studio Setup.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "4f31217673961a6f",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Flow Field.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "3e6eb2462727fa64",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Probabilistic Color Palettes.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "796256bc8fa34e6f",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Fidenza.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5f7c0e799a413725",
+    "type": "split",
+    "children": [
+      {
+        "id": "1280fb1e5661815b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "83607b12d68d5540",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "bcbfd44a3f7c3024",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#tools",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "be93f93bd164780b",
+    "type": "split",
+    "children": [
+      {
+        "id": "999fd162280c7b1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2520697ff241f740",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Studio Setup.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "417445787efacd8e",
+  "lastOpenFiles": [
+    "Studio Setup.md",
+    "000 Home.md",
+    "Flow Field.md",
+    "Probabilistic Color Palettes.md",
+    "Fidenza.md",
+    "Processing.md",
+    "Quil.md",
+    "OpenRNDR.md",
+    "Tyler Hobbs.md"
+  ]
+}
