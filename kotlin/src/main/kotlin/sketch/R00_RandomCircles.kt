@@ -8,11 +8,8 @@ import org.openrndr.extra.noise.random
 import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 import java.io.File
-import org.openrndr.shape.Rectangle
 import org.openrndr.shape.Shape
 import java.util.*
-import kotlin.math.cos
-import kotlin.math.sin
 import util.timestamp
 
 fun main() = application {
@@ -23,8 +20,8 @@ fun main() = application {
 
   program {
     val num_shapes = 5
-    val min_rect_size = 1.0
-    val max_rect_size = 1000.0
+    val min_radius = 1.0
+    val max_radius = 1000.0
     val shapes = Vector<Shape>(num_shapes)
     val shape_fills = Vector<ColorRGBa>(num_shapes)
     val progName = this.name.ifBlank { this.window.title.ifBlank { "my-amazing-drawing" } }
@@ -59,7 +56,7 @@ fun main() = application {
         )
         val circle = Circle(
           vec.x, vec.y,
-          gaussian((min_rect_size - max_rect_size / 2) + min_rect_size, 500.0)
+          gaussian((min_radius - max_radius / 2) + min_radius, 500.0)
         )
         drawer.isolatedWithTarget(rt) {
           drawer.fill = colors.random()
