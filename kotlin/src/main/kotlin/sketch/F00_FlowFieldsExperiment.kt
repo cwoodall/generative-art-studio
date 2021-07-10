@@ -11,10 +11,7 @@ import org.openrndr.extra.noise.Random
 import org.openrndr.extra.noise.gaussian
 import org.openrndr.shape.Rectangle
 import org.openrndr.extra.noise.random
-import kotlin.math.cos
-import kotlin.math.sin
-import kotlin.math.round
-import kotlin.math.PI
+import kotlin.math.*
 
 fun roundToNearestN(x:Double, N:Double) :Double{
   return round(x / N) * N
@@ -99,28 +96,37 @@ fun main() = application {
         }
       }
 
+      var margin_probability = .8
+      var margin: Boolean = random(0.0, 1.0) > margin_probability
+      var density = random(0.001,1.0)
+      var chunkyness = random(0.1,1.0)
+
       // To make a lot of thin lines go with a increased number of lines, a low thickness and  small lengths
       // the 10 spacing with a radius of 50% is pretty perfect, but other effects can be achieved
-      var num_lines = 1000
-      var thickness = 1// 3 dots
-      var spacing = 10.0
+      var num_lines = (500*density).toInt()
+      var thickness = ceil(5 * chunkyness).toInt()
+      var spacing = (1-density) * 50.0
       var circle_fill_percent = 0.5
-      var max_length_percent = 0.6
+      var max_length_percent = 0.8
       var min_length_percent = 0.1
       var radius = spacing * circle_fill_percent
-
-      for (i in 0..num_lines) {
+      var margin_percent = if (margin) { .1 } else { -.5 }
+      for (line_i in 0..num_lines) {
         var color = colors.random()
         var length = random(min_length_percent*width.toDouble(), width.toDouble()*max_length_percent) //gaussian(width.toDouble()*.8, 100.0).toInt()
-        var start_position = Vector2(roundToNearestN(random(-width*.5, width*1.5), spacing), roundToNearestN(random(-height*.5, height*1.5), spacing))
+        var start_position = Vector2(
+          roundToNearestN(
+            random(width*(margin_percent), width*(1-margin_percent)), spacing),
+          roundToNearestN(
+            random(height*(margin_percent), height*(1-margin_percent)), spacing))
         var point = start_position
         var polarity = arrayOf(-1.0, 1.0).random()
 
 
-        for (i in 0..length.toInt()) {
+        for (j in 0..length.toInt()) {
           var angle = calculateAngle(point, width.toDouble(), height.toDouble())
 
-          if (i % spacing.toInt() == 0) {
+          if (j % spacing.toInt() == 0) {
             // This makes a cool angular effect
 //                        point = Vector2(
 //              roundToNearestN(point.x, 2.0),
@@ -132,14 +138,13 @@ fun main() = application {
               drawer.translate(point)
               drawer.rotate(angle)
 
-              for (i in 1..thickness) {
+              for (internal_dot in 1..thickness) {
                 var circle_center = (thickness.toDouble()) * .5
-                drawer.circle(Circle(0.0, spacing*(i - circle_center - 1) , radius))
+                drawer.circle(Circle(0.0, spacing*(internal_dot - circle_center - 1) , radius))
               }
             }
           }
           point = Vector2(point.x + polarity * cos(angle*PI/180.0), point.y + polarity* sin(angle* PI/180))
-
         }
       }
     }
