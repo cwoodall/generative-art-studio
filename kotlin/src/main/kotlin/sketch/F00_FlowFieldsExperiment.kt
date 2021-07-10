@@ -9,32 +9,34 @@ import org.openrndr.shape.*
 import org.openrndr.extensions.Screenshots
 import org.openrndr.PresentationMode
 import org.openrndr.extra.noise.Random
-import org.openrndr.extra.noise.gaussian
 import org.openrndr.shape.Rectangle
 import org.openrndr.extra.noise.random
 import kotlin.math.*
 import util.*
 
+class FlowField_00(width: Double, height: Double) {
+  val scaler_a = Random.gaussian(-1.0, 2.0);
+  val scaler_b = Random.double(-1.0, 1.0);
+  val x_offst = Random.double(-1.0, 1.0);
+  val y_offst = Random.double(-1.0, 1.0);
+  val width = width
+  val height = height
 
-fun main() = application {
-  var field_random_scaler_a = 1.0;
-  var field_random_scaler_b = 1.0;
-  var field_random_x_offst = 1.0;
-  var field_random_y_offst = 1.0;
-
-  configure {
-    width = 1200 // Width of picture
-    height = 1200 // Height of picture
-  }
-
-  fun calculateAngle(vec: Vector2, width: Double, height: Double): Double {
+  fun calculateAngle(vec: Vector2): Double {
     var x_scaled = vec.x / width
     var y_scaled = vec.y / height
 
     var angle =
-      360 * (field_random_scaler_a * (x_scaled + field_random_x_offst) * (y_scaled + field_random_y_offst) + (y_scaled) * field_random_scaler_b) / 2
+      360 * (scaler_a * (x_scaled + x_offst) * (y_scaled + y_offst) + (y_scaled) * scaler_b) / 2
 
     return angle
+  }
+}
+
+fun main() = application {
+  configure {
+    width = 1200 // Width of picture
+    height = 1200 // Height of picture
   }
 
   program {
@@ -60,11 +62,7 @@ fun main() = application {
     // Take a timestamped screenshot with the space bar
     extend(Screenshots())
     extend {
-      field_random_scaler_a = Random.gaussian(-1.0, 2.0);
-      field_random_scaler_b = Random.double(-1.0, 1.0);
-      field_random_x_offst = Random.double(-1.0, 1.0);
-      field_random_y_offst = Random.double(-1.0, 1.0);
-
+      var field = FlowField_00(width.toDouble(), height.toDouble())
       // Draw here
       drawer.clear(ColorRGBa.WHITE)
 
@@ -81,7 +79,7 @@ fun main() = application {
           for (y in 0..height step height / num_y_steps) {
             var point = Vector2(x.toDouble(), y.toDouble())
             var corner = Vector2(-rect_width / 2, -rect_height / 2)
-            var angle = calculateAngle(point, width.toDouble(), height.toDouble())
+            var angle = field.calculateAngle(point)
             var arrow = Rectangle(corner, rect_width, rect_height)
             var circle = Circle(corner.x + circle_radius / 2, 0.0, circle_radius)
 
@@ -143,7 +141,7 @@ fun main() = application {
 
         // Go through N integer spots across the image
         for (j in 0..length.toInt()) {
-          var angle = calculateAngle(point, width.toDouble(), height.toDouble())
+          var angle = field.calculateAngle(point)
 
           if (j % spacing.toInt() == 0) {
             // This makes a cool angular effect when snapping when we actually go to draw
