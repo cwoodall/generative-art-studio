@@ -32,57 +32,57 @@ Initially I played around with generating and drawing the flow fields.
 
 I decided to create circles at spacings to trace out the lines in sort of [[Pointalism]] inspired style. These were randomly distributed starting points on the flow field (allowed to start be outside of the canvas)
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-01.43.43 1.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-01.43.43.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-01.53.44 1.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-01.53.44.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-02.09.17 1.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-02.09.17.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-02.21.06 1.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-02.21.06.png]]
 
 And I started playing with the underlying flow field and adding parameters to change its orientation, location, and also start to modulate the **density** and **thickness** of the lines and relative spacing to try to see what range i could get
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.33.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.33 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.37.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.37 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.43.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.43 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.46.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.46 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.53.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.03.53 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.04.06.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-03.04.06 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.17.46.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.17.46 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.28.39.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.28.39 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.28.47.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.28.47 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.28.54.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.28.54 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.31.09.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.31.09 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.31.16.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.31.16 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.31.30.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.31.30 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.32.45.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.32.45 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.32.47.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.32.47 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.18.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.18 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.20.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.20 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.23.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.23 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.46.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.34.46 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.40.44.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.40.44 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.40.46.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.40.46 1.png]]
 
 #### Attributes
 
@@ -90,31 +90,31 @@ Started generating boolean values that would modulate things like if we were usi
 
 These attributes need some work and some more formality. [[Joint Probabilities]] would be pretty useful to control the relationships of the attributes to eachother.
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.58.56.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.58.56 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.58.58.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.58.58 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.59.03.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-10.59.03 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.00.49.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.00.49 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.08.33.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.08.33 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.09.57.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.09.57 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.10.01.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.10.01 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.12.43.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.12.43 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.12.47.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.12.47 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.23.38.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.23.38 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.29.43.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.29.43 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.54.38.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.54.38 1.png]]
 
-![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.54.39.png]]
+![[sketch.F00_FlowFieldsExperiment-2021-07-10-11.54.39 1.png]]
 
 ### Thoughts
 
@@ -132,3 +132,4 @@ These attributes need some work and some more formality. [[Joint Probabilities]]
 - Improve attributes
 - Improve composition
 - Try with different shapes and line types
+- Finish organizing these notes

@@ -1,6 +1,6 @@
 ## Generative ART MOC
 
-Generative Art (and [[Creative Coding]]) is a broad term for any computer generated form of art, this could be audio, random, algorithmic, or even mixed media between an algorithm and human input. There are many techniques here and tools. One of the early ones was [[Processing]], which also influenced [[Arduino]] (on the embedded side). I was introduced to the concept through an interview with [[Tyler Hobbs]] (about his [[NFTs]] [[Fidenza]]) which uses a [[Flow Field]]
+Generative Art (and [[Creative Coding]]) is a broad term for any computer generated form of art, this could be audio, random, algorithmic, or even mixed media between an algorithm and human input. There are many techniques here and tools. One of the early ones was [[Processing]], which also influenced [[Arduino]] (on the embedded side). I was introduced to the concept through an interview with [[Tyler Hobbs]] (about his [[NFTs]] [[Fidenza]]) which uses a [[techniques/Flow Fields]]
 
 Following is an example from [[Fidenza]] which started as  big inspiration:
 
@@ -22,7 +22,7 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 
 ### Techniques
 
-- [[Flow Field]]
+- [[techniques/Flow Fields]]
 - [[Probabilistic Color Palettes]]
 - [[Cellular Automaton]] 
 	- [[Agents or Actors]] and their interactions
