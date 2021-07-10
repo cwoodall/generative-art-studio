@@ -4,25 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "78ecfd2f5b55b2b7",
+        "id": "cd0c2006e8d0cb42",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "000 Home.md",
-            "mode": "source"
-          }
-        }
-      },
-      {
-        "id": "eabc8f544214055a",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "R00_RandomCircles.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -79,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "R00_RandomCircles.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,8 +82,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "eabc8f544214055a",
+  "active": "cd0c2006e8d0cb42",
   "lastOpenFiles": [
+    "000 Home.md",
     "R00_RandomCircles.md",
     "assets/sketches/R00_RandomCircles/2021-07-08T21.42.11.jpg",
     "2021-07-08T21.42.11.jpg",
@@ -106,7 +92,6 @@
     "Flow Field.md",
     "Probabilistic Color Palettes.md",
     "Studio Setup.md",
-    "000 Home.md",
     "Processing.md",
     "Quil.md"
   ]

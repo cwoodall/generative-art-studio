@@ -41,3 +41,8 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 ### Pieces and Series
 
 [[R00_RandomCircles]]
+
+### Next actions
+
+- Build a easier way to generate through using seeds and make a set of images (reproducible from seed once algorithm settled)
+- Play with [[Flow Fields]]
