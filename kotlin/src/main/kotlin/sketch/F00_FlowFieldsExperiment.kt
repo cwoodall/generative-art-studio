@@ -1,3 +1,4 @@
+// Inspired by: https://tylerxhobbs.com/essays/2020/flow-fields, https://discuss.kotlinlang.org/t/how-do-you-round-a-number-to-n-decimal-places/8843/2
 package sketch
 
 import org.openrndr.application
@@ -12,10 +13,9 @@ import org.openrndr.extra.noise.gaussian
 import org.openrndr.shape.Rectangle
 import org.openrndr.extra.noise.random
 import kotlin.math.*
+import util.*
 
-fun roundToNearestN(x:Double, N:Double) :Double{
-  return round(x / N) * N
-}
+
 fun main() = application {
   var field_random_scaler_a = 1.0;
   var field_random_scaler_b = 1.0;
@@ -31,7 +31,8 @@ fun main() = application {
     var x_scaled = vec.x / width
     var y_scaled = vec.y / height
 
-    var angle = 360 * (field_random_scaler_a*(x_scaled + field_random_x_offst) * (y_scaled + field_random_y_offst) + (y_scaled) * field_random_scaler_b) / 2
+    var angle =
+      360 * (field_random_scaler_a * (x_scaled + field_random_x_offst) * (y_scaled + field_random_y_offst) + (y_scaled) * field_random_scaler_b) / 2
 
     return angle
   }
@@ -54,20 +55,12 @@ fun main() = application {
     )
 
     // One time setup
-    var num_x_steps = 50
-    var num_y_steps = 50
-    var arrow_width_scale = .7
-    var arrow_height_scale = .2
 
-    var rect_width = arrow_width_scale * width/num_x_steps
-    var rect_height = arrow_height_scale * width/num_x_steps
-    var circle_radius = rect_height
-    var draw_field: Boolean = false
+    var draw_field = false
     // Take a timestamped screenshot with the space bar
     extend(Screenshots())
     extend {
-//      Random.rnd = kotlin.random.Random(123211242112321)
-      field_random_scaler_a = Random.gaussian(-1.0, 1.0);
+      field_random_scaler_a = Random.gaussian(-1.0, 2.0);
       field_random_scaler_b = Random.double(-1.0, 1.0);
       field_random_x_offst = Random.double(-1.0, 1.0);
       field_random_y_offst = Random.double(-1.0, 1.0);
@@ -76,6 +69,14 @@ fun main() = application {
       drawer.clear(ColorRGBa.WHITE)
 
       if (draw_field) {
+        var num_x_steps = 50
+        var num_y_steps = 50
+        var arrow_width_scale = .7
+        var arrow_height_scale = .2
+        var rect_width = arrow_width_scale * width / num_x_steps
+        var rect_height = arrow_height_scale * width / num_x_steps
+        var circle_radius = rect_height
+
         for (x in 0..width step width / num_x_steps) {
           for (y in 0..height step height / num_y_steps) {
             var point = Vector2(x.toDouble(), y.toDouble())
@@ -85,8 +86,9 @@ fun main() = application {
             var circle = Circle(corner.x + circle_radius / 2, 0.0, circle_radius)
 
             drawer.isolated {
-              drawer.fill = ColorRGBa.BLACK.alphaMultiplied(.1)
-              drawer.stroke = ColorRGBa.BLACK.alphaMultiplied(.1)
+              drawer.fill = ColorRGBa.BLACK.opacify(.1)
+              drawer.stroke = ColorRGBa.TRANSPARENT
+
               drawer.translate(point)
               drawer.rotate(angle)
               drawer.rectangle(arrow)
@@ -96,42 +98,59 @@ fun main() = application {
         }
       }
 
-      var margin_probability = .8
-      var margin: Boolean = random(0.0, 1.0) > margin_probability
-      var density = random(0.001,1.0)
-      var chunkyness = random(0.1,1.0)
+      var margin_probability = .2
+      var margin: Boolean = weightedRandomBool(margin_probability)
+      var snap_probability = .6
+      var snap: Boolean = weightedRandomBool(snap_probability)
+      var density = random(0.001, 1.0)
+      var chunkyness = random(0.1, 1.0)
 
       // To make a lot of thin lines go with a increased number of lines, a low thickness and  small lengths
       // the 10 spacing with a radius of 50% is pretty perfect, but other effects can be achieved
-      var num_lines = (500*density).toInt()
+      var num_lines = (500 * density).toInt()
       var thickness = ceil(5 * chunkyness).toInt()
-      var spacing = (1-density) * 50.0
+      var spacing = (1 - density) * 50.0
       var circle_fill_percent = 0.5
       var max_length_percent = 0.8
       var min_length_percent = 0.1
       var radius = spacing * circle_fill_percent
-      var margin_percent = if (margin) { .1 } else { -.5 }
+      var margin_percent = if (margin) {
+        .1
+      } else {
+        -.5
+      }
       for (line_i in 0..num_lines) {
         var color = colors.random()
-        var length = random(min_length_percent*width.toDouble(), width.toDouble()*max_length_percent) //gaussian(width.toDouble()*.8, 100.0).toInt()
-        var start_position = Vector2(
-          roundToNearestN(
-            random(width*(margin_percent), width*(1-margin_percent)), spacing),
-          roundToNearestN(
-            random(height*(margin_percent), height*(1-margin_percent)), spacing))
-        var point = start_position
+
+
+        // Generate the initial point
+        var point: Vector2 = roundToNearestN(
+          randomVector2(
+            width * (margin_percent),
+            width * (1 - margin_percent),
+            height * (margin_percent),
+            height * (1 - margin_percent)
+          ), spacing
+        )
+
+        var length = random(
+          min_length_percent * width.toDouble(),
+          width.toDouble() * max_length_percent
+        )
+
         var polarity = arrayOf(-1.0, 1.0).random()
 
 
+        // Go through N integer spots across the image
         for (j in 0..length.toInt()) {
           var angle = calculateAngle(point, width.toDouble(), height.toDouble())
 
           if (j % spacing.toInt() == 0) {
-            // This makes a cool angular effect
-//                        point = Vector2(
-//              roundToNearestN(point.x, 2.0),
-//              roundToNearestN(point.y, 2.0),
-//              )
+            // This makes a cool angular effect when snapping when we actually go to draw
+            if (snap) {
+              point = roundToNearestN(point, spacing)
+            }
+
             drawer.isolated {
               drawer.fill = color
               drawer.stroke = null
@@ -140,11 +159,11 @@ fun main() = application {
 
               for (internal_dot in 1..thickness) {
                 var circle_center = (thickness.toDouble()) * .5
-                drawer.circle(Circle(0.0, spacing*(internal_dot - circle_center - 1) , radius))
+                drawer.circle(Circle(0.0, spacing * (internal_dot - circle_center - 1), radius))
               }
             }
           }
-          point = Vector2(point.x + polarity * cos(angle*PI/180.0), point.y + polarity* sin(angle* PI/180))
+          point = Vector2(point.x + polarity * cos(angle * PI / 180.0), point.y + polarity * sin(angle * PI / 180))
         }
       }
     }
