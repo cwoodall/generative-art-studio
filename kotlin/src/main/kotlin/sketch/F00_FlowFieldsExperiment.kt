@@ -27,8 +27,8 @@ class FlowField_00(width: Double, height: Double) {
     var y_scaled = vec.y / height
 
     var angle =
-      360 * (scaler_a * (x_scaled + x_offst) * (y_scaled + y_offst) + (y_scaled) * scaler_b) / 2
-
+      360 * (scaler_a * (x_scaled + x_offst) * (y_scaled + y_offst) + (y_scaled) * scaler_b)
+    org.openrndr.extra.noise.
     return angle
   }
 }

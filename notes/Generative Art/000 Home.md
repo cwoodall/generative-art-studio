@@ -41,8 +41,17 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 ### Pieces and Series
 
 [[R00_RandomCircles]]
+[[F00_FlowFieldsExperiment]]
 
 ### Next actions
 
-- Build a easier way to generate through using seeds and make a set of images (reproducible from seed once algorithm settled)
-- Play with [[Flow Fields]]
+- [ ] Make a more generic representation of a flow field
+- [ ] Play with different underlying flow field representations, possibly look into [[Perlin Noise]]
+- [ ] Generate my own pallete
+- [ ] Attribute management + how to make attributes which have joint probabilities
+- [ ] Probabilistic Palette which controls the distribution of a color in an image
+- [ ] Composition improvements (Dense spots around which starting points tend to congregate?)
+
+#### Completed actions
+- [x] Build a easier way to generate through using seeds and make a set of images (reproducible from seed once algorithm settled)
+- [x] Play with [[Flow Fields]]
