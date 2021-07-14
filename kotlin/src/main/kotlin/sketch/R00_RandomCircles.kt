@@ -9,6 +9,7 @@ import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 import org.openrndr.extensions.Screenshots
 import org.openrndr.PresentationMode
+import palettes.Palette_00
 
 fun main() = application {
   configure {
@@ -21,14 +22,7 @@ fun main() = application {
     val min_radius = 1.0
     val max_radius = 1000.0
 
-    val colors = listOf(
-      ColorRGBa.fromHex("FCB264"), // orange
-      ColorRGBa.fromHex("8DC0E2"), // blue
-      ColorRGBa.fromHex("C4B2E1"), // purple
-      ColorRGBa.fromHex("CEE4F2"), // light blue
-      ColorRGBa.fromHex("FEE1C3"), // light orange
-      ColorRGBa.fromHex("E9E2F4"), // light purple
-    )
+    val colors = Palette_00()
 
     window.presentationMode = PresentationMode.MANUAL
     mouse.buttonUp.listen {

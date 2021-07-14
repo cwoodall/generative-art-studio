@@ -1,21 +1,25 @@
-// Inspired by: https://tylerxhobbs.com/essays/2020/flow-fields, https://discuss.kotlinlang.org/t/how-do-you-round-a-number-to-n-decimal-places/8843/2
 package sketch
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.*
-import org.openrndr.math.Vector2
-import org.openrndr.shape.*
 import org.openrndr.extensions.Screenshots
+import org.openrndr.math.Vector2
+import org.openrndr.shape.Circle
+//import org.openrndr.extra.noclear.NoClear
 import org.openrndr.PresentationMode
-import org.openrndr.extra.noise.Random
+import org.openrndr.extra.noise.*
 import org.openrndr.shape.Rectangle
-import org.openrndr.extra.noise.random
 import palettes.Palette_00
-import techniques.FlowField_F00
-import kotlin.math.*
-import util.*
+import util.randomVector2
+import util.roundToNearestN
+import util.weightedRandomBool
+import kotlin.math.PI
+import kotlin.math.ceil
+import kotlin.math.cos
+import kotlin.math.sin
 
+import techniques.PerlinLinear_FlowField
 
 fun main() = application {
   configure {
@@ -30,18 +34,21 @@ fun main() = application {
     mouse.buttonUp.listen {
       window.requestDraw()
     }
-
+    // Configuration values
+    val seed = 123
+    Random.rnd = kotlin.random.Random(seed)
     val colors = Palette_00()
 
     // One time setup
-
-    var draw_field = false
     // Take a timestamped screenshot with the space bar
     extend(Screenshots())
+//    extend(NoClear())
     extend {
-      var field = FlowField_F00(width, height)
       // Draw here
-      drawer.clear(ColorRGBa.WHITE)
+      val field = PerlinLinear_FlowField(Random.int(), width, height)
+      drawer.clear(ColorRGBa.BLACK)
+
+      val draw_field = false
 
       if (draw_field) {
         field.drawField(drawer)
@@ -56,9 +63,9 @@ fun main() = application {
 
       // To make a lot of thin lines go with a increased number of lines, a low thickness and  small lengths
       // the 10 spacing with a radius of 50% is pretty perfect, but other effects can be achieved
-      var num_lines = (500 * density).toInt()
-      var thickness = ceil(5 * chunkyness).toInt()
-      var spacing = (1 - density) * 50.0
+      var num_lines = 8000
+      var thickness = 1
+      var spacing = 2.0
       var circle_fill_percent = 0.5
       var max_length_percent = 0.8
       var min_length_percent = 0.1
@@ -114,6 +121,7 @@ fun main() = application {
           }
           point = Vector2(point.x + polarity * cos(angle * PI / 180.0), point.y + polarity * sin(angle * PI / 180))
         }
+
       }
     }
   }

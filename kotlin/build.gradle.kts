@@ -34,7 +34,7 @@ val orxFeatures = setOf(
 //  "orx-kotlin-parser",
 //  "orx-mesh-generators",
 //  "orx-midi",
-//  "orx-no-clear",
+    "orx-no-clear",
     "orx-noise",
 //  "orx-obj-loader",
     "orx-olive",
