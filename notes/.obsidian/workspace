@@ -1,37 +1,15 @@
 {
   "main": {
-    "id": "b292f6cb117aaebc",
+    "id": "c747fb30fa3f975f",
     "type": "split",
     "children": [
       {
-        "id": "618a342778dbdc01",
-        "type": "leaf",
-        "state": {
-          "type": "image",
-          "state": {
-            "file": "assets/sketches/F01_PerlinNoise/sketch.F01_PerlinNoise-2021-07-13-22.58.56.png"
-          }
-        },
-        "group": "f6670b841c166b53"
-      },
-      {
-        "id": "5806fd9806e963cb",
-        "type": "leaf",
-        "state": {
-          "type": "image",
-          "state": {
-            "file": "assets/sketches/F01_PerlinNoise/sketch.F01_PerlinNoise-2021-07-13-22.58.56.png"
-          }
-        },
-        "group": "f6670b841c166b53"
-      },
-      {
-        "id": "6357da92e831ffcd",
+        "id": "80acf036cd808ee8",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/OpenRNDR.md",
+            "file": "tools/Neuron Setup.md",
             "mode": "source"
           }
         }
@@ -40,15 +18,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "5f7c0e799a413725",
+    "id": "6fe6128e0bcbe45c",
     "type": "split",
     "children": [
       {
-        "id": "1280fb1e5661815b",
+        "id": "c1a3967b1ebe9fdc",
         "type": "tabs",
         "children": [
           {
-            "id": "83607b12d68d5540",
+            "id": "38029dd29691db9e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,12 +34,12 @@
             }
           },
           {
-            "id": "bcbfd44a3f7c3024",
+            "id": "8846eaf06cbc4759",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "[[Flow Fields 1]]",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,23 +52,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 633
+    "width": 300
   },
   "right": {
-    "id": "be93f93bd164780b",
+    "id": "65f312c383efd442",
     "type": "split",
     "children": [
       {
-        "id": "999fd162280c7b1b",
+        "id": "c0d4971d5b4155bc",
         "type": "tabs",
         "children": [
           {
-            "id": "2520697ff241f740",
+            "id": "553f5513116a4cb9",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "assets/sketches/F01_PerlinNoise/sketch.F01_PerlinNoise-2021-07-13-22.58.56.png",
+                "file": "tools/Neuron Setup.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,17 +86,13 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "618a342778dbdc01",
+  "active": "80acf036cd808ee8",
   "lastOpenFiles": [
-    "sketch.F01_PerlinNoise-2021-07-13-22.58.56.png",
-    "sketch.F01_PerlinNoise-2021-07-13-23.15.35.png",
-    "sketch.F00_FlowFieldsExperiment-2021-07-10-01.43.43 1.png.md",
+    "tools/Untitled.md",
+    "index.md",
+    "inspiration/Dimitry.md",
+    "inspiration/Fidenza.md",
     "sketches/F01_PerlinNoise.md",
-    "tools/OpenRNDR.md",
-    "sketches/F00_FlowFieldsExperiment.md",
-    "000 Home.md",
-    "techniques/Flow Fields 1.md",
-    "techniques/Flow Field.md",
-    "Flow Fields.md"
+    "static/sketches/F00_FlowFieldsExperiment/sketch.F00_FlowFieldsExperiment-2021-07-10-00.55.39.png"
   ]
 }

@@ -2,11 +2,6 @@
 
 Generative Art (and [[Creative Coding]]) is a broad term for any computer generated form of art, this could be audio, random, algorithmic, or even mixed media between an algorithm and human input. There are many techniques here and tools. One of the early ones was [[Processing]], which also influenced [[Arduino]] (on the embedded side). I was introduced to the concept through an interview with [[Tyler Hobbs]] (about his [[NFTs]] [[Fidenza]]) which uses a [[techniques/Flow Fields]]
 
-Following is an example from [[Fidenza]] which started as  big inspiration:
-
-![tyler-hobbs-fidenza-612.png](https://images.squarespace-cdn.com/content/v1/5c12933f365f02733c923e4e/1623457826739-RFS8YBP06I1W5WW2CSCG/tyler-hobbs-fidenza-612.png?format=500w)
-(Credits to Tyler Hobbs)
-
 ### The Studio
 
 [[Studio Setup]]
@@ -40,18 +35,18 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 
 ### Pieces and Series
 
-[[R00_RandomCircles]]
-[[F00_FlowFieldsExperiment]]
+- [[R00_RandomCircles]]
+- [[F00_FlowFieldsExperiment]]
+- [[F01_PerlinNoise]]
 
 ### Next actions
 
-- [ ] Make a more generic representation of a flow field
-- [ ] Play with different underlying flow field representations, possibly look into [[Perlin Noise]]
-- [ ] Generate my own pallete
 - [ ] Attribute management + how to make attributes which have joint probabilities
 - [ ] Probabilistic Palette which controls the distribution of a color in an image
 - [ ] Composition improvements (Dense spots around which starting points tend to congregate?)
 
 #### Completed actions
+- [x] Play with different underlying flow field representations, possibly look into [[Perlin Noise]]
+- [x] Make a more generic representation of a flow field
 - [x] Build a easier way to generate through using seeds and make a set of images (reproducible from seed once algorithm settled)
 - [x] Play with [[Flow Fields]]
