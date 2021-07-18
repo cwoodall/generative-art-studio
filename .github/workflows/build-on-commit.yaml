@@ -2,7 +2,7 @@ name: Build on commit
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-18.04
