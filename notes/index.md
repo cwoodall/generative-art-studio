@@ -1,9 +1,17 @@
 ---
+title: Chris Woodall's Generative Art Studio
 feed:
   count: 5
 ---
 
-## Generative ART MOC
+- [The Studio](#the-studio)
+- [Tools](#tools)
+- [Techniques](#techniques)
+- [Inspiration](#inspiration)
+- [Pieces and Series](#pieces-and-series)
+- [Next actions](#next-actions)
+	- [Completed actions](#completed-actions)
+
 
 Generative Art (and [[Creative Coding]]) is a broad term for any computer generated form of art, this could be audio, random, algorithmic, or even mixed media between an algorithm and human input. There are many techniques here and tools. One of the early ones was [[Processing]], which also influenced [[Arduino]] (on the embedded side). I was introduced to the concept through an interview with [[Tyler Hobbs]] (about his [[NFTs]] [[Fidenza]]) which uses a [[Flow Fields]]
 
