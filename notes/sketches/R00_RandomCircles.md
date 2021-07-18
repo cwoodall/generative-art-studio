@@ -13,10 +13,10 @@ The goal was just to make sure I can get [[OpenRNDR]] working and to learn a lit
 
 ### Curated Results
 
-![](sketches/R00_RandomCircles/2021-07-08T21.42.11.jpg)
-![](sketches/R00_RandomCircles/2021-07-08T21.42.16.jpg)
-![](sketches/R00_RandomCircles/2021-07-08T21.42.17.jpg)
-![](sketches/R00_RandomCircles/2021-07-08T21.42.26.jpg)
-![](sketches/R00_RandomCircles/2021-07-08T21.42.27.jpg)
-![](sketches/R00_RandomCircles/2021-07-08T21.42.31.jpg)
-![](sketches/R00_RandomCircles/2021-07-08T21.45.11.jpg)
+![](static/sketches/R00_RandomCircles/2021-07-08T21.42.11.jpg)
+![](static/sketches/R00_RandomCircles/2021-07-08T21.42.16.jpg)
+![](static/sketches/R00_RandomCircles/2021-07-08T21.42.17.jpg)
+![](static/sketches/R00_RandomCircles/2021-07-08T21.42.26.jpg)
+![](static/sketches/R00_RandomCircles/2021-07-08T21.42.27.jpg)
+![](static/sketches/R00_RandomCircles/2021-07-08T21.42.31.jpg)
+![](static/sketches/R00_RandomCircles/2021-07-08T21.45.11.jpg)

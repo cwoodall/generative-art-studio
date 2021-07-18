@@ -16,3 +16,17 @@ Need to use full paths to the static assets and traditional markdown image links
 
 https://neuron.zettel.page/plugins
 https://neuron.zettel.page/configuration
+
+### Metadata
+
+https://neuron.zettel.page/metadata
+
+Use `title:` in a yaml meta data block to specify
+
+```
+---
+title: Chris Woodall's Generative Art Studio
+feed:
+  count: 5
+---
+```
