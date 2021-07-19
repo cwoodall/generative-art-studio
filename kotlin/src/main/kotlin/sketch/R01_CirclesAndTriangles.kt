@@ -3,6 +3,7 @@ package sketch
 import org.openrndr.KEY_TAB
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
+import org.openrndr.draw.isolated
 import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 import org.openrndr.extensions.Screenshots
@@ -179,15 +180,21 @@ fun main() = application {
         // to make them more interesting
         var base_circle = base_circles.random(Random.rnd)
 
-        var angle = Random.double(-180.0, 180.0)
-        var center = base_circle.center + Random.vector2(-2.0, 2.0)
-        var radius = Random.gaussian(base_circle.radius, 10.0)
-        val pts = listOf(
-          center + Random.vector2(-1.0, 1.0) + Vector2.fromPolar(Polar(angle, radius)),
-          center + Vector2.fromPolar(Polar(angle + Random.double(10.0, 120.0), radius))
-        )
 
-        val c = contour {
+        // add some noise to where the center of the key is
+        var center = base_circle.center + Random.vector2(-2.0, 2.0)
+        // Add noise to the radius with a gaussian distribution
+        var radius = Random.gaussian(base_circle.radius, 10.0)
+
+        // Generate a random arc with an angle somewhere on the circle
+        var angles = mutableListOf<Double>(Random.double(-180.0, 180.0))
+        angles.add(angles.first() + Random.double(10.0, 120.0))
+
+        val pts = angles.map { angle ->
+          center + Vector2.fromPolar(Polar(angle, radius))
+        }
+
+        arcs.add(contour {
           moveTo(pts[0])
           arcTo(
             base_circle.radius * Random.double(.95, 1.05),
@@ -197,32 +204,35 @@ fun main() = application {
             true,
             pts[1]
           )
-        }
-
-        arcs.add(c)
+        })
       } else {
         is_complete = true
       }
 
       // Finally lets draw the results
-      drawer.fill = ColorRGBa.TRANSPARENT
-      drawer.strokeWeight = 3.0
-      drawer.stroke = ColorRGBa.WHITE
+      drawer.isolated {
+        drawer.fill = ColorRGBa.TRANSPARENT
+        drawer.strokeWeight = 3.0
+        drawer.stroke = ColorRGBa.WHITE
 
-      drawer.contours(contours)
+        drawer.contours(contours)
+      }
 
-      drawer.fill = ColorRGBa.TRANSPARENT
-      drawer.strokeWeight = 10.0
-      drawer.stroke = ColorRGBa.WHITE
+      drawer.isolated {
+        drawer.fill = ColorRGBa.TRANSPARENT
+        drawer.strokeWeight = 10.0
+        drawer.stroke = ColorRGBa.WHITE
 
-      drawer.contours(arcs)
+        drawer.contours(arcs)
+      }
 
       if (is_debug_draw_circles) {
-        drawer.strokeWeight = 2.0
-        drawer.fill = ColorRGBa.TRANSPARENT
-        drawer.stroke = ColorRGBa.PINK
-
-        drawer.circles(base_circles)
+        drawer.isolated {
+          drawer.strokeWeight = 2.0
+          drawer.fill = ColorRGBa.TRANSPARENT
+          drawer.stroke = ColorRGBa.PINK
+          drawer.circles(base_circles)
+        }
       }
 
       // If we are complete and paused, don't do anything
@@ -233,13 +243,13 @@ fun main() = application {
           if (wait_frames == 0) {
             camera.trigger()
             wait_frames += 1
-          }else
-          if (wait_frames >= 5) {
-            resetDrawing()
-            wait_frames = 0
-          } else {
-            wait_frames += 1
-          }
+          } else
+            if (wait_frames >= 5) {
+              resetDrawing()
+              wait_frames = 0
+            } else {
+              wait_frames += 1
+            }
         }
       }
     }
