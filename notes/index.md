@@ -48,7 +48,13 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 
 ### Pieces and Series
 
+#### Random
+
 - [[R00_RandomCircles]]
+- [[R01_CirclesAndTriangles]]
+
+#### Flow Fields
+
 - [[F00_FlowFieldsExperiment]]
 - [[F01_PerlinNoise]]
 
@@ -57,6 +63,8 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 - [ ] Attribute management + how to make attributes which have joint probabilities
 - [ ] Probabilistic Palette which controls the distribution of a color in an image
 - [ ] Composition improvements (Dense spots around which starting points tend to congregate?)
+- [ ] Command-line arguments
+- [ ] auto-screenshots (see [[R01_CirclesAndTriangles]])
 
 #### Completed actions
 - [x] Play with different underlying flow field representations, possibly look into [[Perlin Noise]]

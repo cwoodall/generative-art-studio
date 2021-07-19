@@ -10,7 +10,7 @@ import org.openrndr.extra.noise.Random
 import org.openrndr.math.Polar
 import org.openrndr.shape.ShapeContour
 import org.openrndr.shape.contour
-
+import util.randomPointOnCircle
 
 const val MAX_NUM_CONTOURS = 50
 const val MAX_NUM_ARCS = 20
@@ -24,6 +24,45 @@ const val PROBABILITY_OUTSIDE_CIRCLE = 0.2
 const val PROBABILITY_AT_CENTER = 0.2
 const val PROBABILITY_A_CONTOUR_ARCS = 0.1
 const val PROBABILITY_CONTOUR_SWEEP_IS_TRUE = 0.9
+
+fun randomPointBasedOnCircle(
+  circle: Circle,
+  other_angles: List<Double>,
+  probability_outside_circle: Double = PROBABILITY_OUTSIDE_CIRCLE,
+  probability_at_center: Double = PROBABILITY_AT_CENTER,
+  min_outside_radius: Double = 10.0,
+  max_outside_radius: Double = 100.0
+): Pair<Vector2, Double> {
+  // Add a third point in between the other two points (between min and max angles
+  val angles = other_angles
+  val min_angle: Double = angles.minOrNull()!!
+  val max_angle: Double = angles.maxOrNull()!!
+  val last_angle = Random.double(min_angle, max_angle)
+
+  return if (Random.bool(probability_outside_circle)) {
+    Pair(
+      circle.center + Vector2.fromPolar(
+        Polar(
+          last_angle,
+          Random.double(circle.radius + min_outside_radius, circle.radius + max_outside_radius)
+        )
+      ), last_angle
+    )
+  } else if (Random.bool(probability_at_center)) { // At the center
+    Pair(circle.center, last_angle)
+  } else {
+    // Somewhere in the circle nominally near the center, but with some std deviation around that
+    Pair(
+      circle.center + Vector2.fromPolar(
+        Polar(
+          last_angle,
+          Random.gaussian(circle.radius * .25, 200.0)
+        )
+      ), last_angle
+    )
+  }
+}
+
 fun main() = application {
   configure {
     width = 1000 // Width of picture
@@ -39,13 +78,15 @@ fun main() = application {
     var base_circles = listOf<Circle>()
     var contours = mutableListOf<ShapeContour>()
     var arcs = mutableListOf<ShapeContour>()
-    var is_complete = false
+    var is_complete = false // Is the shape drawing complete?
 
     // Initialize the numbers of contours arcs and circles
     var num_contours = 0
     var num_arcs = 0
     var num_circles = 0
 
+    var is_paused = false
+    var wait_frames = 0
     // Do we draw the circle outlines or not?
     var is_debug_draw_circles = false
 
@@ -67,52 +108,6 @@ fun main() = application {
       }
     }
 
-    fun randomPointOnCircle(
-      circle: Circle,
-      start_angle: Double = 0.0,
-      max_delta: Double = 180.0
-    ): Pair<Vector2, Double> {
-      val angle = Random.double(start_angle - max_delta, start_angle + max_delta)
-      return Pair(circle.center + Vector2.fromPolar(Polar(angle, circle.radius)), angle)
-    }
-
-    fun randomPointBasedOnCircle(
-      circle: Circle,
-      other_angles: List<Double>,
-      probability_outside_circle: Double = PROBABILITY_OUTSIDE_CIRCLE,
-      probability_at_center: Double = PROBABILITY_AT_CENTER,
-      min_outside_radius: Double = 10.0,
-      max_outside_radius: Double = 100.0
-    ): Pair<Vector2, Double> {
-      // Add a third point in between the other two points (between min and max angles
-      val angles = other_angles
-      val min_angle: Double = angles.minOrNull()!!
-      val max_angle: Double = angles.maxOrNull()!!
-      val last_angle = Random.double(min_angle, max_angle)
-
-      return if (Random.bool(probability_outside_circle)) {
-        Pair(
-          circle.center + Vector2.fromPolar(
-            Polar(
-              last_angle,
-              Random.double(circle.radius + min_outside_radius, circle.radius + max_outside_radius)
-            )
-          ), last_angle
-        )
-      } else if (Random.bool(probability_at_center)) { // At the center
-        Pair(circle.center, last_angle)
-      } else {
-        // Somewhere in the circle nominally near the center, but with some std deviation around that
-        Pair(
-          circle.center + Vector2.fromPolar(
-            Polar(
-              last_angle,
-              Random.gaussian(circle.radius * .25, 200.0)
-            )
-          ), last_angle
-        )
-      }
-    }
     // Setup the picture for presentation mode which will go to the next
     // iteration on button press
 //    window.presentationMode = PresentationMode.AUTOMATIC
@@ -123,15 +118,19 @@ fun main() = application {
 
     // If we hit tab toggle the debug circles
     keyboard.keyUp.listen {
-      if (it.key == KEY_TAB) {
+      if (it.name == "c") {
         is_debug_draw_circles = !is_debug_draw_circles
+      } else if (it.name == "p") {
+        is_paused = !is_paused
       }
     }
 
+
     // Finish initializing hte drawing
     resetDrawing()
+    var camera = Screenshots()
     // Take a timestamped screenshot with the space bar
-    extend(Screenshots())
+    extend(camera)
     extend {
       if (contours.size < num_contours) {
         // Choose a base circle
@@ -226,8 +225,22 @@ fun main() = application {
         drawer.circles(base_circles)
       }
 
+      // If we are complete and paused, don't do anything
+      // If we are complete and not paused take a screenshot, this involves waiting for a frame or two
+      // before resetting the drawing
       if (is_complete) {
-
+        if (!is_paused) {
+          if (wait_frames == 0) {
+            camera.trigger()
+            wait_frames += 1
+          }else
+          if (wait_frames >= 5) {
+            resetDrawing()
+            wait_frames = 0
+          } else {
+            wait_frames += 1
+          }
+        }
       }
     }
   }

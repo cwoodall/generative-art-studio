@@ -4,14 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "80acf036cd808ee8",
+        "id": "010d44b8cfc57964",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "sketches/F01_PerlinNoise.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -68,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/F01_PerlinNoise.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,11 +82,14 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "80acf036cd808ee8",
+  "active": "010d44b8cfc57964",
   "lastOpenFiles": [
-    "sketches/F01_PerlinNoise.md",
-    "tools/Untitled.md",
     "index.md",
+    "sketches/R01_CirclesAndTriangles.md",
+    "sketches/R00_RandomCircles.md",
+    "sketches/F01_PerlinNoise.md",
+    "sketches/Untitled.md",
+    "tools/Untitled.md",
     "inspiration/Dimitry.md",
     "inspiration/Fidenza.md",
     "static/sketches/F00_FlowFieldsExperiment/sketch.F00_FlowFieldsExperiment-2021-07-10-00.55.39.png"

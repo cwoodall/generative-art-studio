@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/R01_BezierCurves.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/R01_BezierCurves.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/util/circleHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/R01_BezierCurves.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/R01_CirclesAndTriangles.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +45,7 @@
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
         <option value="New Kotlin Sketch" />
+        <option value="Kotlin Script" />
       </list>
     </option>
   </component>
@@ -73,7 +76,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager" selected="Gradle.Sketch RandomLines [sketch] ">
+  <component name="RunManager" selected="Gradle.Sketch R01_CirclesAndTriangles [sketch] ">
     <configuration name="Sketch F01_PerinNoise [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -116,6 +119,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Sketch R01_CirclesAndTriangles [sketch] " type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-Ptitle=R01_CirclesAndTriangles --scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="sketch" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Sketch RandomCircles [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -137,30 +161,9 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Sketch RandomLines [sketch] " type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="-Ptitle=R01_BezierCurves --scan" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="sketch" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Gradle.Sketch RandomCircles [sketch]" />
-      <item itemvalue="Gradle.Sketch RandomLines [sketch] " />
+      <item itemvalue="Gradle.Sketch R01_CirclesAndTriangles [sketch] " />
       <item itemvalue="Gradle.Sketch FlowFieldsExperiment [sketch] (1)" />
       <item itemvalue="Gradle.Sketch F01_PerinNoise [sketch]" />
     </list>
