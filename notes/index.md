@@ -9,6 +9,8 @@ feed:
 - [Techniques](#techniques)
 - [Inspiration](#inspiration)
 - [Pieces and Series](#pieces-and-series)
+	- [Random](#random)
+	- [Flow Fields](#flow-fields)
 - [Next actions](#next-actions)
 	- [Completed actions](#completed-actions)
 
@@ -65,6 +67,7 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 - [ ] Composition improvements (Dense spots around which starting points tend to congregate?)
 - [ ] Command-line arguments
 - [ ] auto-screenshots (see [[R01_CirclesAndTriangles]])
+- [ ] Make it easier to generate from seeds so art is reproducible.
 
 #### Completed actions
 - [x] Play with different underlying flow field representations, possibly look into [[Perlin Noise]]
