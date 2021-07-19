@@ -29,26 +29,38 @@ fun main() = application {
     Random.randomizeSeed()
     // One time setup
     val picture_center = Vector2(width*.5, height *.5)
-    var base_circle = Circle(picture_center, 10.0)
+    var base_circles = mutableListOf<Circle>()
     var contours = mutableListOf<ShapeContour>()
     var arcs = mutableListOf<ShapeContour>()
 
     var num_contours = 3
     var num_arcs = 3
-    var num_circles = 3.0
+    var num_circles = 3
     var draw_circle = true
+
+    for (i in 1..num_circles) {
+      val radius = Random.double(100.0, 500.0)
+      val base_circle = Circle(picture_center + Random.vector2(-width*.4, width*.4), radius)
+      base_circles.add(base_circle)
+    }
+
     // Setup the picture for presentation mode which will go to the next
     // iteration on button press
     window.presentationMode = PresentationMode.AUTOMATIC
     mouse.buttonUp.listen {
       contours.clear()
       arcs.clear()
-      num_contours = Random.int(0, 10)
-      num_arcs = Random.int(0, 4)
+      base_circles.clear()
 
-      val radius = Random.double(100.0, 500.0)
+      num_contours = Random.int(0, 5)
+      num_arcs = Random.int(0, 40)
+      num_circles = Random.int(1, 5)
 
-      base_circle = Circle(picture_center + Random.vector2(-100.0, 100.0), radius)
+      for (i in 1..num_circles) {
+        val radius = Random.double(100.0, 500.0)
+        val base_circle = Circle(picture_center + Random.vector2(-100.0, 100.0), radius)
+        base_circles.add(base_circle)
+      }
       window.requestDraw()
     }
     keyboard.keyUp.listen {
@@ -60,14 +72,10 @@ fun main() = application {
     // Take a timestamped screenshot with the space bar
     extend(Screenshots())
     extend {
-      drawer.fill = ColorRGBa.TRANSPARENT
-      drawer.stroke = ColorRGBa.WHITE
 
-      if (draw_circle) {
-        drawer.circle(base_circle)
-      }
 
       if (contours.size < num_contours) {
+        var base_circle = base_circles.random(Random.rnd)
         var points = mutableListOf<Vector2>()
         var point = base_circle.center + Vector2.fromPolar(Polar(Random.double(-180.0, 180.0), base_circle.radius))
         points.add(point)
@@ -120,6 +128,8 @@ fun main() = application {
       }
       contours.add(c)
       } else if (arcs.size < num_arcs) {
+        var base_circle = base_circles.random(Random.rnd)
+
         var angle = Random.double(-180.0, 180.0)
         var center = base_circle.center + Random.vector2(-2.0,2.0)
         var radius = Random.gaussian(base_circle.radius, 10.0)
@@ -137,17 +147,27 @@ fun main() = application {
       }
 
       drawer.fill = ColorRGBa.TRANSPARENT
-      drawer.strokeWeight = 4.0
+      drawer.strokeWeight = 3.0
       drawer.stroke = ColorRGBa.WHITE
 
       drawer.contours(contours)
 
       drawer.fill = ColorRGBa.TRANSPARENT
-      drawer.strokeWeight = 2.0
+      drawer.strokeWeight = 10.0
       drawer.stroke = ColorRGBa.WHITE
 
       drawer.contours(arcs)
 
+      if (draw_circle) {
+        drawer.strokeWeight = 2.0
+        drawer.fill = ColorRGBa.TRANSPARENT
+        drawer.stroke = ColorRGBa.PINK
+
+        drawer.circles(base_circles)
+      }
+
     }
   }
 }
+
+/// Curves next steps, add colors
