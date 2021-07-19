@@ -21,7 +21,6 @@ wip/
 application.log
 build
 out
-.idea
 .gradle
 lib
 
@@ -31,4 +30,9 @@ screenshots
 
 node_modules
 
-.neuron
+.neuron/
+
+# Where local toolchain files are installed
+.toolchain/
+.toolchain
+.toolchain

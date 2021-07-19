@@ -63,9 +63,9 @@ fun main() = application {
 
       // To make a lot of thin lines go with a increased number of lines, a low thickness and  small lengths
       // the 10 spacing with a radius of 50% is pretty perfect, but other effects can be achieved
-      var num_lines = 8000
+      var num_lines = 2000
       var thickness = 1
-      var spacing = 2.0
+      var spacing = 4.0
       var circle_fill_percent = 0.5
       var max_length_percent = 0.8
       var min_length_percent = 0.1

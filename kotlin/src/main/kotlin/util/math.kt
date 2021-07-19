@@ -1,5 +1,6 @@
 package util
 
+import org.openrndr.extra.noise.Random
 import org.openrndr.extra.noise.random
 import org.openrndr.math.Vector2
 import kotlin.math.min
@@ -31,10 +32,10 @@ fun roundToNearestN(vec: Vector2, N: Double): Vector2 {
 }
 
 fun randomVector2(min_x: Double, max_x: Double, min_y: Double, max_y: Double): Vector2 {
-  return Vector2(random(min_x, max_x), random(min_y, max_y))
+  return Vector2(Random.double(min_x, max_x), Random.double(min_y, max_y))
 }
 
 
 fun weightedRandomBool(probability: Double): Boolean {
-  return random(0.0, 1.0) > (1- probability)
+  return Random.double(0.0, 1.0) > (1- probability)
 }
