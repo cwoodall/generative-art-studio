@@ -22,33 +22,33 @@ Circles And Triangles is part of the Random Series. The goal was to get acquaint
 
 #### Started out with just flat 1 px lines
 
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-21.55.04.png)   | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.35.48.png) |    ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.37.43.png)                                                  |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-21.55.04.png)   | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.35.48.png) |    ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.37.43.png)                                                  |
 | ------------------------------------------------------ | ---------------------------------------------------- | ---------------------------------------------------- |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-21.53.35.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-21.53.40.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-21.53.41.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-21.53.35.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-21.53.40.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-21.53.41.png) |
 
 #### Starting to play with circle size
 
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.40.38.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.40.41.png) |![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.40.50.png)
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.40.38.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.40.41.png) |![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.40.50.png)
 | -- | --| -- |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.42.38.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.42.41.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.43.32.png)
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.42.38.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.42.41.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.43.32.png)
 
 #### Arcs and Weight
 
 
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.40.55.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.54.38.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.54.42.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.40.55.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.54.38.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.54.42.png) |
 | -- | -- | -- |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.54.47.png) | | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-22.54.50.png) | 
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.54.47.png) | | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-22.54.50.png) | 
 
 #### Multiple Circles
 
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.01.19.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.01.39.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.01.19.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.01.39.png) |
 | -- | -- |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.01.49.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.02.40.png) |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.05.16.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.05.41.png) |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.22.30.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.22.31.png) |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.22.57.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-18-23.23.27.png) |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-19-00.24.29.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-19-00.28.32.png) |
-| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_BezierCurves-2021-07-19-07.21.15.png) | |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.01.49.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.02.40.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.05.16.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.05.41.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.22.30.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.22.31.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.22.57.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-18-23.23.27.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-19-00.24.29.png) | ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-19-00.28.32.png) |
+| ![](static/sketches/R01_CirclesAndTriangles/sketch.R01_CirclesAndTriangles-2021-07-19-07.21.15.png) | |
 
 ## Future Work
 
