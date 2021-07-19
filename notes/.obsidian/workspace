@@ -7,8 +7,11 @@
         "id": "010d44b8cfc57964",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "tools/Quil.md",
+            "mode": "source"
+          }
         }
       }
     ],
@@ -65,6 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "tools/Quil.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,6 +88,7 @@
   },
   "active": "010d44b8cfc57964",
   "lastOpenFiles": [
+    "tools/Quil.md",
     "index.md",
     "sketches/R01_CirclesAndTriangles.md",
     "sketches/R00_RandomCircles.md",
