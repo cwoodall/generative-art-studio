@@ -3,22 +3,27 @@ package sketch
 import org.openrndr.KEY_TAB
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.draw.*
-import org.openrndr.extra.noise.gaussian
-import org.openrndr.extra.noise.random
 import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 import org.openrndr.extensions.Screenshots
-import org.openrndr.PresentationMode
 import org.openrndr.extra.noise.Random
-import org.openrndr.extra.vfx.Contour
 import org.openrndr.math.Polar
 import org.openrndr.shape.ShapeContour
 import org.openrndr.shape.contour
-import util.randomVector2
-import kotlin.math.cos
-import kotlin.math.sin
 
+
+const val MAX_NUM_CONTOURS = 50
+const val MAX_NUM_ARCS = 20
+const val MAX_NUM_CIRCLES = 5
+const val MIN_NUM_CIRCLES = 1
+const val MIN_CIRCLE_RADIUS = 50.0
+const val MAX_CIRCLE_RADIUS = 500.0
+
+// Contour Generation Parameters
+const val PROBABILITY_OUTSIDE_CIRCLE = 0.2
+const val PROBABILITY_AT_CENTER = 0.2
+const val PROBABILITY_A_CONTOUR_ARCS = 0.1
+const val PROBABILITY_CONTOUR_SWEEP_IS_TRUE = 0.9
 fun main() = application {
   configure {
     width = 1000 // Width of picture
@@ -26,126 +31,181 @@ fun main() = application {
   }
 
   program {
-    Random.randomizeSeed()
     // One time setup
-    val picture_center = Vector2(width*.5, height *.5)
-    var base_circles = mutableListOf<Circle>()
+    // Setup the seed value
+    Random.randomizeSeed()
+
+    // Initialize the lists of circles and arcs
+    var base_circles = listOf<Circle>()
     var contours = mutableListOf<ShapeContour>()
     var arcs = mutableListOf<ShapeContour>()
+    var is_complete = false
 
-    var num_contours = 3
-    var num_arcs = 3
-    var num_circles = 3
-    var draw_circle = true
+    // Initialize the numbers of contours arcs and circles
+    var num_contours = 0
+    var num_arcs = 0
+    var num_circles = 0
 
-    for (i in 1..num_circles) {
-      val radius = Random.double(100.0, 500.0)
-      val base_circle = Circle(picture_center + Random.vector2(-width*.4, width*.4), radius)
-      base_circles.add(base_circle)
-    }
+    // Do we draw the circle outlines or not?
+    var is_debug_draw_circles = false
 
-    // Setup the picture for presentation mode which will go to the next
-    // iteration on button press
-    window.presentationMode = PresentationMode.AUTOMATIC
-    mouse.buttonUp.listen {
+    /**
+     * Internal function for what we do to reset the drawing, this means regenerating new contours and arcs
+     */
+    fun resetDrawing() {
+      // Calculate how many contours and arcs we want to have
+      num_contours = Random.int(0, MAX_NUM_CONTOURS)
+      num_arcs = Random.int(0, MAX_NUM_ARCS)
+      num_circles = Random.int(MIN_NUM_CIRCLES, MAX_NUM_CIRCLES)
+      is_complete = false
       contours.clear()
       arcs.clear()
-      base_circles.clear()
-
-      num_contours = Random.int(0, 5)
-      num_arcs = Random.int(0, 40)
-      num_circles = Random.int(1, 5)
-
-      for (i in 1..num_circles) {
-        val radius = Random.double(100.0, 500.0)
-        val base_circle = Circle(picture_center + Random.vector2(-100.0, 100.0), radius)
-        base_circles.add(base_circle)
+      base_circles = (1..num_circles).map {
+        val radius = Random.double(MIN_CIRCLE_RADIUS, MAX_CIRCLE_RADIUS)
+        val center = Vector2(width * .5, height * .5) + Random.vector2(-width * .3, width * .3)
+        Circle(center, radius)
       }
+    }
+
+    fun randomPointOnCircle(
+      circle: Circle,
+      start_angle: Double = 0.0,
+      max_delta: Double = 180.0
+    ): Pair<Vector2, Double> {
+      val angle = Random.double(start_angle - max_delta, start_angle + max_delta)
+      return Pair(circle.center + Vector2.fromPolar(Polar(angle, circle.radius)), angle)
+    }
+
+    fun randomPointBasedOnCircle(
+      circle: Circle,
+      other_angles: List<Double>,
+      probability_outside_circle: Double = PROBABILITY_OUTSIDE_CIRCLE,
+      probability_at_center: Double = PROBABILITY_AT_CENTER,
+      min_outside_radius: Double = 10.0,
+      max_outside_radius: Double = 100.0
+    ): Pair<Vector2, Double> {
+      // Add a third point in between the other two points (between min and max angles
+      val angles = other_angles
+      val min_angle: Double = angles.minOrNull()!!
+      val max_angle: Double = angles.maxOrNull()!!
+      val last_angle = Random.double(min_angle, max_angle)
+
+      return if (Random.bool(probability_outside_circle)) {
+        Pair(
+          circle.center + Vector2.fromPolar(
+            Polar(
+              last_angle,
+              Random.double(circle.radius + min_outside_radius, circle.radius + max_outside_radius)
+            )
+          ), last_angle
+        )
+      } else if (Random.bool(probability_at_center)) { // At the center
+        Pair(circle.center, last_angle)
+      } else {
+        // Somewhere in the circle nominally near the center, but with some std deviation around that
+        Pair(
+          circle.center + Vector2.fromPolar(
+            Polar(
+              last_angle,
+              Random.gaussian(circle.radius * .25, 200.0)
+            )
+          ), last_angle
+        )
+      }
+    }
+    // Setup the picture for presentation mode which will go to the next
+    // iteration on button press
+//    window.presentationMode = PresentationMode.AUTOMATIC
+    mouse.buttonUp.listen {
+      resetDrawing()
       window.requestDraw()
     }
+
+    // If we hit tab toggle the debug circles
     keyboard.keyUp.listen {
       if (it.key == KEY_TAB) {
-        draw_circle = !draw_circle
+        is_debug_draw_circles = !is_debug_draw_circles
       }
     }
 
+    // Finish initializing hte drawing
+    resetDrawing()
     // Take a timestamped screenshot with the space bar
     extend(Screenshots())
     extend {
-
-
       if (contours.size < num_contours) {
+        // Choose a base circle
         var base_circle = base_circles.random(Random.rnd)
-        var points = mutableListOf<Vector2>()
-        var point = base_circle.center + Vector2.fromPolar(Polar(Random.double(-180.0, 180.0), base_circle.radius))
-        points.add(point)
-        var last_angle = Random.double(-180.0, 180.0)
-        point = base_circle.center + Vector2.fromPolar(Polar(last_angle, base_circle.radius))
-        points.add(point)
 
-        // Dertermine if the last point will be outside of the circle or not
-        val last_rand = Random.double(0.0, 1.0)
-        if (last_rand < .2) {
-          point = base_circle.center + Vector2.fromPolar(
-            Polar(
-              Random.gaussian(last_angle, 2.0),
-              Random.double(base_circle.radius + 10.0, base_circle.radius + 100.0)
-            )
-          )
-        } else if (last_rand < .4) {
-          point = base_circle.center
-        } else {
-          point = base_circle.center + Vector2.fromPolar(
-            Polar(
-              Random.gaussian(last_angle, 2.0),
-              Random.gaussian(base_circle.radius * .1, 200.0)
-            )
-          )
-        }
+        // Choose 2 points on the circle
+        var points_and_angles = mutableListOf<Pair<Vector2, Double>>()
+        points_and_angles.add(randomPointOnCircle(base_circle))
+        points_and_angles.add(randomPointOnCircle(base_circle, points_and_angles[0].second, 90.0))
 
-        points.add(point)
+        // Choose a third point which is somewhere between the other two points, possibly at the center of the circle
+        // and possibly outside the circle
+        val angles = points_and_angles.map { it -> it.second }
 
-        for (pt in points) {
-          drawer.circle(pt, 20.0)
-        }
+        // Determine if the last point will be outside of the circle or not
+        points_and_angles.add(
+          randomPointBasedOnCircle(base_circle, angles)
+        )
 
-      val c = contour {
-        moveTo(points.first())
+        // draw the contours
+        val points = points_and_angles.map { it -> it.first }
+        contours.add(contour {
+          moveTo(points.first())
 
-        var starting_idx = 0
-        val arc_rand = Random.bool(.1)
-        if (arc_rand) {
-          starting_idx = 1
-          val sweep_rand = Random.bool(.9)
-          arcTo(base_circle.radius, base_circle.radius , 0.0 , false, sweep_rand, points[1])
-        }
-        for (pt in points.subList(starting_idx, points.lastIndex+1)) {
+          // Determine of the the two points that are on the circle will arc or not
+          val starting_idx = if (Random.bool(PROBABILITY_A_CONTOUR_ARCS)) {
+            // If we are arcing, are we sweeping outside or inside the circle? TRUE will trace the outside of hte circle
+            val sweep_rand = Random.bool(PROBABILITY_CONTOUR_SWEEP_IS_TRUE)
+            arcTo(base_circle.radius, base_circle.radius, 0.0, false, sweep_rand, points[1])
+            1
+          } else {
+            0
+          }
 
-          lineTo(pt)
-        }
-        lineTo(anchor)
-        close()
-      }
-      contours.add(c)
+          // For all of the remaining points straight line to the point
+          for (pt in points.subList(starting_idx, points.lastIndex + 1)) {
+            lineTo(pt)
+          }
+
+          // Then close up the  line
+          lineTo(anchor)
+          close()
+        })
       } else if (arcs.size < num_arcs) {
+        // Let's also generate arcs, we will modulate the radii and also warp them a little bit with some probability
+        // to make them more interesting
         var base_circle = base_circles.random(Random.rnd)
 
         var angle = Random.double(-180.0, 180.0)
-        var center = base_circle.center + Random.vector2(-2.0,2.0)
+        var center = base_circle.center + Random.vector2(-2.0, 2.0)
         var radius = Random.gaussian(base_circle.radius, 10.0)
         val pts = listOf(
-          center + Random.vector2(-1.0,1.0) + Vector2.fromPolar(Polar(angle, radius)),
+          center + Random.vector2(-1.0, 1.0) + Vector2.fromPolar(Polar(angle, radius)),
           center + Vector2.fromPolar(Polar(angle + Random.double(10.0, 120.0), radius))
         )
 
         val c = contour {
           moveTo(pts[0])
-          arcTo(base_circle.radius * Random.double(.95, 1.05),base_circle.radius * Random.double(.95, 1.05),0.0,false, true, pts[1])
+          arcTo(
+            base_circle.radius * Random.double(.95, 1.05),
+            base_circle.radius * Random.double(.95, 1.05),
+            0.0,
+            false,
+            true,
+            pts[1]
+          )
         }
 
         arcs.add(c)
+      } else {
+        is_complete = true
       }
 
+      // Finally lets draw the results
       drawer.fill = ColorRGBa.TRANSPARENT
       drawer.strokeWeight = 3.0
       drawer.stroke = ColorRGBa.WHITE
@@ -158,7 +218,7 @@ fun main() = application {
 
       drawer.contours(arcs)
 
-      if (draw_circle) {
+      if (is_debug_draw_circles) {
         drawer.strokeWeight = 2.0
         drawer.fill = ColorRGBa.TRANSPARENT
         drawer.stroke = ColorRGBa.PINK
@@ -166,6 +226,9 @@ fun main() = application {
         drawer.circles(base_circles)
       }
 
+      if (is_complete) {
+
+      }
     }
   }
 }
