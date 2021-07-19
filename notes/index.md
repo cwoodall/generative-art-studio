@@ -68,6 +68,7 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 - [ ] Command-line arguments
 - [ ] auto-screenshots (see [[R01_CirclesAndTriangles]])
 - [ ] Make it easier to generate from seeds so art is reproducible.
+  - [ ] Screenshots / Saves should get the name of the piece + seed + date + options (or sizes)
 
 #### Completed actions
 - [x] Play with different underlying flow field representations, possibly look into [[Perlin Noise]]
