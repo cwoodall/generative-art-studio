@@ -169,6 +169,7 @@ dependencies {
 
 //    implementation("org.jsoup:jsoup:1.12.2")
 //    implementation("com.google.code.gson:gson:2.8.6")
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.2")
 
     runtimeOnly(openrndr("gl3"))
     runtimeOnly(openrndrNatives("gl3"))
@@ -182,7 +183,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core","1.5.0-RC")
     implementation("io.github.microutils", "kotlin-logging-jvm","2.0.6")
-
+    
     when(applicationLogging) {
         Logging.NONE -> {
             runtimeOnly("org.slf4j","slf4j-nop","1.7.30")

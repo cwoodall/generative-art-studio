@@ -39,6 +39,10 @@ extend(NoClear())
 ```
 
 
+### Command Line Arguments
+
+Use [`kotlinx.cli`](https://github.com/Kotlin/kotlinx-cli) to allow for width/height, seed inputs, etc. Build up a standard set for easy re-use
+
 ---
 
 Tags: #tools

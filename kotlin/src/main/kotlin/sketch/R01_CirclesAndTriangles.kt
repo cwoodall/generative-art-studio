@@ -1,5 +1,7 @@
 package sketch
 
+import kotlinx.cli.*
+
 import org.openrndr.KEY_TAB
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -11,14 +13,15 @@ import org.openrndr.extra.noise.Random
 import org.openrndr.math.Polar
 import org.openrndr.shape.ShapeContour
 import org.openrndr.shape.contour
+import kotlin.collections.max
 import util.randomPointOnCircle
 
 const val MAX_NUM_CONTOURS = 50
 const val MAX_NUM_ARCS = 20
 const val MAX_NUM_CIRCLES = 5
 const val MIN_NUM_CIRCLES = 1
-const val MIN_CIRCLE_RADIUS = 50.0
-const val MAX_CIRCLE_RADIUS = 500.0
+const val MIN_CIRCLE_RADIUS_PERCENT = .05
+const val MAX_CIRCLE_RADIUS_PERCENT = .5
 
 // Contour Generation Parameters
 const val PROBABILITY_OUTSIDE_CIRCLE = 0.2
@@ -64,16 +67,27 @@ fun randomPointBasedOnCircle(
   }
 }
 
-fun main() = application {
+fun main(args: Array<String>) = application {
+  // Setup argument parsing
+  val parser = ArgParser("sketch")
+  val width_arg by parser.option(ArgType.Int,  shortName = "w", description = "width").default(1000)
+  val height_arg by parser.option(ArgType.Int, shortName = "e", description = "height").default(1000)
+  val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(0)
+
+  parser.parse(args)
+
   configure {
-    width = 1000 // Width of picture
-    height = 1000 // Height of picture
+    width = width_arg // Width of picture
+    height = height_arg // Height of picture
   }
 
   program {
     // One time setup
+    val max_dimension = arrayOf(width, height).maxOrNull()!!
+
     // Setup the seed value
     Random.randomizeSeed()
+    Random.rnd = kotlin.random.Random(seed)
 
     // Initialize the lists of circles and arcs
     var base_circles = listOf<Circle>()
@@ -84,7 +98,7 @@ fun main() = application {
     // Initialize the numbers of contours arcs and circles
     var num_contours = 0
     var num_arcs = 0
-    var num_circles = 0
+    var num_circles: Int
 
     var is_paused = false
     var wait_frames = 0
@@ -102,9 +116,10 @@ fun main() = application {
       is_complete = false
       contours.clear()
       arcs.clear()
+
       base_circles = (1..num_circles).map {
-        val radius = Random.double(MIN_CIRCLE_RADIUS, MAX_CIRCLE_RADIUS)
-        val center = Vector2(width * .5, height * .5) + Random.vector2(-width * .3, width * .3)
+        val radius = Random.double(MIN_CIRCLE_RADIUS_PERCENT * max_dimension, MAX_CIRCLE_RADIUS_PERCENT * max_dimension)
+        val center = Vector2(max_dimension * .5, max_dimension * .5) + Random.vector2(-max_dimension * .3, max_dimension * .3)
         Circle(center, radius)
       }
     }
@@ -182,9 +197,9 @@ fun main() = application {
 
 
         // add some noise to where the center of the key is
-        var center = base_circle.center + Random.vector2(-2.0, 2.0)
+        var center = base_circle.center + Random.vector2(-(2.0 / 1000) * max_dimension, (2.0 / 1000) * max_dimension)
         // Add noise to the radius with a gaussian distribution
-        var radius = Random.gaussian(base_circle.radius, 10.0)
+        var radius = Random.gaussian(base_circle.radius, (10.0/ 10000) * max_dimension)
 
         // Generate a random arc with an angle somewhere on the circle
         var angles = mutableListOf<Double>(Random.double(-180.0, 180.0))
@@ -212,7 +227,7 @@ fun main() = application {
       // Finally lets draw the results
       drawer.isolated {
         drawer.fill = ColorRGBa.TRANSPARENT
-        drawer.strokeWeight = 3.0
+        drawer.strokeWeight = (3.0 / 1000) * max_dimension
         drawer.stroke = ColorRGBa.WHITE
 
         drawer.contours(contours)
@@ -220,7 +235,7 @@ fun main() = application {
 
       drawer.isolated {
         drawer.fill = ColorRGBa.TRANSPARENT
-        drawer.strokeWeight = 10.0
+        drawer.strokeWeight = (10.0 / 1000) * max_dimension
         drawer.stroke = ColorRGBa.WHITE
 
         drawer.contours(arcs)
@@ -228,7 +243,7 @@ fun main() = application {
 
       if (is_debug_draw_circles) {
         drawer.isolated {
-          drawer.strokeWeight = 2.0
+          drawer.strokeWeight = (2.0 / 1000) * max_dimension
           drawer.fill = ColorRGBa.TRANSPARENT
           drawer.stroke = ColorRGBa.PINK
           drawer.circles(base_circles)
