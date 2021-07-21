@@ -35,7 +35,9 @@ fun randomPointBasedOnCircle(
   probability_outside_circle: Double = PROBABILITY_OUTSIDE_CIRCLE,
   probability_at_center: Double = PROBABILITY_AT_CENTER,
   min_outside_radius: Double = 10.0,
-  max_outside_radius: Double = 100.0
+  max_outside_radius: Double = 100.0,
+  inside_circle_scaler: Double = 0.25,
+  inside_circle_gaussian_std_dev: Double = 200.0
 ): Pair<Vector2, Double> {
   // Add a third point in between the other two points (between min and max angles
   val angles = other_angles
@@ -60,7 +62,7 @@ fun randomPointBasedOnCircle(
       circle.center + Vector2.fromPolar(
         Polar(
           last_angle,
-          Random.gaussian(circle.radius * .25, 200.0)
+          Random.gaussian(circle.radius * inside_circle_scaler, inside_circle_gaussian_std_dev)
         )
       ), last_angle
     )
@@ -70,9 +72,12 @@ fun randomPointBasedOnCircle(
 fun main(args: Array<String>) = application {
   // Setup argument parsing
   val parser = ArgParser("sketch")
-  val width_arg by parser.option(ArgType.Int,  shortName = "w", description = "width").default(1000)
-  val height_arg by parser.option(ArgType.Int, shortName = "e", description = "height").default(1000)
+  val width_arg by parser.option(ArgType.Int, fullName = "width", shortName = "w", description = "width (px)")
+    .default(1000)
+  val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
+    .default(1000)
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(0)
+  val iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
 
   parser.parse(args)
 
@@ -119,9 +124,11 @@ fun main(args: Array<String>) = application {
 
       base_circles = (1..num_circles).map {
         val radius = Random.double(MIN_CIRCLE_RADIUS_PERCENT * max_dimension, MAX_CIRCLE_RADIUS_PERCENT * max_dimension)
-        val center = Vector2(max_dimension * .5, max_dimension * .5) + Random.vector2(-max_dimension * .3, max_dimension * .3)
+        val center =
+          Vector2(max_dimension * .5, max_dimension * .5) + Random.vector2(-max_dimension * .3, max_dimension * .3)
         Circle(center, radius)
       }
+      wait_frames = 0
     }
 
     // Setup the picture for presentation mode which will go to the next
@@ -142,8 +149,9 @@ fun main(args: Array<String>) = application {
     }
 
 
-    // Finish initializing hte drawing
+    // Finish initializing hte d rawing
     resetDrawing()
+    var num_iterations = 0
     var camera = Screenshots()
     // Take a timestamped screenshot with the space bar
     extend(camera)
@@ -163,7 +171,13 @@ fun main(args: Array<String>) = application {
 
         // Determine if the last point will be outside of the circle or not
         points_and_angles.add(
-          randomPointBasedOnCircle(base_circle, angles)
+          randomPointBasedOnCircle(
+            base_circle,
+            angles,
+            min_outside_radius = (10.0 / 1000.0) * max_dimension,
+            max_outside_radius = (100.0 / 1000.0) * max_dimension,
+            inside_circle_gaussian_std_dev = (200.0 / 1000.0) * max_dimension
+          )
         )
 
         // draw the contours
@@ -199,7 +213,7 @@ fun main(args: Array<String>) = application {
         // add some noise to where the center of the key is
         var center = base_circle.center + Random.vector2(-(2.0 / 1000) * max_dimension, (2.0 / 1000) * max_dimension)
         // Add noise to the radius with a gaussian distribution
-        var radius = Random.gaussian(base_circle.radius, (10.0/ 10000) * max_dimension)
+        var radius = Random.gaussian(base_circle.radius, (10.0 / 10000) * max_dimension)
 
         // Generate a random arc with an angle somewhere on the circle
         var angles = mutableListOf<Double>(Random.double(-180.0, 180.0))
@@ -258,13 +272,15 @@ fun main(args: Array<String>) = application {
           if (wait_frames == 0) {
             camera.trigger()
             wait_frames += 1
-          } else
-            if (wait_frames >= 5) {
+          } else if (wait_frames >= 5) {
+            if ((iterations <= 0) || !(num_iterations >= (iterations - 1))) {
+              num_iterations++
+              println("Iteration $num_iterations")
               resetDrawing()
-              wait_frames = 0
-            } else {
-              wait_frames += 1
             }
+          } else {
+            wait_frames += 1
+          }
         }
       }
     }
