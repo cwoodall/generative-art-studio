@@ -43,6 +43,12 @@ extend(NoClear())
 
 Use [`kotlinx.cli`](https://github.com/Kotlin/kotlinx-cli) to allow for width/height, seed inputs, etc. Build up a standard set for easy re-use
 
+#### Passing with gradle
+
+```
+./gradlew sketch -Ptitle=R01_CirclesAndTriangles --args="-w 500 -e 500 -s 0"
+```
+
 ---
 
 Tags: #tools
