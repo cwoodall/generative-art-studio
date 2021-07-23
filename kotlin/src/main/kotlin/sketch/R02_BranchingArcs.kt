@@ -61,8 +61,8 @@ fun main(args: Array<String>) = application {
         state_manager.is_paused = !state_manager.is_paused
       }
     }
-    val MIN_RADIUS_PERCENT = .1
-    val MAX_RADIUS_PERCENT = .4
+    val MIN_RADIUS_PERCENT = .01
+    val MAX_RADIUS_PERCENT = .2
     val MARGIN_PERCENT = .1
     val step_angle = 5.0 // degrees
     // Need to represent a tree of circles and arcs here
@@ -221,8 +221,8 @@ fun main(args: Array<String>) = application {
 
       drawer.isolated {
         drawer.fill = ColorRGBa.TRANSPARENT
-        drawer.stroke = ColorRGBa.PINK
-        drawer.strokeWeight = (4.0 / 1000) * max_dimension
+        drawer.stroke = ColorRGBa.WHITE
+        drawer.strokeWeight = (5.0 / 1000) * max_dimension
         drawer.contours(arcs)
 
       }

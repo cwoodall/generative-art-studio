@@ -99,6 +99,7 @@
   },
   "active": "f15721f6c23f6f97",
   "lastOpenFiles": [
+    "sketches/R02_BranchingArcs.md",
     "R02_BranchingArcs.md",
     "index.md",
     "sketches/R01_CirclesAndTriangles.md",
@@ -107,7 +108,6 @@
     "inspiration/Fidenza.md",
     "sketches/R00_RandomCircles.md",
     "techniques/Flow Fields.md",
-    "tools/OpenRNDR.md",
-    "tools/Neuron Setup.md"
+    "tools/OpenRNDR.md"
   ]
 }
