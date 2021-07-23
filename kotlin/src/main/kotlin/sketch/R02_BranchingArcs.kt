@@ -61,10 +61,10 @@ fun main(args: Array<String>) = application {
         state_manager.is_paused = !state_manager.is_paused
       }
     }
-    val MIN_RADIUS_PERCENT = .01
-    val MAX_RADIUS_PERCENT = .8
+    val MIN_RADIUS_PERCENT = .1
+    val MAX_RADIUS_PERCENT = .4
     val MARGIN_PERCENT = .1
-    val step_angle = 10.0 // degrees
+    val step_angle = 5.0 // degrees
     // Need to represent a tree of circles and arcs here
     var is_in_arc = false
     var num_counts_in_arc = 0
@@ -107,12 +107,13 @@ fun main(args: Array<String>) = application {
           val center = if (num_branches > 0) {
             // Extend the last arc
             val last_circle = circles.last()
-            val polarity = if (Random.bool(.2)) {
+            val PROBABILITY_INTERNAL_CIRLCE = .5
+            val polarity = if (Random.bool(PROBABILITY_INTERNAL_CIRLCE)) {
               -1
             } else {
               1
             }
-            radius = Random.double((MIN_RADIUS_PERCENT * .9) * max_dimension, last_circle.radius)
+            radius = Random.double(last_circle.radius*.5, last_circle.radius * .9)
             var polar_endpoint = Polar.fromVector(arcs.last().segments.last().end - last_circle.center)
             Vector2.fromPolar(
               Polar(
@@ -132,7 +133,8 @@ fun main(args: Array<String>) = application {
           val circle = circles.last()
           val start_point: Vector2 =
             if (num_counts_in_arc == 0) {
-              direction = if (Random.bool()) {
+              val PROBABILITY_DIRECTION_INWARD = .5
+              direction = if (Random.bool(PROBABILITY_DIRECTION_INWARD)) {
                 -1.0
               } else {
                 1.0
@@ -161,18 +163,21 @@ fun main(args: Array<String>) = application {
 
           num_counts_in_arc++
 
-          val BRANCH_PROBABILITY_PER_COUNTS_IN_ARC = 0.005
+          val BRANCH_PROBABILITY_PER_COUNTS_IN_ARC = 0.003
           if (Random.bool(num_counts_in_arc * BRANCH_PROBABILITY_PER_COUNTS_IN_ARC)) {
             branch()
           }
 
           val END_TREE_PROBABILITY = 0.00001
 
-          if (circles.last().radius <= MIN_RADIUS_PERCENT * max_dimension || Random.bool(END_TREE_PROBABILITY)) {
+          if (circles.last().radius <= .01 * max_dimension || Random.bool(END_TREE_PROBABILITY)) {
             branch()
             num_branches = 0
           }
 
+          // Collision detection code, does not detect all collisions, not 100% sure why (seems to be at low intersection
+          // angles)
+          var collision = false
           if (arcs.count() > 1) {
             for (arc in arcs.subList(0, arcs.lastIndex - 1)) {
               val intersections = new_arc.intersections(arc)
@@ -185,14 +190,21 @@ fun main(args: Array<String>) = application {
                 )
                 branch()
                 num_branches = 0
-                continue
+                collision = true
+                break
               }
             }
           }
-          arcs.add(new_arc)
+
+          if (!collision) {
+            arcs.add(new_arc)
+          } else {
+            arcs.removeLastOrNull()
+          }
         }
 
       }
+
       if (state_manager.is_debug) {
         drawer.isolated {
           drawer.fill = ColorRGBa.TRANSPARENT
