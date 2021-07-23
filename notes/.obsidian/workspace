@@ -4,12 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "010d44b8cfc57964",
+        "id": "e93b2f0f0cf36db0",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/OpenRNDR.md",
+            "file": "index.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "f15721f6c23f6f97",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "sketches/R02_BranchingArcs.md",
             "mode": "source"
           }
         }
@@ -68,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/OpenRNDR.md",
+                "file": "sketches/R02_BranchingArcs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,17 +97,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "010d44b8cfc57964",
+  "active": "f15721f6c23f6f97",
   "lastOpenFiles": [
-    "tools/OpenRNDR.md",
-    "tools/Quil.md",
+    "R02_BranchingArcs.md",
     "index.md",
     "sketches/R01_CirclesAndTriangles.md",
+    "inspiration/Tyler Hobbs.md",
+    "inspiration/DMITRY.md",
+    "inspiration/Fidenza.md",
     "sketches/R00_RandomCircles.md",
-    "sketches/F01_PerlinNoise.md",
-    "sketches/Untitled.md",
-    "tools/Untitled.md",
-    "inspiration/Dimitry.md",
-    "inspiration/Fidenza.md"
+    "techniques/Flow Fields.md",
+    "tools/OpenRNDR.md",
+    "tools/Neuron Setup.md"
   ]
 }

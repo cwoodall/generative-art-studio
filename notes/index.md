@@ -54,24 +54,31 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 
 - [[R00_RandomCircles]]
 - [[R01_CirclesAndTriangles]]
+- WIP [[R02_BranchingArcs]]
 
 #### Flow Fields
 
 - [[F00_FlowFieldsExperiment]]
 - [[F01_PerlinNoise]]
 
+
 ### Next actions
 
 - [ ] Attribute management + how to make attributes which have joint probabilities
 - [ ] Probabilistic Palette which controls the distribution of a color in an image
 - [ ] Composition improvements (Dense spots around which starting points tend to congregate?)
-- [ ] Command-line arguments
-- [ ] auto-screenshots (see [[R01_CirclesAndTriangles]])
-- [ ] Make it easier to generate from seeds so art is reproducible.
-  - [ ] Screenshots / Saves should get the name of the piece + seed + date + options (or sizes)
+- [ ] Screenshots / Saves should get the name of the piece + seed + date + options (or sizes)
 
 #### Completed actions
 - [x] Play with different underlying flow field representations, possibly look into [[Perlin Noise]]
 - [x] Make a more generic representation of a flow field
 - [x] Build a easier way to generate through using seeds and make a set of images (reproducible from seed once algorithm settled)
 - [x] Play with [[Flow Fields]]
+- [x] auto-screenshots (see [[R01_CirclesAndTriangles]])
+- [x] Make it easier to generate from seeds so art is reproducible.(see [[R01_CirclesAndTriangles]])
+- [x] Command-line arguments see [[OpenRNDR#Command Line Arguments]]
+
+#### Idea holding area
+
+- Mountains with various flow fields in them
+- Line/box based flow fields similar to [[Fidenza]] with collision detection

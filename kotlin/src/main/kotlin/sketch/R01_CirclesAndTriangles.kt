@@ -91,7 +91,6 @@ fun main(args: Array<String>) = application {
     val max_dimension = arrayOf(width, height).maxOrNull()!!
 
     // Setup the seed value
-    Random.randomizeSeed()
     Random.rnd = kotlin.random.Random(seed)
 
     // Initialize the lists of circles and arcs
