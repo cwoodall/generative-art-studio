@@ -7,8 +7,20 @@ A [[Kotlin]] based framework for [[Creative Coding]]
 https://api.openrndr.org/
 https://github.com/openrndr/orx
 
+#### Custom Frame Rates
+
+https://openrndr.discourse.group/t/running-a-program-at-a-specific-frame-rate/144
+
+#### Live programming
+
+https://openrndr.discourse.group/t/improved-live-coding-with-orx-olive/106
+Example: https://www.youtube.com/watch?v=qdgnRct0_nw&t=12428s
+https://guide.openrndr.org/#/10_OPENRNDR_Extras/C03_Live_coding
+
+
 ### Extensions
 
+#### Video
 #### Screenshot
 
 Use the space bar to take a screenshot

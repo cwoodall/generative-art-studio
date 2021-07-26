@@ -15,7 +15,6 @@ import org.openrndr.shape.contour
 import util.randomPointOnCircle
 import util.DrawingStateManager
 
-
 fun main(args: Array<String>) = application {
   // Setup argument parsing
   val parser = ArgParser("sketch")

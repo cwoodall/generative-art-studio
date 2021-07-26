@@ -12,7 +12,7 @@ feed:
 	- [Random](#random)
 	- [Flow Fields](#flow-fields)
 - [Next actions](#next-actions)
-	- [Completed actions](#completed-actions)
+	- [Complet**ed actions](#completed-actions)
 	- [Idea holding area](#idea-holding-area)
 
 
@@ -31,6 +31,11 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 - [[Processing]]
 - [[OpenRNDR]]
 
+#### Music
+
+- [[TidalCycles]]
+- [[Overtone]]
+
 ### Techniques
 
 - [[Flow Fields]]
@@ -47,8 +52,12 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 
 
 ### Inspiration
+
 [Inspiration for Generative Art](https://raindrop.io/cjwoodall/generative-art-and-creative-coding-18915276)
 
+This video on GitHub Sattelite is also very nice: https://www.youtube.com/watch?v=qdgnRct0_nw&t=12428s
+
+also a reasonable amount of video and music based generative art I would love to get into. Specifically the stuff by Dan Gorelick https://youtu.be/qdgnRct0_nw?t=29068
 ### Pieces and Series
 
 #### Random
