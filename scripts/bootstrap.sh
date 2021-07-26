@@ -11,5 +11,10 @@ tar -xvf ideaIC-2021.1.3.tar.gz
 rm *.tar.gz
 mv idea-IC-211.7628.21 idea
 
-## Install direnv and dockers
-sudo apt install -y direnv docker
+## Install direnv and docker
+# direnv: used to help make it easier to load the dependencies needed for
+#         this project
+#
+# docker: used for running neuron for builds
+# ffmpeg: For making screenrecordings
+sudo apt install -y direnv docker ffmpeg

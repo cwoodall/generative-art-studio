@@ -2,6 +2,8 @@
 
 A [[Kotlin]] based framework for [[Creative Coding]]
 
+[Forum](https://openrndr.discourse.group/)
+
 ### References
 
 https://api.openrndr.org/
@@ -10,6 +12,25 @@ https://github.com/openrndr/orx
 #### Custom Frame Rates
 
 https://openrndr.discourse.group/t/running-a-program-at-a-specific-frame-rate/144
+
+```kotlin
+import org.openrndr.application
+import org.openrndr.color.ColorRGBa
+import org.openrndr.extra.videoprofiles.GIFProfile
+import org.openrndr.extra.videoprofiles.ProresProfile
+import org.openrndr.ffmpeg.ScreenRecorder
+
+fun main() = application {
+    program {
+        extend(ScreenRecorder()) {
+            profile = GIFProfile()
+        }
+        extend {
+            drawer.clear(ColorRGBa.GREEN)
+        }
+    }
+}
+```
 
 #### Live programming
 
@@ -20,7 +41,9 @@ https://guide.openrndr.org/#/10_OPENRNDR_Extras/C03_Live_coding
 
 ### Extensions
 
-#### Video
+#### ScreenRecorder / Video
+https://openrndr.discourse.group/t/exporting-animated-gifs/134/2
+
 #### Screenshot
 
 Use the space bar to take a screenshot
@@ -31,6 +54,7 @@ import org.openrndr.extensions.Screenshots
 ...
 extend(Screenshots())
 ```
+
 
 #### NoClear
 

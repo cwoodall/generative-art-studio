@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "TidalCycles.md",
+            "file": "techniques/Probabilistic Color Palettes.md",
             "mode": "source"
           }
         }
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "TidalCycles.md",
+                "file": "tools/OpenRNDR.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,17 +97,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "50c8a7f1fbdf0ba8",
+  "active": "f15721f6c23f6f97",
   "lastOpenFiles": [
+    "tools/OpenRNDR.md",
+    "techniques/Probabilistic Color Palettes.md",
+    "techniques/Flow Fields.md",
     "TidalCycles.md",
     "Overtone.md",
-    "tools/OpenRNDR.md",
     "index.md",
     "sketches/R02_BranchingArcs.md",
     "R02_BranchingArcs.md",
     "sketches/R01_CirclesAndTriangles.md",
-    "inspiration/Tyler Hobbs.md",
-    "inspiration/DMITRY.md",
-    "inspiration/Fidenza.md"
+    "inspiration/Tyler Hobbs.md"
   ]
 }
