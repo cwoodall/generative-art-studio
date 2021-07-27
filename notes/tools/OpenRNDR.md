@@ -13,6 +13,23 @@ https://github.com/openrndr/orx
 
 https://openrndr.discourse.group/t/running-a-program-at-a-specific-frame-rate/144
 
+
+#### Live programming
+
+https://openrndr.discourse.group/t/improved-live-coding-with-orx-olive/106
+Example: https://www.youtube.com/watch?v=qdgnRct0_nw&t=12428s
+https://guide.openrndr.org/#/10_OPENRNDR_Extras/C03_Live_coding
+
+
+### Extensions
+
+#### ScreenRecorder / Video
+https://openrndr.discourse.group/t/exporting-animated-gifs/134/2
+
+GIFProfile: GIFs (low quality)
+ProresProfile: mov (high quality)
+MP4Profile: mp4 (medium quality)
+
 ```kotlin
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -32,17 +49,6 @@ fun main() = application {
 }
 ```
 
-#### Live programming
-
-https://openrndr.discourse.group/t/improved-live-coding-with-orx-olive/106
-Example: https://www.youtube.com/watch?v=qdgnRct0_nw&t=12428s
-https://guide.openrndr.org/#/10_OPENRNDR_Extras/C03_Live_coding
-
-
-### Extensions
-
-#### ScreenRecorder / Video
-https://openrndr.discourse.group/t/exporting-animated-gifs/134/2
 
 #### Screenshot
 

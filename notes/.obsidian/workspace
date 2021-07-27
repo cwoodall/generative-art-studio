@@ -4,23 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "50c8a7f1fbdf0ba8",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "techniques/Probabilistic Color Palettes.md",
-            "mode": "source"
-          }
-        }
-      },
-      {
         "id": "f15721f6c23f6f97",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/OpenRNDR.md",
+            "file": "sketches/M01_SimpleMountains.md",
             "mode": "source"
           }
         }
@@ -79,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/OpenRNDR.md",
+                "file": "sketches/M01_SimpleMountains.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,15 +88,15 @@
   },
   "active": "f15721f6c23f6f97",
   "lastOpenFiles": [
+    "sketches/M01_SimpleMountains.md",
     "tools/OpenRNDR.md",
     "techniques/Probabilistic Color Palettes.md",
+    "sketches/Untitled.md",
     "techniques/Flow Fields.md",
     "TidalCycles.md",
     "Overtone.md",
     "index.md",
     "sketches/R02_BranchingArcs.md",
-    "R02_BranchingArcs.md",
-    "sketches/R01_CirclesAndTriangles.md",
-    "inspiration/Tyler Hobbs.md"
+    "R02_BranchingArcs.md"
   ]
 }

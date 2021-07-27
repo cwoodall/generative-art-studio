@@ -13,6 +13,11 @@ class Palette_00() : BasePalette() {
     ColorRGBa.fromHex("E9E2F4"), // light purple
   )
 
+  val background = ColorRGBa.WHITE
+
+  override fun background(): ColorRGBa {
+    return background
+  }
   override fun random(): ColorRGBa {
     return colors.random()
   }

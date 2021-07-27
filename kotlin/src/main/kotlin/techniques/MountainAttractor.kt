@@ -13,7 +13,7 @@ abstract class BaseMountainAttractor(width: Int) {
   protected var difference_field: List<Double> = (0..width-1).map { 0.0 }
 
   open fun maxMagnitude(): Double {
-    return magnitude_field.maxOrNull()!!
+    return magnitude_field.map { x -> abs(x) }.maxOrNull()!!
   }
 
   open fun get(x: Double): Double {
@@ -39,7 +39,7 @@ abstract class BaseMountainAttractor(width: Int) {
     return derivative // TODO: How to scale this properly?
   }
 
-  open fun debug_draw(drawer: Drawer, mid_point: Double, scaler: Double, circle_size:Double = 4.0) {
+  open fun debugDraw(drawer: Drawer, mid_point: Double, scaler: Double, circle_size:Double = 4.0) {
     val circles = (0..magnitude_field.lastIndex).map { x ->
       val magnitude =  magnitude_field[x] * scaler
       Circle(x.toDouble(), mid_point - magnitude, circle_size)
@@ -66,7 +66,7 @@ class MountainAttractor(center: Double, magnitude: Double, width: Int, K: Double
       .map { it -> it * magnitude}
   }
 
-  override fun debug_draw(drawer: Drawer, mid_point: Double, scaler: Double, circle_size: Double) {
+  override fun debugDraw(drawer: Drawer, mid_point: Double, scaler: Double, circle_size: Double) {
     if (magnitude > 0) {
       drawer.fill = ColorRGBa.RED
     } else {
@@ -74,7 +74,7 @@ class MountainAttractor(center: Double, magnitude: Double, width: Int, K: Double
     }
     drawer.stroke = ColorRGBa.TRANSPARENT
 
-    super.debug_draw(drawer, mid_point, scaler, circle_size)
+    super.debugDraw(drawer, mid_point, scaler, circle_size)
   }
 }
 
@@ -87,9 +87,9 @@ class SumOfMountainAttractors(width:Int, attractors: List<BaseMountainAttractor>
     }
 
     // rescale if needed
-    if (max_magnitude > 0.0) {
+    if (abs(max_magnitude) > 0.0) {
       magnitude_field = magnitude_field.map { it ->
-        max_magnitude * it / magnitude_field.maxOrNull()!!
+        max_magnitude * it / maxMagnitude()
       }
     }
 
