@@ -9,6 +9,17 @@
         "state": {
           "type": "markdown",
           "state": {
+            "file": "index.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "08d15cadc75d456e",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
             "file": "sketches/M01_SimpleMountains.md",
             "mode": "source"
           }
@@ -52,7 +63,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "65f312c383efd442",
@@ -86,17 +98,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f15721f6c23f6f97",
+  "active": "08d15cadc75d456e",
   "lastOpenFiles": [
     "sketches/M01_SimpleMountains.md",
+    "index.md",
+    "sketches/F01_PerlinNoise.md",
+    "sketches/R02_BranchingArcs.md",
+    "sketches/R01_CirclesAndTriangles.md",
     "tools/OpenRNDR.md",
     "techniques/Probabilistic Color Palettes.md",
     "sketches/Untitled.md",
     "techniques/Flow Fields.md",
-    "TidalCycles.md",
-    "Overtone.md",
-    "index.md",
-    "sketches/R02_BranchingArcs.md",
-    "R02_BranchingArcs.md"
+    "TidalCycles.md"
   ]
 }

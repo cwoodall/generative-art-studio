@@ -3,6 +3,7 @@ package util
 import org.openrndr.extra.noise.Random
 import org.openrndr.extra.noise.random
 import org.openrndr.math.Vector2
+import org.openrndr.shape.ShapeContour
 import kotlin.math.min
 import kotlin.math.max
 import kotlin.math.round
@@ -37,5 +38,22 @@ fun randomVector2(min_x: Double, max_x: Double, min_y: Double, max_y: Double): V
 
 
 fun weightedRandomBool(probability: Double): Boolean {
-  return Random.double(0.0, 1.0) > (1- probability)
+  return Random.double(0.0, 1.0) > (1 - probability)
+}
+
+
+infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
+  require(start.isFinite())
+  require(endInclusive.isFinite())
+  require(step > 0.0) { "Step must be positive, was: $step." }
+  val sequence = generateSequence(start) { previous ->
+    if (previous == Double.POSITIVE_INFINITY) return@generateSequence null
+    val next = previous + step
+    if (next > endInclusive) null else next
+  }
+  return sequence.asIterable()
+}
+
+fun ShapeContour.linearSamplePositions(num: Int): List<Vector2> {
+  return ((0.0..1.0).step(1.0 / num)).map { this.position(it) }
 }

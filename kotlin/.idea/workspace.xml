@@ -7,9 +7,9 @@
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/math.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/math.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/workspace" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../notes/sketches/M01_SimpleMountains.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/sketches/M01_SimpleMountains.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

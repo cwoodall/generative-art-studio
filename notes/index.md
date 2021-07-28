@@ -71,6 +71,9 @@ also a reasonable amount of video and music based generative art I would love to
 - [[F00_FlowFieldsExperiment]]
 - [[F01_PerlinNoise]]
 
+#### Mountain
+
+- [[M01_SimpleMountains]]
 
 ### Next actions
 

@@ -1,39 +1,49 @@
 package sketch
 
 import kotlinx.cli.*
-import org.openrndr.PresentationMode
-import org.openrndr.Program
 import  org.openrndr.extras.camera.*
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.*
-import org.openrndr.math.Vector2
 import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.noise.Random
 import util.DrawingStateManager
-import org.openrndr.extra.olive.oliveProgram
 import org.openrndr.extras.meshgenerators.extrudeShape
 import org.openrndr.extras.meshgenerators.meshGenerator
 import org.openrndr.ffmpeg.MP4Profile
 import org.openrndr.ffmpeg.ScreenRecorder
-import org.openrndr.math.Vector3
-import org.openrndr.math.clamp
+import org.openrndr.math.*
 import org.openrndr.shape.*
 import palettes.PaletteTwilight
-import techniques.BaseMountainAttractor
 import techniques.MountainAttractor
 import techniques.SumOfMountainAttractors
+import util.linearSamplePositions
 
-infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
-  require(start.isFinite())
-  require(endInclusive.isFinite())
-  require(step > 0.0) { "Step must be positive, was: $step." }
-  val sequence = generateSequence(start) { previous ->
-    if (previous == Double.POSITIVE_INFINITY) return@generateSequence null
-    val next = previous + step
-    if (next > endInclusive) null else next
+fun generateRandomMountainContour(
+  width: Int,
+  min_peaks: Int = 3,
+  max_peaks: Int = 8,
+  min_valleys: Int = 1,
+  max_valleys: Int = 6,
+  min_magnitude: Double = 20.0,
+  max_magnitude: Double = 200.0
+): SumOfMountainAttractors {
+  val num_peaks = Random.int(min_peaks, max_peaks)
+  val num_valleys = Random.int(min_valleys, max_valleys)
+
+  val attractors = (0 until num_peaks + num_valleys).map {
+    val sign = if (it < num_peaks) {
+      1.0
+    } else {
+      -1.0
+    }
+    MountainAttractor(
+      Random.double(0.0, width.toDouble()), sign * Random.double(.1, 1.0), width,
+      K = Random.double(.5, 5.0), N = Random.double(.5, 3.0)
+    )
   }
-  return sequence.asIterable()
+
+  return SumOfMountainAttractors(width, attractors, Random.double(min_magnitude, max_magnitude))
 }
 
 
@@ -55,19 +65,17 @@ fun main(args: Array<String>) = application {
   }
 
   program {
-//    val max_dimension = arrayOf(width, height).maxOrNull()!!
     var state_manager = DrawingStateManager()
-    state_manager.max_iterations = 10
-    var flyby = true
+    state_manager.max_iterations = _max_iterations
+
     var draw_as_rectangles = true
     var NUM_RECTANGLES = 50
+    val DEPTH_3D = 30.0
+    var NUM_MOUNTAINS = 20
+    var UPDATE_RATE = .5
 
     // Setup the seed value
-//    Random.rnd = kotlin.random.Random(seed)
-
-    // Setup the picture for presentation mode which will go to the next
-    // iteration on button press
-//    window.presentationMode = PresentationMode.MANUAL
+    Random.rnd = kotlin.random.Random(seed)
 
     // Setup listener events for turning on and off debug mode or pausing
     //   d -> toggle debug mode
@@ -79,8 +87,6 @@ fun main(args: Array<String>) = application {
         state_manager.is_paused = !state_manager.is_paused
       } else if (it.name == "r") {
         draw_as_rectangles = !draw_as_rectangles
-      } else if (it.name == "f") {
-        flyby = !flyby
       } else if (it.name == "n") {
         window.requestDraw()
       } else if (it.name == "l") {
@@ -95,45 +101,14 @@ fun main(args: Array<String>) = application {
     }
 
     // Generate the mountain attractors
-    var num_peaks: Int
-    var num_valleys: Int
-    val MIN_MAGNITUDE = 20.0
-    val MAX_MAGNITUDE = 200.0
-    var attractors: MutableList<BaseMountainAttractor> = mutableListOf()
-    var sum_attractor = SumOfMountainAttractors(width, attractors)
+    var mountainContours = mutableListOf<Pair<ShapeContour, ColorRGBa>>()
 
-    var mountain_offset = 0.0
-    var mountain_shapes = mutableListOf<Pair<ShapeContour, ColorRGBa>>()
 
     /**
      * Internal function for what we do to reset the drawing, this means regenerating new contours and arcs
      */
-    fun partial_reset() {
-      num_peaks = Random.int(3, 8)
-      num_valleys = Random.int(1, 6)
-
-      attractors.clear()
-      attractors.addAll((1..num_peaks).map {
-        MountainAttractor(
-          Random.double(0.0, width.toDouble()), Random.double(.1, 1.0), width,
-          K = Random.double(.5, 5.0), N = Random.double(.5, 3.0)
-        )
-      })
-
-      attractors.addAll((1..num_valleys).map {
-        MountainAttractor(
-          Random.double(0.0, width.toDouble()), -1.0 * Random.double(.1, 1.0), width,
-          K = Random.double(.5, 5.0), N = Random.double(.5, 2.0)
-        )
-      })
-
-      sum_attractor = SumOfMountainAttractors(width, attractors, Random.double(MIN_MAGNITUDE, MAX_MAGNITUDE))
-      mountain_offset = Random.double(height * .2, height * .6)
-    }
-
     fun reset() {
-      partial_reset()
-      mountain_shapes.clear()
+      mountainContours.clear()
     }
 
     state_manager.reset_fn = ::reset
@@ -147,80 +122,82 @@ fun main(args: Array<String>) = application {
       profile = MP4Profile()
     }
 
-    extend(Orbital()) {
-      this.eye = Vector3(width*1.0, height*1.5, 1000.0)
-      this.far = 9000000.0
+    var orbital = Orbital()
+    extend(orbital) {
+      this.eye = Vector3(width * 1.0, height * 1.5, 500.0)
+      this.camera.setView(Vector3(x=133.45213935225578, y=43.55330124647086, z=-179.37208424047094), Spherical(theta=42.88086053564933, phi=70.3215365670353, radius=1639.778047219882), 90.0)
     }
-    var last_second = seconds
-    var first = true
-    var NUM_MOUNTAINS = 20
+
+    var lastTimestep = seconds
+    var isFirst = true
     extend {
+      if (!state_manager.is_paused && isFirst || (seconds - lastTimestep) >= UPDATE_RATE) {
+        val mountainOutline = generateRandomMountainContour(width)
 
-      if (first || (seconds - last_second) >= .5) {
-        if (!state_manager.is_paused) {
-          val c = contour {
-            val offset = Vector2(0.0, mountain_offset)
-            val start = Vector2(0.0, sum_attractor.getMagnitude(0.0)) + offset
-            moveTo(start)
-            for (x in 1 until width) {
-              continueTo(Vector2(x.toDouble(), sum_attractor.getMagnitude(x.toDouble())) + offset)
-            }
-            lineTo(width.toDouble(), height.toDouble())
-            lineTo(0.0, height.toDouble())
-            lineTo(start)
-            close()
+        println(orbital.camera.lookAt)
+        println(orbital.camera.spherical)
+        println(orbital.camera.fov)
+        // Draw the mountains contour
+        val c = contour {
+          val offset = Vector2(0.0, Random.double(height * .2, height * .6))
+          val start = Vector2(0.0, mountainOutline.getMagnitude(0.0)) + offset
+          moveTo(start)
+          for (x in 1 until width) {
+            continueTo(Vector2(x.toDouble(), mountainOutline.getMagnitude(x.toDouble())) + offset)
           }
-          mountain_shapes.add(Pair(c, colors.random()))
-          partial_reset()
+          lineTo(width.toDouble(), height.toDouble())
+          lineTo(0.0, height.toDouble())
+          lineTo(start)
+          close()
         }
 
-        if (mountain_shapes.size > NUM_MOUNTAINS) {
-          mountain_shapes.removeAt(0)
+        // assign a color to that contuor
+        mountainContours.add(Pair(c, colors.random()))
+
+        // If we have more than NUM_MOUNTAINS roll off the first mountain
+        if (mountainContours.size > NUM_MOUNTAINS) {
+          mountainContours.removeAt(0)
         }
-        last_second = seconds
-        first = false
+
+        // Update state
+        lastTimestep = seconds
+        isFirst = false
       }
 
+      // prepare to draw inside of the perspective veiw
       drawer.isolated {
         drawer.drawStyle.depthWrite = true
         drawer.drawStyle.depthTestPass = DepthTestPass.LESS_OR_EQUAL
 
-        var i = 0
-        for ((s, c) in mountain_shapes.reversed()) {
-          drawer.translate(0.0, 0.0, 30.0)
+        for ((mountainContour, mountainColor) in mountainContours.reversed()) {
+          // Translate by the depth for this by reversing the mountain shapes list each older element will get closer
+          // to the camera.
+          drawer.translate(0.0, 0.0, DEPTH_3D)
           if (draw_as_rectangles) {
-            drawer.fill = c
-            drawer.stroke = ColorRGBa.BLACK
-            drawer.strokeWeight = 0.0
+            // Create the fill for the mesh
+            drawer.fill = mountainColor
 
-            val points = (0.0..1.0 step 1.0 / NUM_RECTANGLES).map {
-              it -> s.position(it)
-            }
-            val rect_width = width.toDouble() / (NUM_RECTANGLES-1)
+            // Create all of the rectangles for extrusion and join them together into one mesh
+            var layerMesh = meshGenerator {
+              // Calculate the width of each rectangle
+              val rectWidth = width.toDouble() / (NUM_RECTANGLES - 1)
 
-            val rects = points
-              .map { it ->
-                Rectangle(it.x, 0.0, rect_width, it.y)
-              }
-            var mes = meshGenerator {
-              rects.map {
-                extrudeShape(it.shape, 30.0)
-              }
+              mountainContour
+                .linearSamplePositions(NUM_RECTANGLES)
+                .map { Rectangle(it.x, 0.0, rectWidth, it.y) }
+                .map { extrudeShape(it.shape, DEPTH_3D) }
             }
 
-            drawer.isolated {
-                drawer.vertexBuffer(mes, DrawPrimitive.TRIANGLES)
-            }
+            // And then draw the mesh
+            drawer.vertexBuffer(layerMesh, DrawPrimitive.LINES)
           } else {
-            drawer.fill = c
-            drawer.stroke = ColorRGBa.BLACK
-            drawer.strokeWeight = 2.0
+            // Draw the whole mountain. This is actually inverted for some reason.
+            drawer.fill = mountainColor
             var mes = meshGenerator {
-              extrudeShape(s.shape, 30.0)
+              extrudeShape(mountainContour.shape, DEPTH_3D)
             }
-            drawer.vertexBuffer(mes, DrawPrimitive.LINES)
+            drawer.vertexBuffer(mes, DrawPrimitive.TRIANGLES)
           }
-          i++
         }
       }
     }
