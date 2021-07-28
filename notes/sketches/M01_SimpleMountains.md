@@ -30,6 +30,14 @@ As the program started the contours were plotted as particles going across the s
 
 This ended up being a fun study in 3d rendering, with one major learning: combine as many things into one mesh as possible to save memory.
 
+#### Notes
+
+These are some early notes
+
+![](static/sketches/M01_SimpleMountains/IMG_0934.jpg)
+
+![](static/sketches/M01_SimpleMountains/IMG_0935.jpg)
+
 ### Progression
 #### Getting the basic Peak and Valley attractors setup
 | Raw Peaks and Valleys                                   | Shapes                                                  |     |
