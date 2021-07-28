@@ -10,10 +10,10 @@ class PaletteTwilight : BasePalette() {
     ColorRGBa.fromHex("B58D7A"),
     ColorRGBa.fromHex("9B6F6E"),
     ColorRGBa.fromHex("70526E"),
-//    ColorRGBa.fromHex("594465"),
+    ColorRGBa.fromHex("594465"),
   )
 
-  val background = ColorRGBa.fromHex("594465")
+  val background = ColorRGBa.fromHex("FFEECF")
 
   override fun background(): ColorRGBa {
     return background

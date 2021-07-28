@@ -2,29 +2,39 @@ package sketch
 
 import kotlinx.cli.*
 import org.openrndr.PresentationMode
-
+import org.openrndr.Program
+import  org.openrndr.extras.camera.*
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.draw.LineCap
-import org.openrndr.draw.StencilStyle
-import org.openrndr.draw.isolated
+import org.openrndr.draw.*
 import org.openrndr.math.Vector2
 import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.noise.Random
 import util.DrawingStateManager
 import org.openrndr.extra.olive.oliveProgram
-import org.openrndr.extra.videoprofiles.GIFProfile
-import org.openrndr.extra.videoprofiles.ProresProfile
+import org.openrndr.extras.meshgenerators.extrudeShape
+import org.openrndr.extras.meshgenerators.meshGenerator
 import org.openrndr.ffmpeg.MP4Profile
 import org.openrndr.ffmpeg.ScreenRecorder
-import org.openrndr.math.LinearRange
+import org.openrndr.math.Vector3
+import org.openrndr.math.clamp
 import org.openrndr.shape.*
 import palettes.PaletteTwilight
-import palettes.Palette_00
 import techniques.BaseMountainAttractor
 import techniques.MountainAttractor
 import techniques.SumOfMountainAttractors
-import kotlin.math.pow
+
+infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
+  require(start.isFinite())
+  require(endInclusive.isFinite())
+  require(step > 0.0) { "Step must be positive, was: $step." }
+  val sequence = generateSequence(start) { previous ->
+    if (previous == Double.POSITIVE_INFINITY) return@generateSequence null
+    val next = previous + step
+    if (next > endInclusive) null else next
+  }
+  return sequence.asIterable()
+}
 
 
 fun main(args: Array<String>) = application {
@@ -33,7 +43,7 @@ fun main(args: Array<String>) = application {
   val width_arg by parser.option(ArgType.Int, fullName = "width", shortName = "w", description = "width (px)")
     .default(1024)
   val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
-    .default(512)
+    .default(1024)
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(0)
   val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
 
@@ -44,23 +54,13 @@ fun main(args: Array<String>) = application {
     height = height_arg // Height of picture
   }
 
-  oliveProgram {
-    infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
-      require(start.isFinite())
-      require(endInclusive.isFinite())
-      require(step > 0.0) { "Step must be positive, was: $step." }
-      val sequence = generateSequence(start) { previous ->
-        if (previous == Double.POSITIVE_INFINITY) return@generateSequence null
-        val next = previous + step
-        if (next > endInclusive) null else next
-      }
-      return sequence.asIterable()
-    }
+  program {
 //    val max_dimension = arrayOf(width, height).maxOrNull()!!
     var state_manager = DrawingStateManager()
     state_manager.max_iterations = 10
     var flyby = true
     var draw_as_rectangles = true
+    var NUM_RECTANGLES = 50
 
     // Setup the seed value
 //    Random.rnd = kotlin.random.Random(seed)
@@ -68,10 +68,6 @@ fun main(args: Array<String>) = application {
     // Setup the picture for presentation mode which will go to the next
     // iteration on button press
 //    window.presentationMode = PresentationMode.MANUAL
-    mouse.buttonUp.listen {
-      state_manager.reset()
-      window.requestDraw()
-    }
 
     // Setup listener events for turning on and off debug mode or pausing
     //   d -> toggle debug mode
@@ -85,6 +81,16 @@ fun main(args: Array<String>) = application {
         draw_as_rectangles = !draw_as_rectangles
       } else if (it.name == "f") {
         flyby = !flyby
+      } else if (it.name == "n") {
+        window.requestDraw()
+      } else if (it.name == "l") {
+        state_manager.reset()
+      } else if (it.name == "a") {
+        NUM_RECTANGLES--
+        NUM_RECTANGLES.clamp(1, 1000)
+      } else if (it.name == "s") {
+        NUM_RECTANGLES++
+        NUM_RECTANGLES.clamp(1, 1000)
       }
     }
 
@@ -132,8 +138,6 @@ fun main(args: Array<String>) = application {
 
     state_manager.reset_fn = ::reset
     state_manager.reset()
-    // Take a timestamped screenshot with the space bar
-    val debug_region = 100.0 // bottom 20 pixels
 
     val colors = PaletteTwilight()
     // Setup the state here
@@ -142,9 +146,16 @@ fun main(args: Array<String>) = application {
     extend(ScreenRecorder()) {
       profile = MP4Profile()
     }
+
+    extend(Orbital()) {
+      this.eye = Vector3(width*1.0, height*1.5, 1000.0)
+      this.far = 9000000.0
+    }
     var last_second = seconds
     var first = true
+    var NUM_MOUNTAINS = 20
     extend {
+
       if (first || (seconds - last_second) >= .5) {
         if (!state_manager.is_paused) {
           val c = contour {
@@ -163,7 +174,7 @@ fun main(args: Array<String>) = application {
           partial_reset()
         }
 
-        if (mountain_shapes.size > 10) {
+        if (mountain_shapes.size > NUM_MOUNTAINS) {
           mountain_shapes.removeAt(0)
         }
         last_second = seconds
@@ -171,61 +182,49 @@ fun main(args: Array<String>) = application {
       }
 
       drawer.isolated {
-        drawer.fill = colors.background()
-        drawer.stroke = colors.background()
-        drawer.rectangle(0.0, 0.0, width.toDouble(), height.toDouble())
+        drawer.drawStyle.depthWrite = true
+        drawer.drawStyle.depthTestPass = DepthTestPass.LESS_OR_EQUAL
+
         var i = 0
         for ((s, c) in mountain_shapes.reversed()) {
-          if (flyby) {
-            drawer.translate(0.0, i.toDouble().pow(2) * height / 40.0)
-          }
+          drawer.translate(0.0, 0.0, 30.0)
           if (draw_as_rectangles) {
             drawer.fill = c
             drawer.stroke = ColorRGBa.BLACK
             drawer.strokeWeight = 0.0
-            val num_points = 200
-//            val sample_points = .map { x -> Vector2(x, 0.0) }
 
-            val points = (0.0..1.0 step 1.0 / num_points).map {
+            val points = (0.0..1.0 step 1.0 / NUM_RECTANGLES).map {
               it -> s.position(it)
             }
-            val rect_width = width.toDouble() / (num_points)
-//            drawer.circles(points, 10.0)
-            drawer.rectangles(points
+            val rect_width = width.toDouble() / (NUM_RECTANGLES-1)
+
+            val rects = points
               .map { it ->
-                Rectangle(it.x, it.y, rect_width, height - it.y)
+                Rectangle(it.x, 0.0, rect_width, it.y)
               }
-            )
-//            val rects = points.map { pt -> Rectangle(pt.x-rect_width*.5, height.toDouble(), rect_width*.5, pt.y) }
-//            drawer.rectangles(rects)
+            var mes = meshGenerator {
+              rects.map {
+                extrudeShape(it.shape, 30.0)
+              }
+            }
+
+            drawer.isolated {
+                drawer.vertexBuffer(mes, DrawPrimitive.TRIANGLES)
+            }
           } else {
             drawer.fill = c
             drawer.stroke = ColorRGBa.BLACK
             drawer.strokeWeight = 2.0
-            drawer.contour(s)
+            var mes = meshGenerator {
+              extrudeShape(s.shape, 30.0)
+            }
+            drawer.vertexBuffer(mes, DrawPrimitive.LINES)
           }
           i++
         }
       }
     }
 
-    if (state_manager.is_debug) {
-      val top_debug_region = height - debug_region
-      val mid_debug_region = height - debug_region * .5
-      drawer.isolated {
-        drawer.stroke = ColorRGBa.PINK
-        drawer.lineSegment(Vector2(0.0, mid_debug_region), Vector2(width.toDouble(), mid_debug_region))
-        drawer.lineSegment(Vector2(0.0, top_debug_region), Vector2(width.toDouble(), top_debug_region))
-      }
-      drawer.isolated {
-        for (attractor in attractors) {
-          attractor.debugDraw(drawer, mid_debug_region, debug_region / (2.0))
-        }
-        drawer.fill = ColorRGBa.PINK
-        sum_attractor.debugDraw(drawer, mid_debug_region, debug_region / (2.0 * MAX_MAGNITUDE))
-      }
-
-    }
     state_manager.postUpdate(camera)
   }
 }

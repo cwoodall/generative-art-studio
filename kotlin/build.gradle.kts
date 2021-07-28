@@ -12,7 +12,7 @@ val applicationMainClass = "TemplateProgramKt"
 /*  Which additional (ORX) libraries should be added to this project. */
 val orxFeatures = setOf(
 //  "orx-boofcv",
-//  "orx-camera",
+ "orx-camera",
 //  "orx-chataigne",
 //  "orx-color",
     "orx-compositor",
@@ -32,7 +32,7 @@ val orxFeatures = setOf(
 //  "orx-keyframer",      
 //  "orx-kinect-v1",
 //  "orx-kotlin-parser",
-//  "orx-mesh-generators",
+ "orx-mesh-generators",
 //  "orx-midi",
     "orx-no-clear",
     "orx-noise",
@@ -302,6 +302,7 @@ runtime {
 
 val title: String by project
 task("sketch", JavaExec::class) {
+  jvmArgs?.add("-Xmx10G")
   classpath = sourceSets["main"].runtimeClasspath
   if (project.hasProperty("title")) {
     var programMain = title

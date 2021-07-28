@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ffmpegOutput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ffmpegOutput.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/palette_00.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/palette_00.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/techniques/MountainAttractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/techniques/MountainAttractor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/workspace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/sketches/M01_SimpleMountains.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/sketches/M01_SimpleMountains.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +34,16 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="generative-art" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="generative-art" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="generative-art" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -79,7 +87,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RunManager" selected="Gradle.Sketch M01_SimpleMountains [sketch]">
     <configuration name="Sketch F01_PerinNoise [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
@@ -87,7 +95,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--stacktrace -Ptitle=F01_PerlinNoise" />
+        <option name="scriptParameters" value="--stacktrace -Ptitle=F01_PerlinNoise " />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -126,6 +134,11 @@
     </configuration>
     <configuration name="Sketch M01_SimpleMountains [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="JAVA_TOOL_OPTIONS" value="&quot;-Xmx3G&quot;" />
+          </map>
+        </option>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
