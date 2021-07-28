@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "f15721f6c23f6f97",
+        "id": "46e80192a80acd44",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -15,7 +15,31 @@
         }
       },
       {
-        "id": "08d15cadc75d456e",
+        "id": "39dc6b37b408bbf7",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "tools/documentation/Obsidian and Neuron Cheatsheet.md",
+            "mode": "source"
+          }
+        },
+        "group": "1809181c5a13de09"
+      },
+      {
+        "id": "f3892e96ae0551f9",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "tools/documentation/Obsidian and Neuron Cheatsheet.md",
+            "mode": "preview"
+          }
+        },
+        "group": "1809181c5a13de09"
+      },
+      {
+        "id": "ebbf1bbb3a9bf973",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -63,8 +87,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "65f312c383efd442",
@@ -80,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/M01_SimpleMountains.md",
+                "file": "tools/documentation/Obsidian and Neuron Cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,17 +121,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "08d15cadc75d456e",
+  "active": "39dc6b37b408bbf7",
   "lastOpenFiles": [
+    "tools/documentation/Obsidian and Neuron Cheatsheet.md",
     "sketches/M01_SimpleMountains.md",
+    "tools/visual/Processing.md",
     "index.md",
-    "sketches/F01_PerlinNoise.md",
-    "sketches/R02_BranchingArcs.md",
-    "sketches/R01_CirclesAndTriangles.md",
-    "tools/OpenRNDR.md",
-    "techniques/Probabilistic Color Palettes.md",
-    "sketches/Untitled.md",
-    "techniques/Flow Fields.md",
-    "TidalCycles.md"
+    "Studio Setup.md",
+    "WorkingMemory.md",
+    "techniques/Fractal Subdivision (Organic Shapes).md",
+    "DIfferential Line Growth.md",
+    "techniques/Sweeping Fractal Lines.md",
+    "Fractal Subdivision (Organic Shapes).md"
   ]
 }

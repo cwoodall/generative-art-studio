@@ -1,4 +1,6 @@
 {
   "alwaysUpdateLinks": true,
-  "attachmentFolderPath": "./static/sketches"
+  "attachmentFolderPath": "static/sketches",
+  "promptDelete": false,
+  "newLinkFormat": "absolute"
 }

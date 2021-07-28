@@ -61,6 +61,14 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 This video on GitHub Sattelite is also very nice: https://www.youtube.com/watch?v=qdgnRct0_nw&t=12428s
 
 also a reasonable amount of video and music based generative art I would love to get into. Specifically the stuff by Dan Gorelick https://youtu.be/qdgnRct0_nw?t=29068
+
+- Substrate http://www.complexification.net/gallery/machines/substrate/
+- Inconvergent: https://inconvergent.net/generative/fractures/
+
+https://n-e-r-v-o-u-s.com/
+https://inconvergent.net/generative/
+http://www.complexification.net/gallery/machines/happyPlace/
+
 ### Pieces and Series
 
 #### Random
@@ -96,11 +104,16 @@ also a reasonable amount of video and music based generative art I would love to
 
 #### Idea holding area
 
-- Mountains with various flow fields in them
+- Color study with interacting agents that XOR and Sum and mix, etc into new colors
+- Smoke
+- Mandalas and generative universes / solar systems
+- Spirographs in 3d
+- Full terrain generation
+- Mountains with simple flow fields inside of them
+- [[DIfferential Line Growth]]
+- More dot drawings with more complex flow fields (with more form?)
 - Line/box based flow fields similar to [[Fidenza]] with collision detection
 
-#### Cheat Sheet
+#### Cheat Sheets
 
-- Regex for images from Obsidian to markdown:
-  - Find `!\[\[([\w+\.\d-]+).(jpg|png|gif)\]\]`
-  - Replace: ![](static/sketches/M01_SimpleMountains/$1.$2)
+- [[tools/documentation/Obsidian and Neuron Cheatsheet]]
