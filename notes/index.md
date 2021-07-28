@@ -6,14 +6,17 @@ feed:
 
 - [The Studio](#the-studio)
 - [Tools](#tools)
+	- [Music](#music)
 - [Techniques](#techniques)
 - [Inspiration](#inspiration)
 - [Pieces and Series](#pieces-and-series)
 	- [Random](#random)
 	- [Flow Fields](#flow-fields)
+	- [Mountain](#mountain)
 - [Next actions](#next-actions)
-	- [Complet**ed actions](#completed-actions)
+	- [Completed actions](#completed-actions)
 	- [Idea holding area](#idea-holding-area)
+	- [Cheat Sheet](#cheat-sheet)
 
 
 Generative Art (and [[Creative Coding]]) is a broad term for any computer generated form of art, this could be audio, random, algorithmic, or even mixed media between an algorithm and human input. There are many techniques here and tools. One of the early ones was [[Processing]], which also influenced [[Arduino]] (on the embedded side). I was introduced to the concept through an interview with [[Tyler Hobbs]] (about his [[NFTs]] [[Fidenza]]) which uses a [[Flow Fields]]
@@ -95,3 +98,9 @@ also a reasonable amount of video and music based generative art I would love to
 
 - Mountains with various flow fields in them
 - Line/box based flow fields similar to [[Fidenza]] with collision detection
+
+#### Cheat Sheet
+
+- Regex for images from Obsidian to markdown:
+  - Find `!\[\[([\w+\.\d-]+).(jpg|png|gif)\]\]`
+  - Replace: ![](static/sketches/M01_SimpleMountains/$1.$2)
