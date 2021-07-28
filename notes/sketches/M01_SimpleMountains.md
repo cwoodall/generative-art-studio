@@ -2,6 +2,20 @@
 
 Code: [M01_SimpleMountains.kt](https://github.com/cwoodall/generative-art-studio/blob/main/kotlin/src/main/kotlin/sketch/M01_SimpleMountains.kt)
 
+- [M01_SimpleMountains](#m01_simplemountains)
+  - [Overview](#overview)
+  - [Algorithm](#algorithm)
+    - [Notes](#notes)
+  - [Progression](#progression)
+    - [Getting the basic Peak and Valley attractors setup](#getting-the-basic-peak-and-valley-attractors-setup)
+    - [Tracing Curves](#tracing-curves)
+    - [Drawing Contours and Filling Shapes](#drawing-contours-and-filling-shapes)
+    - [Rectangles and Adding Outline](#rectangles-and-adding-outline)
+    - [Video Flybys](#video-flybys)
+    - [3D Mountain World](#3d-mountain-world)
+    - [Getting a nice repeatable view](#getting-a-nice-repeatable-view)
+  - [Future Work](#future-work)
+  - [Things Learnt](#things-learnt)
 ### Overview
 
 M01_SimpleMountains started off as an idea to create generative mountain landscapes and evolved into a bit of an experiment in 3d rendering, and animation. This project was done in [[OpenRNDR]] and [[Kotlin]] and I feel like I am starting to see some of the limitations of OpenRNDR in terms not of it's capabilities, but instead in terms of it's documentation and community. 
@@ -40,20 +54,20 @@ These are some early notes
 
 ### Progression
 #### Getting the basic Peak and Valley attractors setup
-| Raw Peaks and Valleys                                   | Shapes                                                  |     |
+| Raw Peaks and Valleys                                   | Shapes                                                  |    
 | ------------------------------------------------------- | ------------------------------------------------------- | 
-| ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-25-22.54.19.png) | ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-25-23.07.22.png) |     |
+| ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-25-22.54.19.png) | ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-25-23.07.22.png) |    
 
 #### Tracing Curves
 
 ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-26-08.10.46.gif)
-![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-26-08.15.37.gif)
 
 | ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-25-23.56.42.png) | ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-25-23.56.45.png)   |
 | ------------------------------------------------------- | --------------------------------------------------------- |
 | ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-26-00.10.32.png) | ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-26-00.12.21.png)   |
 | ![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-26-00.14.18.png) | ![[static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-26-00.16.13 1.png]] |
 
+![](static/sketches/M01_SimpleMountains/sketch.M01_SimpleMountains-2021-07-26-08.15.37.gif)
 
 #### Drawing Contours and Filling Shapes
 
