@@ -125,6 +125,7 @@ fun main(args: Array<String>) = application {
     var orbital = Orbital()
     extend(orbital) {
       this.eye = Vector3(width * 1.0, height * 1.5, 500.0)
+      this.far = 90000.0
       this.camera.setView(Vector3(x=133.45213935225578, y=43.55330124647086, z=-179.37208424047094), Spherical(theta=42.88086053564933, phi=70.3215365670353, radius=1639.778047219882), 90.0)
     }
 
@@ -134,9 +135,10 @@ fun main(args: Array<String>) = application {
       if (!state_manager.is_paused && isFirst || (seconds - lastTimestep) >= UPDATE_RATE) {
         val mountainOutline = generateRandomMountainContour(width)
 
-        println(orbital.camera.lookAt)
-        println(orbital.camera.spherical)
-        println(orbital.camera.fov)
+        // For capturing views that we want to keep
+//        println(orbital.camera.lookAt)
+//        println(orbital.camera.spherical)
+//        println(orbital.camera.fov)
         // Draw the mountains contour
         val c = contour {
           val offset = Vector2(0.0, Random.double(height * .2, height * .6))
