@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/R03_ColorLogic.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/palette_00.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/palette_00.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/workspace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/sketches/M01_SimpleMountains.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/sketches/M01_SimpleMountains.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +59,8 @@
       <list>
         <option value="Kotlin File" />
         <option value="Kotlin Script" />
-        <option value="New Kotlin Sketch" />
         <option value="Kotlin Class" />
+        <option value="New Kotlin Sketch" />
       </list>
     </option>
   </component>
@@ -85,7 +91,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
-  <component name="RunManager" selected="Gradle.Sketch M01_SimpleMountains [sketch]">
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="palettes" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Sketch R03_ColorLogic [sketch]">
     <configuration name="Sketch F01_PerinNoise [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -196,6 +207,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Sketch R03_ColorLogic [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-Ptitle=R03_ColorLogic --scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="sketch" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Sketch RandomCircles [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -222,6 +254,7 @@
       <item itemvalue="Gradle.Sketch R01_CirclesAndTriangles [sketch] " />
       <item itemvalue="Gradle.Sketch R02_BranchingArcs [sketch]" />
       <item itemvalue="Gradle.Sketch M01_SimpleMountains [sketch]" />
+      <item itemvalue="Gradle.Sketch R03_ColorLogic [sketch]" />
       <item itemvalue="Gradle.Sketch FlowFieldsExperiment [sketch] (1)" />
       <item itemvalue="Gradle.Sketch F01_PerinNoise [sketch]" />
     </list>

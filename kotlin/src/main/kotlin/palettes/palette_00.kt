@@ -4,7 +4,7 @@ import org.openrndr.color.ColorRGBa
 
 
 class Palette_00() : BasePalette() {
-  val colors = listOf(
+  override val colors = listOf(
     ColorRGBa.fromHex("FCB264"), // orange
     ColorRGBa.fromHex("8DC0E2"), // blue
     ColorRGBa.fromHex("C4B2E1"), // purple
@@ -12,12 +12,8 @@ class Palette_00() : BasePalette() {
     ColorRGBa.fromHex("FEE1C3"), // light orange
     ColorRGBa.fromHex("E9E2F4"), // light purple
   )
+  override val background = ColorRGBa.WHITE
 
-  val background = ColorRGBa.WHITE
-
-  override fun background(): ColorRGBa {
-    return background
-  }
   override fun random(): ColorRGBa {
     return colors.random()
   }
