@@ -63,6 +63,16 @@ One thing I noticed while playing with the black and white is any index of 0 wil
 
 <embed src="static/sketches/C01_ColorStudy_AddingIndex/sketch.C01_CirclesOverlap-2021-07-29-07.58.53.mp4" autostart="false" height="300" width="100%"></embed>
 
+#### Outline and Drawing Modes
+
+![static/sketches/C01_ColorStudy_AddingIndex/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.20.20.png](static/sketches/C01_ColorStudy_AddingIndex/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.20.20.png)
+
+![static/sketches/C01_ColorStudy_AddingIndex/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.20.47.png](static/sketches/C01_ColorStudy_AddingIndex/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.20.47.png)
+
+<embed src="static/sketches/C01_ColorStudy_AddingIndex/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.19.47.mp4" autostart="false" height="300" width="100%"></embed>
+
+<embed src="static/sketches/C01_ColorStudy_AddingIndex/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.20.40.mp4" autostart="false" height="300" width="100%"></embed>
+
 ### Future work
 
 - Shaders to speed up th drawing
@@ -70,3 +80,4 @@ One thing I noticed while playing with the black and white is any index of 0 wil
 - incorporate the background color into the shapes
 - Random shapes instead of predestined shapes
 - Gradients of mono-hue and saturation with variable value/brightness!? or even fixed s and v and mono hue Or hey we can just navigate through the color space and find the median distance between points.	
+- Sketch outlines coloring instead of the fills

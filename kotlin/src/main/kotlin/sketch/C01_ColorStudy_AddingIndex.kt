@@ -17,6 +17,12 @@ import org.openrndr.shape.compound
 import util.DrawingStateManager
 import kotlin.math.abs
 
+enum class DrawingType {
+  OUTLINE_ONLY,
+  FILL_OUTLINE_OFF,
+  FILL_OUTLINE_ON
+}
+
 fun main(args: Array<String>) = application {
   // Setup argument parsing
   val parser = ArgParser("sketch")
@@ -34,8 +40,9 @@ fun main(args: Array<String>) = application {
     height = height_arg // Height of picture
   }
 
-  oliveProgram {
+  program {
     val max_dimension = arrayOf(width, height).maxOrNull()!!
+    val drawingType = DrawingType.OUTLINE_ONLY
 
     var state_manager = DrawingStateManager()
 //    state_manager.max_iterations = _max_iterations
@@ -89,7 +96,6 @@ fun main(args: Array<String>) = application {
       ColorIndexedShape(Rectangle(-width * .5, -height * .5, width * 1.0, height * .4).shape, 2, Vector2(0.0, +0.5)),
       ColorIndexedShape(Circle(0.0, -height * .5, 100.0).shape, 4, Vector2(0.1, 1.1))
     )
-
     fun <T> getAllUniqueCombinations(x: List<T>, max_size: Int = x.size, min_size: Int = 2): Set<List<T>> {
       fun getAllUniqueCombinationsUpToSize(x: List<T>, n: Int): Set<List<T>> {
         when (n) {
@@ -129,17 +135,12 @@ fun main(args: Array<String>) = application {
       drawer.clear(palette.background)
 
       // Set the stroke to BLACK
-      drawer.stroke = ColorRGBa.BLACK
 
       // Move the canvas so we are centered about the point 0, 0
       drawer.translate(width * .5, height * .5)
 
       if (isRotating) drawer.rotate(degrees++)
 
-      for (s in ciShapes) {
-        drawer.fill = palette.wrappedGet(s.colorIndex)
-        drawer.shape(s.shape)
-      }
 
       val intersection_shapes = mutableListOf<ColorIndexedShape>()
 
@@ -155,10 +156,30 @@ fun main(args: Array<String>) = application {
           intersection_shapes.add(ColorIndexedShape(s, permutation.map { it.colorIndex }.sum(), Vector2.ZERO))
         }
       }
+//
+//      for (s in ciShapes) {
+//        drawer.fill = palette.wrappedGet(s.colorIndex)
+//        drawer.shape(s.shape)
+//      }
 
-      for (s in intersection_shapes) {
-        drawer.fill = palette.wrappedGet(s.colorIndex)
-        drawer.stroke = ColorRGBa.BLACK
+      for (s in ciShapes + intersection_shapes) {
+
+        when (drawingType) {
+          DrawingType.OUTLINE_ONLY -> {
+            drawer.fill = ColorRGBa.TRANSPARENT
+            drawer.strokeWeight = 10.0
+            drawer.stroke = palette.wrappedGet(s.colorIndex)
+          }
+          DrawingType.FILL_OUTLINE_OFF -> {
+            drawer.stroke = ColorRGBa.TRANSPARENT
+            drawer.fill = palette.wrappedGet(s.colorIndex)
+          }
+          DrawingType.FILL_OUTLINE_ON -> {
+            drawer.stroke = ColorRGBa.BLACK
+            drawer.fill = palette.wrappedGet(s.colorIndex)
+          }
+        }
+
         drawer.shape(s.shape)
       }
 

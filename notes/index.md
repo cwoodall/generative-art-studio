@@ -13,10 +13,11 @@ feed:
 	- [Random](#random)
 	- [Flow Fields](#flow-fields)
 	- [Mountain](#mountain)
+	- [Color Studies](#color-studies)
 - [Next actions](#next-actions)
 	- [Completed actions](#completed-actions)
 	- [Idea holding area](#idea-holding-area)
-	- [Cheat Sheet](#cheat-sheet)
+	- [Cheat Sheets](#cheat-sheets)
 
 
 Generative Art (and [[Creative Coding]]) is a broad term for any computer generated form of art, this could be audio, random, algorithmic, or even mixed media between an algorithm and human input. There are many techniques here and tools. One of the early ones was [[Processing]], which also influenced [[Arduino]] (on the embedded side). I was introduced to the concept through an interview with [[Tyler Hobbs]] (about his [[NFTs]] [[Fidenza]]) which uses a [[Flow Fields]]
