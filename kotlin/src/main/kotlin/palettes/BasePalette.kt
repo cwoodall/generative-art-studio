@@ -1,5 +1,6 @@
 package palettes
 
+import org.openrndr.color.ColorHSVa
 import org.openrndr.color.ColorRGBa
 
 open class BasePalette() {
@@ -16,5 +17,13 @@ open class BasePalette() {
 
   open fun get(x: Int): ColorRGBa {
     return colors[x]
+  }
+
+  open fun getHSV(x: Int): ColorHSVa {
+    return colors[x].toHSVa()
+  }
+
+  open fun wrappedGetHSV(x: Int): ColorHSVa {
+    return wrappedGet(x).toHSVa()
   }
 }

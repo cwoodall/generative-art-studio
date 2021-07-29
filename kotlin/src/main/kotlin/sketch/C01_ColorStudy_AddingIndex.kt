@@ -1,17 +1,20 @@
 package sketch
 
-import kotlinx.cli.*
-
+import kotlinx.cli.ArgParser
+import kotlinx.cli.ArgType
+import kotlinx.cli.default
 import org.openrndr.application
-import org.openrndr.extensions.Screenshots
-import util.DrawingStateManager
 import org.openrndr.color.ColorRGBa
+import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.olive.oliveProgram
-import org.openrndr.extra.videoprofiles.GIFProfile
 import org.openrndr.ffmpeg.MP4Profile
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
-import org.openrndr.shape.*
+import org.openrndr.shape.Circle
+import org.openrndr.shape.Rectangle
+import org.openrndr.shape.Shape
+import org.openrndr.shape.compound
+import util.DrawingStateManager
 import kotlin.math.abs
 
 fun main(args: Array<String>) = application {
@@ -126,7 +129,7 @@ fun main(args: Array<String>) = application {
       drawer.clear(palette.background)
 
       // Set the stroke to BLACK
-      drawer.stroke= ColorRGBa.BLACK
+      drawer.stroke = ColorRGBa.BLACK
 
       // Move the canvas so we are centered about the point 0, 0
       drawer.translate(width * .5, height * .5)
@@ -155,7 +158,7 @@ fun main(args: Array<String>) = application {
 
       for (s in intersection_shapes) {
         drawer.fill = palette.wrappedGet(s.colorIndex)
-        drawer.stroke= ColorRGBa.BLACK
+        drawer.stroke = ColorRGBa.BLACK
         drawer.shape(s.shape)
       }
 

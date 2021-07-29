@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
       <change afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/R03_ColorLogic.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C01_ColorStudy_AddingIndex.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" afterDir="false" />
@@ -96,7 +96,28 @@
       <recent name="palettes" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Sketch R03_ColorLogic [sketch]">
+  <component name="RunManager" selected="Gradle.Sketch C01_ColorStudy_AddingIndex [sketch]">
+    <configuration name="Sketch C01_ColorStudy_AddingIndex [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-Ptitle=C01_ColorStudy_AddingIndex --scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="sketch" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Sketch F01_PerinNoise [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -207,27 +228,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Sketch R03_ColorLogic [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="-Ptitle=R03_ColorLogic --scan" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="sketch" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="Sketch RandomCircles [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -249,15 +249,28 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="C01_ColorStudy_AddingIndexKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sketch.C01_ColorStudy_AddingIndexKt" />
+      <module name="generative-art.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Gradle.Sketch RandomCircles [sketch]" />
       <item itemvalue="Gradle.Sketch R01_CirclesAndTriangles [sketch] " />
       <item itemvalue="Gradle.Sketch R02_BranchingArcs [sketch]" />
       <item itemvalue="Gradle.Sketch M01_SimpleMountains [sketch]" />
-      <item itemvalue="Gradle.Sketch R03_ColorLogic [sketch]" />
+      <item itemvalue="Gradle.Sketch C01_ColorStudy_AddingIndex [sketch]" />
       <item itemvalue="Gradle.Sketch FlowFieldsExperiment [sketch] (1)" />
       <item itemvalue="Gradle.Sketch F01_PerinNoise [sketch]" />
+      <item itemvalue="Kotlin.C01_ColorStudy_AddingIndexKt" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.C01_ColorStudy_AddingIndexKt" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

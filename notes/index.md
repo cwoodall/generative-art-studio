@@ -86,6 +86,10 @@ http://www.complexification.net/gallery/machines/happyPlace/
 
 - [[M01_SimpleMountains]]
 
+#### Color Studies
+
+- [[sketches/C01_ColorStudy_AddingIndex]]
+
 ### Next actions
 
 - [ ] Attribute management + how to make attributes which have joint probabilities

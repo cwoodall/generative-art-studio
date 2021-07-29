@@ -127,6 +127,10 @@ These are some early notes
 - Experiment with adding more mountain shapes and smoothing them with a low pass filter.
 - Figure out how to prevent this program from crashing... There is a memory leak somewhere
 - [[Generative Terrain Creation]]
+- Experiment with [[Camera Positions and Motion]]
+- [[techniques/Flow Fields]] in each section possibly using [[techniques/Voronoi Cells]] to subdivide the image up
+- City scapes
+- Temporal relationship to previous
 
 ### Things Learnt
 

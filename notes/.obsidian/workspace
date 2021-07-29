@@ -4,47 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "46e80192a80acd44",
+        "id": "7b154b937ec49c48",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
             "file": "index.md",
-            "mode": "source"
-          }
-        }
-      },
-      {
-        "id": "39dc6b37b408bbf7",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "tools/documentation/Obsidian and Neuron Cheatsheet.md",
-            "mode": "source"
-          }
-        },
-        "group": "1809181c5a13de09"
-      },
-      {
-        "id": "f3892e96ae0551f9",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "tools/documentation/Obsidian and Neuron Cheatsheet.md",
-            "mode": "preview"
-          }
-        },
-        "group": "1809181c5a13de09"
-      },
-      {
-        "id": "ebbf1bbb3a9bf973",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "sketches/M01_SimpleMountains.md",
             "mode": "source"
           }
         }
@@ -103,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/documentation/Obsidian and Neuron Cheatsheet.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,17 +86,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "39dc6b37b408bbf7",
+  "active": "7b154b937ec49c48",
   "lastOpenFiles": [
-    "tools/documentation/Obsidian and Neuron Cheatsheet.md",
-    "sketches/M01_SimpleMountains.md",
-    "tools/visual/Processing.md",
     "index.md",
-    "Studio Setup.md",
-    "WorkingMemory.md",
-    "techniques/Fractal Subdivision (Organic Shapes).md",
-    "DIfferential Line Growth.md",
-    "techniques/Sweeping Fractal Lines.md",
-    "Fractal Subdivision (Organic Shapes).md"
+    "sketches/C01_ColorStudy_AddingIndex.md",
+    "static/sketches/sketch.C01_CirclesOverlap-2021-07-29-07.24.25.png",
+    "OpenRNDR in Presentation Mode.md",
+    "sketches/R03_ColorLogic.md",
+    "sketches/Untitled.md",
+    "sketches/M01_SimpleMountains.md",
+    "tools/documentation/Obsidian and Neuron Cheatsheet.md",
+    "sketches/F00_FlowFieldsExperiment.md",
+    "sketches/F01_PerlinNoise.md"
   ]
 }
