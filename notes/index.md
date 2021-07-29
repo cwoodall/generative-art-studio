@@ -88,7 +88,7 @@ http://www.complexification.net/gallery/machines/happyPlace/
 
 #### Color Studies
 
-- [[sketches/C01_ColorStudy_AddingIndex]]
+- [[C01_ColorStudy_AddingIndex]]
 
 ### Next actions
 
