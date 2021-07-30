@@ -57,3 +57,27 @@ infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
 fun ShapeContour.linearSamplePositions(num: Int): List<Vector2> {
   return ((0.0..1.0).step(1.0 / num)).map { this.position(it) }
 }
+
+fun <T> getAllUniqueCombinations(x: List<T>, max_size: Int = x.size, min_size: Int = 2): Set<List<T>> {
+  fun getAllUniqueCombinationsUpToSize(x: List<T>, n: Int): Set<List<T>> {
+    return when (n) {
+      0 -> setOf()
+      1 -> x.map<T, List<T>> { listOf(it) }.toSet()
+      else -> {
+        var prev = getAllUniqueCombinationsUpToSize(x, n - 1).toMutableList()
+        var ret = mutableSetOf<List<T>>()
+        for (i in x) {
+          for (p in prev) {
+            var list = p.toMutableSet()
+            list.add(i)
+            ret.add(list.toList())
+          }
+        }
+        ret.addAll(prev)
+        ret
+      }
+    }
+  }
+
+  return getAllUniqueCombinationsUpToSize(x, max_size).filter { it.size >= min_size }.sortedBy { it.size }.toSet()
+}

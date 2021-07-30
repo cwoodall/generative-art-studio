@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C02_ColorStudy_2dcity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/util/ColorIndexedShape.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/util/DrawingStyle.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/C01_ColorStudy_AddingIndex.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C01_ColorStudy_AddingIndex.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/workspace" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notes/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notes/sketches/C01_ColorStudy_AddingIndex.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/sketches/C01_ColorStudy_AddingIndex.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/math.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/math.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +57,8 @@
       <list>
         <option value="Kotlin File" />
         <option value="Kotlin Script" />
-        <option value="Kotlin Class" />
         <option value="New Kotlin Sketch" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -82,24 +83,48 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/kotlin/sketch" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin/sketch" />
+    </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="palettes" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Sketch C01_ColorStudy_AddingIndex [sketch]">
+  <component name="RunManager" selected="Gradle.Sketch C02_ColorStudy_2dcity [sketch] (1)">
     <configuration name="Sketch C01_ColorStudy_AddingIndex [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="-Ptitle=C01_ColorStudy_AddingIndex --scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="sketch" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Sketch C02_ColorStudy_2dcity [sketch] (1)" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-Ptitle=C02_ColorStudy_2dcity --scan" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -259,6 +284,7 @@
       <item itemvalue="Gradle.Sketch R02_BranchingArcs [sketch]" />
       <item itemvalue="Gradle.Sketch M01_SimpleMountains [sketch]" />
       <item itemvalue="Gradle.Sketch C01_ColorStudy_AddingIndex [sketch]" />
+      <item itemvalue="Gradle.Sketch C02_ColorStudy_2dcity [sketch] (1)" />
       <item itemvalue="Gradle.Sketch FlowFieldsExperiment [sketch] (1)" />
       <item itemvalue="Gradle.Sketch F01_PerinNoise [sketch]" />
       <item itemvalue="Kotlin.C01_ColorStudy_AddingIndexKt" />
