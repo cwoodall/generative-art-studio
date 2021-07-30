@@ -90,6 +90,7 @@ http://www.complexification.net/gallery/machines/happyPlace/
 #### Color Studies
 
 - [[C01_ColorStudy_AddingIndex]]
+- [[C02_ColorStudy_2dcity]]
 
 ### Next actions
 

@@ -12,7 +12,7 @@ Draw a background of a bunch of rhombuses which are organized to create a 3d opt
 
 ### Algorithm
 
-Almost the same as [[sketches/C01_ColorStudy_AddingIndex]] due to the increased number of items it became infeasible to calculate all of the shape permutations, and instead I just calculate collisions between the foreground moving items, and the intersections of those intersections (and the foreground items) with the background.
+Almost the same as [[C01_ColorStudy_AddingIndex]] due to the increased number of items it became infeasible to calculate all of the shape permutations, and instead I just calculate collisions between the foreground moving items, and the intersections of those intersections (and the foreground items) with the background.
 
 There is a lot that can be done to improve the efficiency.
 
@@ -51,3 +51,5 @@ There is a lot that can be done to improve the efficiency.
 ### Future work
 
 - Better way to calculate the intersections... There must be a smarter way of detecting the collisions and reacting to them.
+
+Using [[OpenRNDR]]
