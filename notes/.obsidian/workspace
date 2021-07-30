@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/C02_ColorStudy_2dcity.md",
+            "file": "index.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/C02_ColorStudy_2dcity.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "7b154b937ec49c48",
   "lastOpenFiles": [
-    "sketches/C02_ColorStudy_2dcity.md",
-    "sketches/F01_PerlinNoise.md",
-    "sketches/R02_BranchingArcs.md",
-    "sketches/C01_ColorStudy_AddingIndex.md",
     "index.md",
-    "sketches/F00_FlowFieldsExperiment.md",
-    "static/sketches/sketch.C02_ColorStudy_2dcity-2021-07-29-23.44.26.mp4",
-    "static/sketches/sketch.C02_ColorStudy_2dcity-2021-07-29-23.49.51.png",
-    "sketches/Untitled.md",
-    "static/sketches/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.19.47.mp4"
+    "tools/documentation/Obsidian and Neuron Cheatsheet.md",
+    "tools/documentation/Neuron Setup.md",
+    "techniques/Sweeping Fractal Lines.md",
+    "techniques/Probabilistic Color Palettes.md",
+    "techniques/Fractal Subdivision (Organic Shapes).md",
+    "techniques/Flow Fields.md",
+    "techniques/DIfferential Line Growth.md",
+    "sketches/R01_CirclesAndTriangles.md",
+    "sketches/R00_RandomCircles.md"
   ]
 }

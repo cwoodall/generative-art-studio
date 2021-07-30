@@ -122,4 +122,4 @@ http://www.complexification.net/gallery/machines/happyPlace/
 
 #### Cheat Sheets
 
-- [[tools/documentation/Obsidian and Neuron Cheatsheet]]
+- [[Obsidian and Neuron Cheatsheet]]
