@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/F01_PerlinNoise.md",
+            "file": "sketches/C02_ColorStudy_2dcity.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/F01_PerlinNoise.md",
+                "file": "sketches/C02_ColorStudy_2dcity.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,10 +88,10 @@
   },
   "active": "7b154b937ec49c48",
   "lastOpenFiles": [
+    "sketches/C02_ColorStudy_2dcity.md",
     "sketches/F01_PerlinNoise.md",
     "sketches/R02_BranchingArcs.md",
     "sketches/C01_ColorStudy_AddingIndex.md",
-    "sketches/C02_ColorStudy_2dcity.md",
     "index.md",
     "sketches/F00_FlowFieldsExperiment.md",
     "static/sketches/sketch.C02_ColorStudy_2dcity-2021-07-29-23.44.26.mp4",

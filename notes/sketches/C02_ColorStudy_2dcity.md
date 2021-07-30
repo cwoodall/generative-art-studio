@@ -28,25 +28,27 @@ There is a lot that can be done to improve the efficiency.
 <embed src="static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.49.47.mp4" autostart="false" height="300" width="100%"></embed>
 
 
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.49.51.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.49.51.png)
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.00.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.00.png)
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.49.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.49.png)
+| ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.49.51.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.49.51.png) | ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.00.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.00.png) |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.49.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.50.49.png) |                                                                                                                                                                                           |
+|                                                                                                                                                                                           |                                                                                                                                                                                           |
+
 
 #### Only Outlines
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.08.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.08.png)
 
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.10.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.10.png)
+<embed src="static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.06.mp4" autostart="false" height="300" width="100%"></embed>
 
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.24.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.24.png)
-![[static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.06.mp4]]
+| ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.08.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.08.png) | ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.10.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.10.png) |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.24.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.24.png) | |
 
 #### No Outlines
 
 <embed src="static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.52.38.mp4" autostart="false" height="300" width="100%"></embed>
  
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.18.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.18.png)
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.30.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.30.png)
-![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.56.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.56.png)
+| ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.18.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.18.png) | ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.30.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.30.png) |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.56.png](static/sketches/C02_ColorStudy_2dcity/sketch.C02_ColorStudy_2dcity-2021-07-29-23.53.56.png) |                                                                                                                                                                                           |
 
 ### Future work
 
