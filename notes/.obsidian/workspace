@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/C01_ColorStudy_AddingIndex.md",
+            "file": "sketches/C02_ColorStudy_2dcity.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/C01_ColorStudy_AddingIndex.md",
+                "file": "sketches/C02_ColorStudy_2dcity.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "7b154b937ec49c48",
   "lastOpenFiles": [
+    "sketches/C02_ColorStudy_2dcity.md",
+    "sketches/F00_FlowFieldsExperiment.md",
+    "static/sketches/sketch.C02_ColorStudy_2dcity-2021-07-29-23.44.26.mp4",
+    "static/sketches/sketch.C02_ColorStudy_2dcity-2021-07-29-23.49.51.png",
     "sketches/C01_ColorStudy_AddingIndex.md",
+    "sketches/Untitled.md",
     "static/sketches/sketch.C01_ColorStudy_AddingIndex-2021-07-29-11.19.47.mp4",
     "index.md",
     "static/sketches/sketch.C01_CirclesOverlap-2021-07-29-07.24.25.png",
-    "OpenRNDR in Presentation Mode.md",
-    "sketches/R03_ColorLogic.md",
-    "sketches/Untitled.md",
-    "sketches/M01_SimpleMountains.md",
-    "tools/documentation/Obsidian and Neuron Cheatsheet.md",
-    "sketches/F00_FlowFieldsExperiment.md"
+    "OpenRNDR in Presentation Mode.md"
   ]
 }

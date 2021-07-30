@@ -2,6 +2,7 @@ package util
 
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.Drawer
+import org.openrndr.shape.CompositionStrokeWeight
 
 enum class DrawingStyle {
   OUTLINE_ONLY,
@@ -9,11 +10,11 @@ enum class DrawingStyle {
   FILL_OUTLINE_ON
 }
 
-fun setDrawingStyle(drawer: Drawer, drawingStyle: DrawingStyle, color: ColorRGBa) {
+fun setDrawingStyle(drawer: Drawer, drawingStyle: DrawingStyle, color: ColorRGBa, strokeWeight: Double = 3.0) {
   when (drawingStyle) {
     DrawingStyle.OUTLINE_ONLY -> {
       drawer.fill = ColorRGBa.TRANSPARENT
-      drawer.strokeWeight = 10.0
+      drawer.strokeWeight = strokeWeight
       drawer.stroke = color
     }
 

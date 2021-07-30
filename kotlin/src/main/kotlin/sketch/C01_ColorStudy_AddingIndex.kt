@@ -12,6 +12,7 @@ import org.openrndr.shape.Circle
 import org.openrndr.shape.Rectangle
 import org.openrndr.shape.Shape
 import org.openrndr.shape.compound
+import util.ColorIndexedShape
 import util.DrawingStateManager
 import util.DrawingStyle
 import util.getAllUniqueCombinations
@@ -63,12 +64,6 @@ fun main(args: Array<String>) = application {
       }
     }
 
-    class ColorIndexedShape(val s: Shape, val cI: Int, val vel: Vector2) {
-      var shape: Shape = s
-      var colorIndex = cI
-      var velocity = vel
-    }
-
     val palette = palettes.PaletteTwilight()
 
     /**
@@ -80,7 +75,6 @@ fun main(args: Array<String>) = application {
     state_manager.reset()
     // Take a timestamped screenshot with the space bar
     var camera = Screenshots()
-
 
     var ciShapes = listOf(
       ColorIndexedShape(Circle(-width * .5, 0.0, .2* width).shape, 1, Vector2(1.0, 0.2)),
