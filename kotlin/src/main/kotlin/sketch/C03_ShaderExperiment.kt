@@ -90,6 +90,7 @@ fun main(args: Array<String>) = application {
       // Draw the background to the render target
       drawer.isolatedWithTarget(rt) {
         // Clear the buffer, otherwise the render target will maintain state
+        drawer.stroke = ColorRGBa.TRANSPARENT
         drawer.clear(ColorRGBa.BLACK)
         drawer.shadeStyle = shadeStyle {
           fragmentTransform = """
@@ -133,6 +134,7 @@ fun main(args: Array<String>) = application {
         // and then draw the color as well. So imagine using 2 color buffers, one which is actually
         // just being used to store state, the other which is drawing the present state of the image.
         drawer.shadeStyle = shadeStyle {
+          drawer.stroke = ColorRGBa.TRANSPARENT
           fragmentTransform = """
             vec2 invSize = vec2(1/p_width, 1/p_height);
             // Reflect the axis so that the upper left hand corner is 0,0
@@ -143,9 +145,7 @@ fun main(args: Array<String>) = application {
               if (c.rgb == p_palette[i].rgb) {
                 bg_idx = i;
                 break;
-              } else {
-                x_fill.rgb = c.rgb;
-              }              
+              }
             }
             
             if (bg_idx >= 0) {
