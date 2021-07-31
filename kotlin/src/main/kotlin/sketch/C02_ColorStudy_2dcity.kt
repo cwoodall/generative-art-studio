@@ -11,8 +11,8 @@ import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.shape.*
 import util.*
-import kotlin.math.abs
 
+@OptIn(ExperimentalStdlibApi::class)
 fun main(args: Array<String>) = application {
   // Setup argument parsing
   val parser = ArgParser("sketch")
@@ -30,9 +30,12 @@ fun main(args: Array<String>) = application {
     height = height_arg // Height of picture
   }
 
-  oliveProgram {
+  program {
     val max_dimension = arrayOf(width, height).maxOrNull()!!
     val drawingType = DrawingStyle.FILL_OUTLINE_OFF
+    val rhWidth = 50.0
+    val rhHeight= 20.0
+    val rhDx = -10.0
 
     var state_manager = DrawingStateManager()
 //    state_manager.max_iterations = _max_iterations
@@ -71,43 +74,19 @@ fun main(args: Array<String>) = application {
     // Take a timestamped screenshot with the space bar
     var camera = Screenshots()
 
-    fun makeRhombus(startingPosition: Vector2, width: Double, height: Double, dx: Double = 0.0, dy: Double = 0.0): ShapeContour {
-      return contour {
-        moveTo(startingPosition)
-        lineTo(startingPosition.x + width, startingPosition.y + dy)
-        lineTo(startingPosition.x + width + dx, startingPosition.y + height + dy)
-        lineTo(startingPosition.x + dx, startingPosition.y + height)
-        close()
-      }
-    }
-
-    var backgroundShapes = mutableListOf<ColorIndexedShape>()
-
-    var rhWidth = 50.0
-    var rhHeight= 20.0
-    var rhDx = -10.0
-    for (x in 0.0..width.toDouble() step rhWidth) {
-      for (y in 0.0..height.toDouble() step rhHeight) {
-        val y_idx = (y.toInt() / rhHeight.toInt()) % 2
-        var dxSign = 0.0
-        var xOffset = 0.0
-        if (y_idx == 0) {
-          dxSign = 1.0
-          xOffset = 0.0
-        } else {
-          dxSign = -1.0
-          xOffset = rhDx
-        }
-
-        backgroundShapes.add(
+    var backgroundShapes = buildList {
+      forEachPixelInImage(width.toDouble(), height.toDouble(), rhWidth, rhHeight).forEach {
+        val shapeColorIndex = (it.y.toInt() / rhHeight.toInt()) % 2
+        val dxSign = if (shapeColorIndex == 0) 1.0 else -1.0
+        val xOffset = if (shapeColorIndex == 0) 0.0 else rhDx
+        add(
           ColorIndexedShape(
-            makeRhombus(Vector2(x+xOffset, y), rhWidth, rhHeight, dxSign*rhDx).shape,
-            ((x.toInt() / rhWidth.toInt()) + y_idx) % 2 + 2
+            makeRhombus(Vector2(it.x+xOffset, it.y), rhWidth, rhHeight, dxSign*rhDx).shape,
+            ((it.x.toInt() / rhWidth.toInt()) + shapeColorIndex) % 2 + 2
           )
         )
       }
     }
-
     var ciShapes = listOf(
       ColorIndexedShape(Rectangle(0.0,0.0, width * .2, height.toDouble()).shape, 1, Vector2(1.0, 0.0)),
       ColorIndexedShape(Rectangle(0.0,0.0, width * .3, height.toDouble()).shape, 2, Vector2(.5, 0.0)),
@@ -115,9 +94,6 @@ fun main(args: Array<String>) = application {
       ColorIndexedShape(Rectangle(0.0,0.0, width * 1.0, height * .2).shape, 4, Vector2(0.0, 2.0))
     )
 
-
-    var degrees: Double = 0.0
-    var isRotating = false
     extend(camera)
     extend(ScreenRecorder()) {
       profile = MP4Profile()
@@ -129,10 +105,6 @@ fun main(args: Array<String>) = application {
       // Set the stroke to BLACK
 
       // Move the canvas so we are centered about the point 0, 0
-//      drawer.translate(width * .5, height * .5)
-
-      if (isRotating) drawer.rotate(degrees++)
-
       val permutationIntersectionShapes: MutableList<ColorIndexedShape> = mutableListOf()
       val permutations = getAllUniqueCombinations(ciShapes)
       for (permutation in permutations.sortedBy { it.size }) {

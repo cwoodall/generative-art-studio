@@ -23,4 +23,4 @@ https://medium.com/@grahamte/glsl-shaders-and-the-magic-of-graphical-rendering-c
 
 ### Future Work
 
-- Shader still 
+- Shader still has issues around the outline boundaries. Maybe don't draw them then draw all of the outlines in bulk at the end if I want them

@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/util/makeRhombus.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShaderError.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ShaderError.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/PaletteTwilight.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/C02_ColorStudy_2dcity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C02_ColorStudy_2dcity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/C03_ShaderExperiment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C03_ShaderExperiment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/math.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/math.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/sketches/C03_ShaderExperiment.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/sketches/C03_ShaderExperiment.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +57,8 @@
       <list>
         <option value="Kotlin File" />
         <option value="Kotlin Script" />
-        <option value="Kotlin Class" />
         <option value="New Kotlin Sketch" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>

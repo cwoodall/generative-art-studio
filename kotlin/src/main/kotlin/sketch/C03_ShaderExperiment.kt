@@ -21,7 +21,7 @@ import org.openrndr.math.Vector2
 import org.openrndr.math.Vector4
 import org.openrndr.shape.Rectangle
 import palettes.BasePalette
-import util.DrawingStateManager
+import util.*
 import kotlin.math.abs
 
 open class ShaderColorPaletteModMath(
@@ -72,6 +72,7 @@ open class ShaderColorPaletteModMath(
   }
 }
 
+@OptIn(ExperimentalStdlibApi::class)
 fun main(args: Array<String>) = application {
   // Setup argument parsing
   val parser = ArgParser("sketch")
@@ -89,8 +90,12 @@ fun main(args: Array<String>) = application {
     height = height_arg // Height of picture
   }
 
-  oliveProgram {
+  program {
     val max_dimension = arrayOf(width, height).maxOrNull()!!
+    val rhWidth = 50.0
+    val rhHeight = 20.0
+    val rhDx = -10.0
+    val drawingType = DrawingStyle.FILL_OUTLINE_OFF
 
     var state_manager = DrawingStateManager()
 //    state_manager.max_iterations = _max_iterations
@@ -126,21 +131,41 @@ fun main(args: Array<String>) = application {
     }
     state_manager.reset_fn = ::reset
     state_manager.reset()
+
     // Take a timestamped screenshot with the space bar
-    var camera = Screenshots()
-    var offst = Vector2(0.0, 0.0)
-    var dOffst = Vector2(-1.0, 1.0)
-    extend(camera)
+
+    var backgroundShapes = buildList {
+      forEachPixelInImage(width.toDouble(), height.toDouble(), rhWidth, rhHeight).forEach {
+        val shapeColorIndex = (it.y.toInt() / rhHeight.toInt()) % 2
+        val dxSign = if (shapeColorIndex == 0) 1.0 else -1.0
+        val xOffset = if (shapeColorIndex == 0) 0.0 else rhDx
+        add(
+          ColorIndexedShape(
+            makeRhombus(Vector2(it.x + xOffset, it.y), rhWidth - .9, rhHeight, dxSign * rhDx).shape,
+            ((it.x.toInt() / rhWidth.toInt()) + shapeColorIndex) % 2 + 2
+          )
+        )
+      }
+    }
+
+    var ciShapes = listOf(
+      ColorIndexedShape(Rectangle(0.0, 0.0, width * .2, height.toDouble()).shape, 1, Vector2(1.0, 0.0)),
+      ColorIndexedShape(Rectangle(0.0, 0.0, width * .3, height.toDouble()).shape, 2, Vector2(.5, 0.0)),
+      ColorIndexedShape(Rectangle(0.0, 0.0, width * 1.0, height * .3).shape, 3, Vector2(0.0, .5)),
+      ColorIndexedShape(Rectangle(0.0, 0.0, width * 1.0, height * .2).shape, 4, Vector2(0.0, 2.0))
+    )
 
     val rt = renderTarget(width, height) {
       colorBuffer()
+      depthBuffer()
     }
 
+    var camera = Screenshots()
+    extend(camera)
     extend(ScreenRecorder()) {
       GIFProfile()
     }
     extend {
-      state_manager.postUpdate(camera)
 
       // Now we have some fun
       drawer.isolatedWithTarget(rt) {
@@ -154,37 +179,32 @@ fun main(args: Array<String>) = application {
         // THen we can modify that pixel from within our shader, we can even leave the stroke on
         // so the shape gets an appropriate stroke
         drawer.stroke = ColorRGBa.TRANSPARENT
+        drawer.strokeWeight = 0.0
 
-
-
-        // TODO: instead of backwards engineering the color index we could store it directly
-        // and then draw the color as well. So imagine using 2 color buffers, one which is actually
-        // just being used to store state, the other which is drawing the present state of the image.
-        drawer.shadeStyle = ShaderColorPaletteModMath(rt.colorBuffer(0), width, height, 1, palette)
-        drawer.fill= palette.colors[1]
-        drawer.rectangle(0.0, 0.0, width * 0.5, height * 0.5)
-
-        drawer.fill = palette.colors[2]
-        drawer.rectangle(0.0, 0.0, width * 0.1, height * 0.1)
-
-        drawer.fill = palette.colors[3]
-        drawer.rectangle(width * .5, height * 0.5, width * 0.5, height * 0.5)
-
-        drawer.rectangle(
-            Rectangle(width * .5 - 50 + offst.x, height * .5 - 50 + offst.y, 100.0, 100.0)
-          )
-
-        drawer.rectangle(Rectangle(width * .5 - 50 + offst.x, height * .5 - 50 - offst.y, 100.0, 100.0))
-        drawer.rectangle(Rectangle(width * .5 - 50, height * .5 - 50, 100.0, 100.0))
+        for (s in backgroundShapes + ciShapes) {
+          // TODO: instead of backwards engineering the color index we could store it directly
+          // and then draw the color as well. So imagine using 2 color buffers, one which is actually
+          // just being used to store state, the other which is drawing the present state of the image.
+          drawer.shadeStyle = ShaderColorPaletteModMath(rt.colorBuffer(0), width, height, s.colorIndex, palette)
+          drawer.shape(s.shape)
+        }
 
       }
       drawer.image(rt.colorBuffer(0))
 
-      offst += dOffst
-      if (abs(offst.x) > width * .5) {
-        dOffst *= -1.0
-      }
-    }
+      ciShapes = ciShapes.map { s ->
+        val shape = s.shape.transform(org.openrndr.math.transforms.transform {
+          translate(s.velocity)
+        })
 
+        val center = shape.bounds.center
+        var vel = if (center.x > width || center.y > height || center.x < 0.0 || center.y < 0.0) {
+          s.velocity * -1.0
+        } else {
+          s.velocity
+        }
+        ColorIndexedShape(shape, s.colorIndex, vel)
+      }.toMutableList()
+    }
   }
 }

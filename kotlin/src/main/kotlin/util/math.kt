@@ -81,3 +81,13 @@ fun <T> getAllUniqueCombinations(x: List<T>, max_size: Int = x.size, min_size: I
 
   return getAllUniqueCombinationsUpToSize(x, max_size).filter { it.size >= min_size }.sortedBy { it.size }.toSet()
 }
+
+fun forEachPixelInImage(width: Double, height: Double, xStep: Double = 1.0, yStep: Double = 1.0): Sequence<Vector2> {
+  return sequence {
+    (0.0..width).step(xStep).forEach { x ->
+      (0.0..height).step(yStep).forEach { y ->
+        yield(Vector2(x,y))
+      }
+    }
+  }
+}
