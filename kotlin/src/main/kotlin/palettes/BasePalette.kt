@@ -2,28 +2,26 @@ package palettes
 
 import org.openrndr.color.ColorHSVa
 import org.openrndr.color.ColorRGBa
+import org.openrndr.math.Vector4
 
-open class BasePalette() {
-  open val colors: List<ColorRGBa> = listOf()
+open class BasePalette {
+  open val colors: List<ColorRGBa> = listOf(ColorRGBa.WHITE)
   open val background = ColorRGBa.BLACK
 
-  open fun random(): ColorRGBa { return ColorRGBa.WHITE }
-  open fun background() : ColorRGBa { return background }
+  open fun random(): ColorRGBa = colors.random()
+  open fun background(): ColorRGBa = background
 
   // Getter with a wrap
-  open fun wrappedGet(x: Int): ColorRGBa {
-    return colors[x % colors.size]
-  }
+  open fun wrappedGet(x: Int): ColorRGBa = colors[x % colors.size]
 
-  open fun get(x: Int): ColorRGBa {
-    return colors[x]
-  }
+  open fun get(x: Int): ColorRGBa = colors[x]
 
-  open fun getHSV(x: Int): ColorHSVa {
-    return colors[x].toHSVa()
-  }
+  open fun getHSV(x: Int): ColorHSVa = colors[x].toHSVa()
 
-  open fun wrappedGetHSV(x: Int): ColorHSVa {
-    return wrappedGet(x).toHSVa()
+  open fun wrappedGetHSV(x: Int): ColorHSVa = wrappedGet(x).toHSVa()
+
+  open fun toArray(): Array<ColorRGBa> = colors.toTypedArray()
+  open fun toVector4Array(): Array<Vector4> {
+    return colors.map { it.toVector4() }.toTypedArray()
   }
 }

@@ -14,11 +14,4 @@ class PaletteTwilight : BasePalette() {
   )
 
   override val background = ColorRGBa.fromHex("FFEECF")
-
-  override fun background(): ColorRGBa {
-    return background
-  }
-  override fun random(): ColorRGBa {
-    return colors.random()
-  }
 }

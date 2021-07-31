@@ -5,7 +5,7 @@ The goal here was to get the basic shaders to work, in order to do this I had to
 
 ### Algorithm
 
-Render a background to a render target with one colorBuffer
+- Render a background to a render target with one colorBuffer
 
 extract that color buffer and pass it as a texture to a shader style to draw more new shapes and modify the underlying shapes based on this.
 
@@ -21,3 +21,6 @@ the sampler2d is still a bit of a mystery
 
 https://medium.com/@grahamte/glsl-shaders-and-the-magic-of-graphical-rendering-ca94a578cf8b
 
+### Future Work
+
+- Shader still 

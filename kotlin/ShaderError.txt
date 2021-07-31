@@ -15,9 +15,9 @@
 
 uniform sampler2D p_colorBuffer;
 uniform float p_width; 
-uniform vec4[4] p_palette; 
-#define p_palette_SIZE 4
-uniform int p_idx; 
+uniform vec4[6] p_palette; 
+#define p_palette_SIZE 6
+uniform int p_colorIdx; 
 uniform float p_height; 
 layout(origin_upper_left) in vec4 gl_FragCoord;
 
@@ -80,12 +80,14 @@ void main(void) {
               if (c.rgb == p_palette[i].rgb) {
                 bg_idx = i;
                 break;
-              } else if (c.rgb == vec3(0.0, 0.0, 0.0){
-              }              
+              } else if (c.rgb == vec3(0.0, 0.0, 0.0)) {
+                bg_idx = -1;
+                break;
+              }
             }
             
             if (bg_idx >= 0) {
-              int next_idx = (p_idx + bg_idx) % p_palette_SIZE;
+              int next_idx = (colorIdx + bg_idx) % p_palette_SIZE;
               x_fill.rgb = p_palette[next_idx].rgb;
             } else {
               x_fill.rgb = c.rgb;
