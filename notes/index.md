@@ -91,6 +91,7 @@ http://www.complexification.net/gallery/machines/happyPlace/
 
 - [[C01_ColorStudy_AddingIndex]]
 - [[C02_ColorStudy_2dcity]]
+- [[C03_ShaderExperiment]]
 
 ### Next actions
 

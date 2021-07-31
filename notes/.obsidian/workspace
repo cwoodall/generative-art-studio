@@ -4,12 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "7b154b937ec49c48",
+        "id": "6b46a7a684ac8037",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
             "file": "index.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "15ced75134774f16",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "sketches/C03_ShaderExperiment.md",
             "mode": "source"
           }
         }
@@ -68,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
+                "file": "sketches/C03_ShaderExperiment.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,17 +97,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "7b154b937ec49c48",
+  "active": "15ced75134774f16",
   "lastOpenFiles": [
+    "sketches/C03_ShaderExperiment.md",
     "index.md",
+    "static/sketches/Untitled.md",
     "tools/documentation/Obsidian and Neuron Cheatsheet.md",
     "tools/documentation/Neuron Setup.md",
     "techniques/Sweeping Fractal Lines.md",
     "techniques/Probabilistic Color Palettes.md",
     "techniques/Fractal Subdivision (Organic Shapes).md",
     "techniques/Flow Fields.md",
-    "techniques/DIfferential Line Growth.md",
-    "sketches/R01_CirclesAndTriangles.md",
-    "sketches/R00_RandomCircles.md"
+    "techniques/DIfferential Line Growth.md"
   ]
 }
