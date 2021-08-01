@@ -1,0 +1,34 @@
+# startup: sclang startup.scd
+# Open qjackctl to hookup to actual speaker output
+# TO revert audio reboot pulseaudio after shutting everything down pulseaudio --kill
+
+# Shift enter to command  the current line
+# ctrl-enter to execute the block
+
+# Ctrl-Alt-H to hush
+setcps (130/60/4)
+d1 $ s "[bd:1 ~] * 2"
+d2 $ s "[~ hh]*2"
+d3 $ silence
+
+once $ s "cp cp cp"
+
+# Pattern
+
+hush
+
+d1 $ s "drum" |+| n "2 3" |+| n "4 5 6"
+
+# https://tidalcycles.org/docs/reference/cycles
+
+hush
+# https://tidalcycles.org/docs/reference/mini_notation
+
+d1 $ s "[cp | bd(3,8) | hh:2] cp cp"
+d2 $ note "[[c8*3 | c7],[c e g c6*3], [e e b [a g]]]" # s "supermandolin"
+
+d3 $ (n "[c'maj ~ e'min g'dom7 a'min ~ g'maj]" # s "superpiano") # gain "0.8 0 0.9 0.7 1 1"
+
+d3 $ silence
+
+hush
