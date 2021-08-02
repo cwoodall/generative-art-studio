@@ -81,3 +81,4 @@ hush
 ### Tutorials
 
 https://tidalcycles.org/docs/patternlib/tutorials/workshop/#effects
+[Start Tidal | Tidal Cycles](https://tidalcycles.org/docs/getting-started/tidal_start)

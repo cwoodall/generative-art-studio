@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/C03_ShaderExperiment.md",
+            "file": "tools/music/TidalCycles.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/C03_ShaderExperiment.md",
+                "file": "tools/music/TidalCycles.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,11 +88,11 @@
   },
   "active": "6b46a7a684ac8037",
   "lastOpenFiles": [
+    "tools/music/TidalCycles.md",
     "sketches/C03_ShaderExperiment.md",
     "static/sketches/sketch.C03_ShaderExperiment-2021-08-01-21.29.57.mp4",
     "static/sketches/sketch.C03_ShaderExperiment-2021-08-01-21.30.41.png",
     "sketches/C01_ColorStudy_AddingIndex.md",
-    "tools/music/TidalCycles.md",
     "index.md",
     "static/sketches/sketch.C03_ShaderExperiment-2021-07-31-00.56.46.png",
     "static/sketches/sketch.C03_ShaderExperiment-2021-07-31-09.28.00.png",
