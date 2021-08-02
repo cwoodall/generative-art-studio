@@ -124,9 +124,16 @@ Having some issues with outlines etc
 
 To get rid of the outlines simply setting the `strokeAlpha = 1.0` at the end of the shader seemed to help the most. I also had to subtract 2 pixels from the height and somewhere between 1 and 2 pixels from the width depending on the dx of the rhombus... I have not yet quite figured this out yet.
 
+![static/sketches/C03_ShaderExperiments/sketch.C03_ShaderExperiment-2021-08-01-21.25.59.png](static/sketches/C03_ShaderExperiments/sketch.C03_ShaderExperiment-2021-08-01-21.25.59.png)
+
+![static/sketches/C03_ShaderExperiments/sketch.C03_ShaderExperiment-2021-08-01-21.30.41.png](static/sketches/C03_ShaderExperiments/sketch.C03_ShaderExperiment-2021-08-01-21.30.41.png)
+
+<embed src="static/sketches/C03_ShaderExperiments/sketch.C03_ShaderExperiment-2021-08-01-21.15.28.mp4" autostart="false" height="300" width="100%"></embed>
+
+<embed src="static/sketches/C03_ShaderExperiments/sketch.C03_ShaderExperiment-2021-08-01-21.29.57.mp4" autostart="false" height="300" width="100%"></embed>
+
 
 #### References
-
 - https://guide.openrndr.org/#/06_Advanced_drawing/C04_Shade_styles?id=usage-examples
 - https://learnopengl.com/Getting-started/Textures
 - https://thebookofshaders.com/11/
