@@ -2,5 +2,10 @@
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "static/sketches",
   "promptDelete": false,
-  "newLinkFormat": "absolute"
+  "newLinkFormat": "absolute",
+  "spellcheck": true,
+  "spellcheckDictionary": [
+    "Shader",
+    "shaders"
+  ]
 }

@@ -9,18 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/music/TidalCycles.md",
+            "file": "sketches/C03_ShaderExperiment.md",
             "mode": "source"
-          }
-        }
-      },
-      {
-        "id": "15ced75134774f16",
-        "type": "leaf",
-        "state": {
-          "type": "image",
-          "state": {
-            "file": "static/sketches/C03_ShaderExperiments/sketch.C03_ShaderExperiment-2021-07-31-00.56.46.png"
           }
         }
       }
@@ -78,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/music/TidalCycles.md",
+                "file": "sketches/C03_ShaderExperiment.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,15 +88,15 @@
   },
   "active": "6b46a7a684ac8037",
   "lastOpenFiles": [
-    "tools/music/TidalCycles.md",
     "sketches/C03_ShaderExperiment.md",
+    "sketches/C01_ColorStudy_AddingIndex.md",
+    "tools/music/TidalCycles.md",
     "index.md",
     "static/sketches/sketch.C03_ShaderExperiment-2021-07-31-00.56.46.png",
     "static/sketches/sketch.C03_ShaderExperiment-2021-07-31-09.28.00.png",
     "static/sketches/Untitled.md",
     "tools/documentation/Obsidian and Neuron Cheatsheet.md",
     "tools/documentation/Neuron Setup.md",
-    "techniques/Sweeping Fractal Lines.md",
-    "techniques/Probabilistic Color Palettes.md"
+    "techniques/Sweeping Fractal Lines.md"
   ]
 }

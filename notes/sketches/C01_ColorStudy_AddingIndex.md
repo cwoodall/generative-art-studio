@@ -11,6 +11,26 @@ Moving regions of code which will do some level of mod math on overlapping secti
 	- Calculate where all of the shapes will be in the next step
 	- Draw it!
 
+#### The Wrapped Color Palette Math
+
+Consider the following color palette with the following assigned indexes:
+
+<center>
+![static/sketches/C01_ColorStudy_AddingIndex/color_palette_math.drawio.png](static/sketches/C01_ColorStudy_AddingIndex/color_palette_math.drawio.png)
+</center>
+When 2 colors are overlapped we `ADD` together the colliding colors and `mod` by the number of colors in the palette. This essentially creates a wrapped palette. For example:
+
+- `(0 + 1) % 5 = 1`
+- `(4 + 1) % 5 = 0`
+- `(3 + 4) % 5 = 2`
+- `(3 + 4 + 1) % 5 = 3`
+
+This creates a sort of interesting result, since the relationships are not determined by any sort of color theory, but instead is based by the relationship of the indexes. it is also interesting, since some combinations may result in no change. (`0 + 0 = 0`). Here is am example as a simple overlap:
+
+<center>
+![static/sketches/C01_ColorStudy_AddingIndex/color_palette_math_example.drawio.png](static/sketches/C01_ColorStudy_AddingIndex/color_palette_math_example.drawio.png)
+</center>
+
 ### Progression
 
 #### Trying to get the overlaps right

@@ -4,25 +4,20 @@ import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.default
 import org.openrndr.application
-import org.openrndr.color.AlgebraicColor
 import org.openrndr.color.ColorRGBa
-import org.openrndr.color.ConvertibleToColorRGBa
-import org.openrndr.draw.*
+import org.openrndr.draw.ColorBuffer
+import org.openrndr.draw.ShadeStyle
+import org.openrndr.draw.isolatedWithTarget
+import org.openrndr.draw.renderTarget
 import org.openrndr.extensions.Screenshots
-import org.openrndr.extra.olive.oliveProgram
-import org.openrndr.extra.parameters.ColorParameter
-import org.openrndr.extra.parameters.DoubleParameter
-import org.openrndr.extra.parameters.Parameter
 import org.openrndr.extra.videoprofiles.GIFProfile
-import org.openrndr.extras.camera.Orbital
 import org.openrndr.ffmpeg.ScreenRecorder
-import org.openrndr.math.CastableToVector4
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector4
+import org.openrndr.shape.Circle
 import org.openrndr.shape.Rectangle
 import palettes.BasePalette
 import util.*
-import kotlin.math.abs
 
 open class ShaderColorPaletteModMath(
   colorBuffer: ColorBuffer,
@@ -45,7 +40,6 @@ open class ShaderColorPaletteModMath(
     this.colorIdx = colorIdx
     this.palette = palette.toVector4Array()
 
-    fragmentPreamble = """ """.trimMargin()
     fragmentTransform = """
             vec2 invSize = vec2(1/p_width, 1/p_height);
             // Reflect the axis so that the upper left hand corner is 0,0
@@ -68,6 +62,10 @@ open class ShaderColorPaletteModMath(
             } else {
               x_fill.rgb = c.rgb;
             }
+            
+            // Setting the stroke alpha to 1 prevents the weird smoothing effect that was causing issues at the
+            // edges
+            strokeAlpha = 1.0;
             """.trimMargin()
   }
 }
@@ -94,7 +92,7 @@ fun main(args: Array<String>) = application {
     val max_dimension = arrayOf(width, height).maxOrNull()!!
     val rhWidth = 50.0
     val rhHeight = 20.0
-    val rhDx = -10.0
+    val rhDx = -15.0
     val drawingType = DrawingStyle.FILL_OUTLINE_OFF
 
     var state_manager = DrawingStateManager()
@@ -141,7 +139,7 @@ fun main(args: Array<String>) = application {
         val xOffset = if (shapeColorIndex == 0) 0.0 else rhDx
         add(
           ColorIndexedShape(
-            makeRhombus(Vector2(it.x + xOffset, it.y), rhWidth - .9, rhHeight, dxSign * rhDx).shape,
+            makeRhombus(Vector2(it.x + xOffset, it.y), rhWidth - 1.9, rhHeight - 2, dxSign * rhDx).shape,
             ((it.x.toInt() / rhWidth.toInt()) + shapeColorIndex) % 2 + 2
           )
         )
@@ -152,7 +150,8 @@ fun main(args: Array<String>) = application {
       ColorIndexedShape(Rectangle(0.0, 0.0, width * .2, height.toDouble()).shape, 1, Vector2(1.0, 0.0)),
       ColorIndexedShape(Rectangle(0.0, 0.0, width * .3, height.toDouble()).shape, 2, Vector2(.5, 0.0)),
       ColorIndexedShape(Rectangle(0.0, 0.0, width * 1.0, height * .3).shape, 3, Vector2(0.0, .5)),
-      ColorIndexedShape(Rectangle(0.0, 0.0, width * 1.0, height * .2).shape, 4, Vector2(0.0, 2.0))
+      ColorIndexedShape(Rectangle(0.0, 0.0, width * 1.0, height * .2).shape, 4, Vector2(0.0, 2.0)),
+      ColorIndexedShape(Circle(0.0, 0.0, 200.0).shape, 4, Vector2(2.0, 2.0))
     )
 
     val rt = renderTarget(width, height) {
@@ -178,10 +177,10 @@ fun main(args: Array<String>) = application {
         //
         // THen we can modify that pixel from within our shader, we can even leave the stroke on
         // so the shape gets an appropriate stroke
-        drawer.stroke = ColorRGBa.TRANSPARENT
-        drawer.strokeWeight = 0.0
 
         for (s in backgroundShapes + ciShapes) {
+          drawer.stroke = ColorRGBa.BLACK
+          drawer.strokeWeight = 1.0
           // TODO: instead of backwards engineering the color index we could store it directly
           // and then draw the color as well. So imagine using 2 color buffers, one which is actually
           // just being used to store state, the other which is drawing the present state of the image.
