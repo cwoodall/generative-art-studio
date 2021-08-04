@@ -91,6 +91,13 @@ Use [`kotlinx.cli`](https://github.com/Kotlin/kotlinx-cli) to allow for width/he
 ./gradlew sketch -Ptitle=R01_CirclesAndTriangles --args="-w 500 -e 500 -s 0"
 ```
 
+
+### Shapes
+
+#### Rectangle
+
+Can build from the center using `Rectangle.fromCenter(Vector2, radius)`
+
 ---
 
 Tags: #tools

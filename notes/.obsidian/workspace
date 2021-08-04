@@ -6,11 +6,21 @@
       {
         "id": "6b46a7a684ac8037",
         "type": "leaf",
+        "pinned": true,
+        "state": {
+          "type": "juggl_view",
+          "state": {},
+          "pinned": true
+        }
+      },
+      {
+        "id": "8de78a2ed79cafcc",
+        "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/music/TidalCycles.md",
-            "mode": "source"
+            "file": "sketches/F00_FlowFieldsExperiment.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/music/TidalCycles.md",
+                "file": "sketches/F00_FlowFieldsExperiment.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -78,6 +88,22 @@
                 "unlinkedCollapsed": true
               }
             }
+          },
+          {
+            "id": "0b5d94a7401917e2",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_nodes",
+              "state": {}
+            }
+          },
+          {
+            "id": "d7cd5e32588f7d1d",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_style",
+              "state": {}
+            }
           }
         ]
       }
@@ -86,17 +112,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6b46a7a684ac8037",
+  "active": "8de78a2ed79cafcc",
   "lastOpenFiles": [
-    "tools/music/TidalCycles.md",
-    "sketches/C03_ShaderExperiment.md",
-    "static/sketches/sketch.C03_ShaderExperiment-2021-08-01-21.29.57.mp4",
-    "static/sketches/sketch.C03_ShaderExperiment-2021-08-01-21.30.41.png",
-    "sketches/C01_ColorStudy_AddingIndex.md",
+    "sketches/F00_FlowFieldsExperiment.md",
     "index.md",
-    "static/sketches/sketch.C03_ShaderExperiment-2021-07-31-00.56.46.png",
-    "static/sketches/sketch.C03_ShaderExperiment-2021-07-31-09.28.00.png",
-    "static/sketches/Untitled.md",
-    "tools/documentation/Obsidian and Neuron Cheatsheet.md"
+    "Studio Setup.md",
+    "Untitled.md",
+    "techniques/Spatial Indexing/Spatial Indexing.md",
+    "R-tree.md",
+    "techniques/Spatial Indexing/Untitled.md",
+    "tools/visual/OpenRNDR.md",
+    "techniques/QuadTree.md",
+    "techniques/Untitled.md"
   ]
 }

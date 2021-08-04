@@ -13,7 +13,7 @@ var angle =
 
 This produces a field with quite a bit of variety.
 
-This uses the same palette as I used in [[R00_RandomCircles]] whcih was taken from [ericyd on Github](https://github.com/ericyd/generative-art/blob/main/openrndr/src/main/kotlin/sketch/S30_Dunes.kt). I also added some basic extensions for [[Using OpenRNDR to take Screenshots]] so that I can press the `SPACE` bar and take a screenshot (then progress to the next image) or press the mouse button to continue using [[OpenRNDR in Presentation Mode]]
+This uses the same palette as I used in [[R00_RandomCircles]] whcih was taken from [ericyd on Github](https://github.com/ericyd/generative-art/blob/main/openrndr/src/main/kotlin/sketch/S30_Dunes.kt). I also added some basic extensions for [[Using OpenRNDR to take Screenshots]] so that I can press the `SPACE` bar and take a screenshot (then progress to the next image) or press the mouse button to continue using [[tools/visual/OpenRNDR in Presentation Mode]]
 
 
 While making this I also added a few helper functions for generating random vectors, rounding to the nearest N where N is some Double, and other useful utilities.

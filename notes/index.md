@@ -53,11 +53,16 @@ As an overview there are a ton of programming tools, but the main ones I am inte
 - [[Areas of Negative Space]]
 - [[Composition Anchor points]]
 - [[Bezier Curves]]
+- [[techniques/Space Colonization Algorithms]]
 
 
 ### Inspiration
 
 [Inspiration for Generative Art](https://raindrop.io/cjwoodall/generative-art-and-creative-coding-18915276)
+
+[[DMITRY]]
+
+[[Tyler Hobbs]]
 
 This video on GitHub Sattelite is also very nice: https://www.youtube.com/watch?v=qdgnRct0_nw&t=12428s
 
@@ -111,7 +116,6 @@ http://www.complexification.net/gallery/machines/happyPlace/
 
 #### Idea holding area
 
-- Color study with interacting agents that XOR and Sum and mix, etc into new colors
 - Smoke
 - Mandalas and generative universes / solar systems
 - Spirographs in 3d
@@ -120,6 +124,8 @@ http://www.complexification.net/gallery/machines/happyPlace/
 - [[DIfferential Line Growth]]
 - More dot drawings with more complex flow fields (with more form?)
 - Line/box based flow fields similar to [[Fidenza]] with collision detection
+
+[[WorkingMemory]]
 
 #### Cheat Sheets
 
