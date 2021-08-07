@@ -19,32 +19,23 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "index.md",
+            "file": "sketches/G01_SpaceColonization.md",
             "mode": "source"
           }
-        }
+        },
+        "group": "40654a641f392db9"
       },
       {
-        "id": "3bbf2d137e575e5b",
+        "id": "e051fe01bdb3ecbe",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "techniques/Spatial Indexing/QuadTree.md",
+            "file": "sketches/G01_SpaceColonization.md",
             "mode": "source"
           }
-        }
-      },
-      {
-        "id": "c37f59c8d1ee8e08",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "techniques/Space Colonization Algorithms.md",
-            "mode": "source"
-          }
-        }
+        },
+        "group": "40654a641f392db9"
       }
     ],
     "direction": "vertical"
@@ -80,8 +71,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -101,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "techniques/Spatial Indexing/QuadTree.md",
+                "file": "sketches/G01_SpaceColonization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,17 +125,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "3bbf2d137e575e5b",
+  "active": "37da2b0187173e44",
   "lastOpenFiles": [
-    "techniques/Spatial Indexing/QuadTree.md",
     "G01_SpaceColonization.md",
-    "techniques/Space Colonization Algorithms.md",
+    "static/sketches/Pasted image 20210803120134.png",
+    "static/sketches/R02_BranchingArcs/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png",
+    "static/sketches/Pasted image 20210803120130.png",
+    "static/sketches/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png",
+    "sketches/C01_ColorStudy_AddingIndex.md",
+    "techniques/Spatial Indexing/QuadTree.md",
     "index.md",
-    "techniques/DIfferential Line Growth.md",
-    "Untitled.md",
-    "sketches/F00_FlowFieldsExperiment.md",
-    "Studio Setup.md",
-    "techniques/Spatial Indexing/Spatial Indexing.md",
-    "R-tree.md"
+    "techniques/Space Colonization Algorithms.md",
+    "techniques/DIfferential Line Growth.md"
   ]
 }
