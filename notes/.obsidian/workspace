@@ -19,7 +19,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/G01_SpaceColonization.md",
+            "file": "index.md",
             "mode": "source"
           }
         },
@@ -31,7 +31,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/G01_SpaceColonization.md",
+            "file": "index.md",
             "mode": "source"
           }
         },
@@ -91,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/G01_SpaceColonization.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,8 +127,8 @@
   },
   "active": "37da2b0187173e44",
   "lastOpenFiles": [
-    "sketches/G01_SpaceColonization.md",
     "index.md",
+    "sketches/G01_SpaceColonization.md",
     "G01_SpaceColonization.md",
     "static/sketches/Pasted image 20210803120134.png",
     "static/sketches/R02_BranchingArcs/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png",

@@ -100,7 +100,7 @@ http://www.complexification.net/gallery/machines/happyPlace/
 
 #### Generative Algorithms
 
-- [[sketches/G01_SpaceColonization]]
+- [[G01_SpaceColonization]]
 
 ### Next actions
 
