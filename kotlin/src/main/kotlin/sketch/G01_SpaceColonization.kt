@@ -5,9 +5,7 @@ import kotlinx.cli.ArgType
 import kotlinx.cli.default
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.draw.Drawer
-import org.openrndr.draw.isolated
-import org.openrndr.draw.rectangleBatch
+import org.openrndr.draw.*
 import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.noise.Random
 import org.openrndr.ffmpeg.MP4Profile
@@ -47,7 +45,7 @@ class Node(position: Vector2, color: ColorRGBa = ColorRGBa.BLACK) {
   var color: ColorRGBa = color
   var drawInluenceDirectionLength: Double = 0.0
   var isDrawInfluenceDirection: Boolean  = true
-  fun draw(drawer: Drawer, radius: Double = 4.0) {
+  fun draw(drawer: Drawer, radius: Double = 2.0) {
     drawer.isolated {
       drawer.stroke = color
       drawer.fill = color
@@ -67,7 +65,7 @@ class Node(position: Vector2, color: ColorRGBa = ColorRGBa.BLACK) {
   }
 }
 
-class World(bounds: Rectangle, maxObjects: Int = 10, segmentLength: Double = 1.0) {
+class World(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 1.0) {
   var attractors: MutableSet<Attractor> = mutableSetOf()
   var nodes: MutableSet<Node> = mutableSetOf()
   var qtree: Quadtree<Node> = Quadtree(bounds, maxObjects) { it.position }
@@ -77,6 +75,7 @@ class World(bounds: Rectangle, maxObjects: Int = 10, segmentLength: Double = 1.0
   // What is a better way to handle this collision radius?
   val collisionRadius = segmentLength * .9 // Radius for detecting collisions between nodes
   var nodesAdded: Boolean = true
+  var nodesCircleRadius = 4.0
 
   fun addAttractor(attractor: Attractor) {
     attractors.add(attractor)
@@ -151,11 +150,12 @@ class World(bounds: Rectangle, maxObjects: Int = 10, segmentLength: Double = 1.0
     count++
   }
 
-
   fun draw(drawer: Drawer) {
-    for (node in nodes) {
-        node.drawInluenceDirectionLength = segmentLength
-        node.draw(drawer)
+    val nodes_by_color = nodes.groupBy { it.color }
+    for ((color, nodes) in nodes_by_color) {
+      drawer.stroke = color
+      drawer.fill = color
+      drawer.circles(nodes.map { Circle(it.position, radius = 3.0) })
     }
   }
 }
@@ -167,7 +167,7 @@ fun main(args: Array<String>) = application {
     .default(1000)
   val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
     .default(1000)
-  val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(1230)
+  val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(9432)
   val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
 
   parser.parse(args)
@@ -255,7 +255,8 @@ fun main(args: Array<String>) = application {
       drawer.clear(palette.background)
       theWorld.draw(drawer)
 
-//      state_manager.is_complete = !theWorld.nodesAdded
+      // If no more nodes have been added then this iteration is done
+      state_manager.is_complete = !theWorld.nodesAdded
       state_manager.postUpdate(camera)
     }
   }

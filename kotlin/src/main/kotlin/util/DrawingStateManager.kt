@@ -28,12 +28,13 @@ class DrawingStateManager {
           camera?.trigger()
           wait_frames += 1
         } else if (wait_frames >= 5) {
-          if ((iterations <= 0) || !(iterations >= (iterations - 1))) {
+          if ((iterations <= 0) || !(iterations >= (max_iterations - 1))) {
             iterations++
             if (is_debug) {
               println("Iteration $iterations")
             }
             reset_fn?.invoke()
+            wait_frames = 0
             is_complete = false
           }
         } else {

@@ -86,6 +86,8 @@ Bringing the segment lengths closer together
 
 <embed src="static/sketches/G01_SpaceColonization/sketch.G01_SpaceColonization-2021-08-07-09.44.55.mp4" autostart="false" height="300" width="100%"></embed>
 
+I made some improvements to the draw speed by using [groupBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/group-by.html) to group the nodes by their color and draw all of those nodes together. It still has issues drawing fast, but that seems to be due to some inefficiency in how the QuadTree look-ups are working.
+
 ### Glossary
 
 **segment length**

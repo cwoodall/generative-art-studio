@@ -127,6 +127,8 @@
   },
   "active": "37da2b0187173e44",
   "lastOpenFiles": [
+    "sketches/G01_SpaceColonization.md",
+    "index.md",
     "G01_SpaceColonization.md",
     "static/sketches/Pasted image 20210803120134.png",
     "static/sketches/R02_BranchingArcs/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png",
@@ -134,8 +136,6 @@
     "static/sketches/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png",
     "sketches/C01_ColorStudy_AddingIndex.md",
     "techniques/Spatial Indexing/QuadTree.md",
-    "index.md",
-    "techniques/Space Colonization Algorithms.md",
-    "techniques/DIfferential Line Growth.md"
+    "techniques/Space Colonization Algorithms.md"
   ]
 }
