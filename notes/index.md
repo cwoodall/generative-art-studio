@@ -98,6 +98,10 @@ http://www.complexification.net/gallery/machines/happyPlace/
 - [[C02_ColorStudy_2dcity]]
 - [[C03_ShaderExperiment]]
 
+#### Generative Algorithms
+
+- [[G01_SpaceColonization]]
+
 ### Next actions
 
 - [ ] Attribute management + how to make attributes which have joint probabilities
@@ -121,7 +125,7 @@ http://www.complexification.net/gallery/machines/happyPlace/
 - Spirographs in 3d
 - Full terrain generation
 - Mountains with simple flow fields inside of them
-- [[DIfferential Line Growth]]
+- [[techniques/Differential Line Growth]]
 - More dot drawings with more complex flow fields (with more form?)
 - Line/box based flow fields similar to [[Fidenza]] with collision detection
 

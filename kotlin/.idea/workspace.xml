@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/PalettePastelGreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G01_SpaceColonization.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/util/Quadtree.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShaderError.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ShaderError.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/C03_ShaderExperiment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C03_ShaderExperiment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tidal/scripts/startup-tidal" beforeDir="false" afterPath="$PROJECT_DIR$/../tidal/scripts/startup-tidal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/palette_00.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/palette_00.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/DrawingStateManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/DrawingStateManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/workspace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/techniques/DIfferential Line Growth.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +101,7 @@
       <recent name="palettes" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Sketch C03_ShaderExperiment [sketch]">
+  <component name="RunManager" selected="Gradle.Sketch G01_SpaceColonization [sketch] ">
     <configuration name="Sketch C01_ColorStudy_AddingIndex [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -186,6 +192,27 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--stacktrace -Ptitle=F00_FlowFieldsExperiment" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="sketch" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Sketch G01_SpaceColonization [sketch] " type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-Ptitle=G01_SpaceColonization --scan" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -297,6 +324,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="build.gradle.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="generative-art" />
+      <option name="filePath" value="$PROJECT_DIR$/build.gradle.kts" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Gradle.Sketch RandomCircles [sketch]" />
       <item itemvalue="Gradle.Sketch R01_CirclesAndTriangles [sketch] " />
@@ -305,12 +339,15 @@
       <item itemvalue="Gradle.Sketch C01_ColorStudy_AddingIndex [sketch]" />
       <item itemvalue="Gradle.Sketch C02_ColorStudy_2dcity [sketch] (1)" />
       <item itemvalue="Gradle.Sketch C03_ShaderExperiment [sketch]" />
+      <item itemvalue="Gradle.Sketch G01_SpaceColonization [sketch] " />
       <item itemvalue="Gradle.Sketch FlowFieldsExperiment [sketch] (1)" />
       <item itemvalue="Gradle.Sketch F01_PerinNoise [sketch]" />
       <item itemvalue="Kotlin.C01_ColorStudy_AddingIndexKt" />
+      <item itemvalue="Kotlin script.build.gradle.kts" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin script.build.gradle.kts" />
         <item itemvalue="Kotlin.C01_ColorStudy_AddingIndexKt" />
       </list>
     </recent_temporary>

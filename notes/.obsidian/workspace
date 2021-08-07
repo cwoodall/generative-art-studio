@@ -8,19 +8,41 @@
         "type": "leaf",
         "pinned": true,
         "state": {
-          "type": "juggl_view",
+          "type": "empty",
           "state": {},
           "pinned": true
         }
       },
       {
-        "id": "8de78a2ed79cafcc",
+        "id": "37da2b0187173e44",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/F00_FlowFieldsExperiment.md",
-            "mode": "preview"
+            "file": "index.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "3bbf2d137e575e5b",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "techniques/Spatial Indexing/QuadTree.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "c37f59c8d1ee8e08",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "techniques/Space Colonization Algorithms.md",
+            "mode": "source"
           }
         }
       }
@@ -49,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "orx-",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,7 +80,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -78,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/F00_FlowFieldsExperiment.md",
+                "file": "techniques/Spatial Indexing/QuadTree.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,17 +135,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "8de78a2ed79cafcc",
+  "active": "3bbf2d137e575e5b",
   "lastOpenFiles": [
-    "sketches/F00_FlowFieldsExperiment.md",
+    "techniques/Spatial Indexing/QuadTree.md",
+    "G01_SpaceColonization.md",
+    "techniques/Space Colonization Algorithms.md",
     "index.md",
-    "Studio Setup.md",
+    "techniques/DIfferential Line Growth.md",
     "Untitled.md",
+    "sketches/F00_FlowFieldsExperiment.md",
+    "Studio Setup.md",
     "techniques/Spatial Indexing/Spatial Indexing.md",
-    "R-tree.md",
-    "techniques/Spatial Indexing/Untitled.md",
-    "tools/visual/OpenRNDR.md",
-    "techniques/QuadTree.md",
-    "techniques/Untitled.md"
+    "R-tree.md"
   ]
 }

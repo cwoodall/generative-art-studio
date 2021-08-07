@@ -34,6 +34,7 @@ class DrawingStateManager {
               println("Iteration $iterations")
             }
             reset_fn?.invoke()
+            is_complete = false
           }
         } else {
           wait_frames += 1
