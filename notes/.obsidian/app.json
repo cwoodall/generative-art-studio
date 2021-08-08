@@ -6,7 +6,8 @@
   "spellcheck": true,
   "spellcheckDictionary": [
     "Shader",
-    "shaders"
+    "shaders",
+    "reproducibility"
   ],
   "defaultViewMode": "source"
 }

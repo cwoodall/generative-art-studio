@@ -97,12 +97,12 @@ I made some improvements to the draw speed by using [groupBy](https://kotlinlang
 **attractor**
 **node**
 **seed node**
-
 ### Future Work
 
-- Refactor so that we used a doubly linked list so we can determine the number of children or who the parent is.
-- Draw paths not dots
-- Opacity and thickness effects based on node size
-- gradient based on attractor color and node color.
-- Add boundaries, and obstacles
-- Batch the circle drawing by color
+- [x] Refactor so that we used a doubly linked list so we can determine the number of children or who the parent is. [[G02_SpaceColonization_NodeSizeBasedOnChildCount]]
+- [x] Opacity and thickness effects based on node size [[G02_SpaceColonization_NodeSizeBasedOnChildCount]]
+- [x] Batch the circle drawing by color introduced in [[G01_SpaceColonization]]
+- [ ] Draw paths not dots
+- [ ] gradient based on attractor color and node color.
+- [ ] Add boundaries, and obstacles
+- [ ] Define the terms in the [[#Glossary]]

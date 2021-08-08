@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/techniques/space_colonization/space_colonization.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/BasePalette.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/C01_ColorStudy_AddingIndex.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C01_ColorStudy_AddingIndex.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/C02_ColorStudy_2dcity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C02_ColorStudy_2dcity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/C03_ShaderExperiment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/C03_ShaderExperiment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/G01_SpaceColonization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G01_SpaceColonization.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/M01_SimpleMountains.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/R02_BranchingArcs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/R02_BranchingArcs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/DrawingStateManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/DrawingStateManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/G02_SpaceColonization_NodeSizeBasedOnChildCount.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G02_SpaceColonization_NodeSizeBasedOnChildCount.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/workspace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes/sketches/G01_SpaceColonization.md" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/sketches/G01_SpaceColonization.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -95,9 +95,9 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
   val collisionRadius = segmentLength * .9 // Radius for detecting collisions between nodes
   var nodesAdded: Boolean = true
   var nodesCircleRadius = 4.0
-  var minRadius = 3.0
-  var maxRadius = 30.0
-  var growthRate = 0.005
+  var minRadius = 2.0
+  var maxRadius = 15.0
+  var growthRate = 0.0025
 
   fun addAttractor(attractor: Attractor) {
     attractors.add(attractor)
@@ -193,7 +193,8 @@ fun main(args: Array<String>) = application {
     .default(1000)
   val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
     .default(1000)
-  val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(9432)
+  // 9432
+  val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(1223)
   val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
 
   parser.parse(args)
