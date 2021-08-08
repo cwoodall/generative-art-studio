@@ -19,7 +19,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/G02_SpaceColonization_NodeSizeBasedOnChildCount.md",
+            "file": "index.md",
             "mode": "source"
           }
         }
@@ -78,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/G02_SpaceColonization_NodeSizeBasedOnChildCount.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,11 +114,11 @@
   },
   "active": "37da2b0187173e44",
   "lastOpenFiles": [
+    "index.md",
     "sketches/G02_SpaceColonization_NodeSizeBasedOnChildCount.md",
     "sketches/G01_SpaceColonization.md",
     "static/sketches/sketch.G01_SpaceColonization-2021-08-08-11.31.39.png",
     "sketches/Untitled.md",
-    "index.md",
     "G01_SpaceColonization.md",
     "static/sketches/Pasted image 20210803120134.png",
     "static/sketches/R02_BranchingArcs/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png",

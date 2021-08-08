@@ -101,6 +101,7 @@ http://www.complexification.net/gallery/machines/happyPlace/
 #### Generative Algorithms
 
 - [[G01_SpaceColonization]]
+- [[G02_SpaceColonization_NodeSizeBasedOnChildCount]]
 
 ### Next actions
 
