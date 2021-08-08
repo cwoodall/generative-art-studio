@@ -10,7 +10,6 @@ import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 import org.openrndr.shape.Rectangle
-import org.openrndr.shape.Shape
 import org.openrndr.shape.compound
 import util.ColorIndexedShape
 import util.DrawingStateManager
@@ -58,7 +57,7 @@ fun main(args: Array<String>) = application {
     //   p -> toggle paused
     keyboard.keyUp.listen {
       if (it.name == "d") {
-        state_manager.is_debug = !state_manager.is_debug
+        state_manager.isDebug = !state_manager.isDebug
       } else if (it.name == "p") {
         state_manager.is_paused = !state_manager.is_paused
       }

@@ -5,7 +5,6 @@ import kotlinx.cli.ArgType
 import kotlinx.cli.default
 import org.openrndr.application
 import org.openrndr.extensions.Screenshots
-import org.openrndr.extra.olive.oliveProgram
 import org.openrndr.ffmpeg.MP4Profile
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
@@ -56,7 +55,7 @@ fun main(args: Array<String>) = application {
     //   p -> toggle paused
     keyboard.keyUp.listen {
       if (it.name == "d") {
-        state_manager.is_debug = !state_manager.is_debug
+        state_manager.isDebug = !state_manager.isDebug
       } else if (it.name == "p") {
         state_manager.is_paused = !state_manager.is_paused
       }

@@ -2,13 +2,14 @@ package palettes
 
 import org.openrndr.color.ColorHSVa
 import org.openrndr.color.ColorRGBa
+import org.openrndr.extra.noise.Random
 import org.openrndr.math.Vector4
 
 open class BasePalette {
   open val colors: List<ColorRGBa> = listOf(ColorRGBa.WHITE)
   open val background = ColorRGBa.BLACK
 
-  open fun random(): ColorRGBa = colors.random()
+  open fun random(): ColorRGBa = colors[Random.int0(colors.lastIndex)]
   open fun background(): ColorRGBa = background
 
   // Getter with a wrap

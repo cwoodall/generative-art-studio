@@ -55,7 +55,7 @@ fun main(args: Array<String>) = application {
     //   p -> toggle paused
     keyboard.keyUp.listen {
       if (it.name == "d") {
-        state_manager.is_debug = !state_manager.is_debug
+        state_manager.isDebug = !state_manager.isDebug
       } else if (it.name == "p") {
         state_manager.is_paused = !state_manager.is_paused
       }
@@ -96,8 +96,8 @@ fun main(args: Array<String>) = application {
     var camera = Screenshots()
     extend(camera)
     extend {
-      if (circles.count() > 100) { state_manager.is_complete = true }
-      if (!state_manager.is_complete) {
+      if (circles.count() > 100) { state_manager.isComplete = true }
+      if (!state_manager.isComplete) {
         if (!is_in_arc) {
           // Add some circles
           var radius = Random.double(MIN_RADIUS_PERCENT * max_dimension, MAX_RADIUS_PERCENT * max_dimension)
@@ -204,7 +204,7 @@ fun main(args: Array<String>) = application {
 
       }
 
-      if (state_manager.is_debug) {
+      if (state_manager.isDebug) {
         drawer.isolated {
           drawer.fill = ColorRGBa.TRANSPARENT
           drawer.stroke = ColorRGBa.WHITE

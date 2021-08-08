@@ -114,7 +114,7 @@ fun main(args: Array<String>) = application {
     //   p -> toggle paused
     keyboard.keyUp.listen {
       if (it.name == "d") {
-        state_manager.is_debug = !state_manager.is_debug
+        state_manager.isDebug = !state_manager.isDebug
       } else if (it.name == "p") {
         state_manager.is_paused = !state_manager.is_paused
       }
