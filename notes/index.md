@@ -129,6 +129,10 @@ http://www.complexification.net/gallery/machines/happyPlace/
 - [[techniques/Differential Line Growth]]
 - More dot drawings with more complex flow fields (with more form?)
 - Line/box based flow fields similar to [[Fidenza]] with collision detection
+- Flow Fields with concentrations around the picture and rings around them (kind of 3d looking rings with flat flow fields inside of then
+- Line drawing for use with the [[Sovol Pen Plotter]]
+- Topographic maps + pen plotted
+
 
 [[WorkingMemory]]
 

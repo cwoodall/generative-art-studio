@@ -4,22 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "6b46a7a684ac8037",
-        "type": "leaf",
-        "pinned": true,
-        "state": {
-          "type": "empty",
-          "state": {},
-          "pinned": true
-        }
-      },
-      {
-        "id": "37da2b0187173e44",
+        "id": "3f8df3eaee95f18b",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
             "file": "index.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "38080fbaef0bfc91",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Using OpenRNDR with Pen Plotter.md",
             "mode": "source"
           }
         }
@@ -62,7 +63,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "65f312c383efd442",
@@ -112,17 +114,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "37da2b0187173e44",
+  "active": "3f8df3eaee95f18b",
   "lastOpenFiles": [
     "index.md",
+    "Sovol Pen Plotter.md",
+    "Using OpeNRNDR with Pen Plotter.md",
+    "tools/visual/Shaders and GLSL.md",
+    "tools/visual/Untitled.md",
     "sketches/G02_SpaceColonization_NodeSizeBasedOnChildCount.md",
+    "WorkingMemory.md",
     "sketches/G01_SpaceColonization.md",
     "static/sketches/sketch.G01_SpaceColonization-2021-08-08-11.31.39.png",
-    "sketches/Untitled.md",
-    "G01_SpaceColonization.md",
-    "static/sketches/Pasted image 20210803120134.png",
-    "static/sketches/R02_BranchingArcs/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png",
-    "static/sketches/Pasted image 20210803120130.png",
-    "static/sketches/sketch.G01_SpaceColonization-2021-08-07-00.05.54.png"
+    "sketches/Untitled.md"
   ]
 }

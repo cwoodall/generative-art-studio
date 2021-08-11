@@ -42,6 +42,8 @@ I also added the ability to draw the shape outlines that are being used as the s
 <embed src="static/sketches/G02_SpaceColonization_NodeSizeBasedOnChildCount/sketch.g02.G02_SpaceColonization_NodeSizeBasedOnChildCount-2021-08-08-12.51.33.mp4" autostart="false" height="300" width="100%"></embed>
 
 
+![static/sketches/G02_SpaceColonization_NodeSizeBasedOnChildCount/sketch.g02.G02_SpaceColonization_NodeSizeBasedOnChildCount-2021-08-08-12.53.14.png](static/sketches/G02_SpaceColonization_NodeSizeBasedOnChildCount/sketch.g02.G02_SpaceColonization_NodeSizeBasedOnChildCount-2021-08-08-12.53.14.png)
+
 ### Future Work
 
 I am mostly happy with this. I also took some major strides forwards in reproducibility from a given seed and number of iterations, before the colors were still completely random and uncoupled from the structure, now they are linked together
