@@ -23,7 +23,7 @@ fun main(args: Array<String>) = application {
   val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
     .default(1000)
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(0)
-  val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
+  val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterationCount").default(-1)
 
   parser.parse(args)
 
@@ -36,7 +36,7 @@ fun main(args: Array<String>) = application {
     val max_dimension = arrayOf(width, height).maxOrNull()!!
 
     var state_manager = DrawingStateManager()
-    state_manager.max_iterations = _max_iterations
+    state_manager.maxIterations = _max_iterations
 
     // Setup the seed value
     Random.rnd = kotlin.random.Random(seed)
@@ -57,7 +57,7 @@ fun main(args: Array<String>) = application {
       if (it.name == "d") {
         state_manager.isDebug = !state_manager.isDebug
       } else if (it.name == "p") {
-        state_manager.is_paused = !state_manager.is_paused
+        state_manager.isPaused = !state_manager.isPaused
       }
     }
     val MIN_RADIUS_PERCENT = .01
@@ -89,15 +89,15 @@ fun main(args: Array<String>) = application {
       branch()
       num_branches = 0
     }
-    state_manager.reset_fn = ::reset
+    state_manager.resetHandler = ::reset
 
     state_manager.reset()
     // Take a timestamped screenshot with the space bar
     var camera = Screenshots()
     extend(camera)
     extend {
-      if (circles.count() > 100) { state_manager.isComplete = true }
-      if (!state_manager.isComplete) {
+      if (circles.count() > 100) { state_manager.isIterationComplete = true }
+      if (!state_manager.isIterationComplete) {
         if (!is_in_arc) {
           // Add some circles
           var radius = Random.double(MIN_RADIUS_PERCENT * max_dimension, MAX_RADIUS_PERCENT * max_dimension)

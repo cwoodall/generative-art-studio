@@ -77,7 +77,7 @@ fun main(args: Array<String>) = application {
   val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
     .default(1000)
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(0)
-  val iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
+  val iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterationCount").default(-1)
 
   parser.parse(args)
 

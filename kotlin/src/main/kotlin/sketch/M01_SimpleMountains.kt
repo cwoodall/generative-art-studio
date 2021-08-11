@@ -55,7 +55,7 @@ fun main(args: Array<String>) = application {
   val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
     .default(1024)
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(0)
-  val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
+  val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterationCount").default(-1)
 
   parser.parse(args)
 
@@ -66,7 +66,7 @@ fun main(args: Array<String>) = application {
 
   program {
     var state_manager = DrawingStateManager()
-    state_manager.max_iterations = _max_iterations
+    state_manager.maxIterations = _max_iterations
 
     var draw_as_rectangles = true
     var NUM_RECTANGLES = 50
@@ -84,7 +84,7 @@ fun main(args: Array<String>) = application {
       if (it.name == "d") {
         state_manager.isDebug = !state_manager.isDebug
       } else if (it.name == "p") {
-        state_manager.is_paused = !state_manager.is_paused
+        state_manager.isPaused = !state_manager.isPaused
       } else if (it.name == "r") {
         draw_as_rectangles = !draw_as_rectangles
       } else if (it.name == "n") {
@@ -111,7 +111,7 @@ fun main(args: Array<String>) = application {
       mountainContours.clear()
     }
 
-    state_manager.reset_fn = ::reset
+    state_manager.resetHandler = ::reset
     state_manager.reset()
 
     val colors = PaletteTwilight()
@@ -132,7 +132,7 @@ fun main(args: Array<String>) = application {
     var lastTimestep = seconds
     var isFirst = true
     extend {
-      if (!state_manager.is_paused && isFirst || (seconds - lastTimestep) >= UPDATE_RATE) {
+      if (!state_manager.isPaused && isFirst || (seconds - lastTimestep) >= UPDATE_RATE) {
         val mountainOutline = generateRandomMountainContour(width)
 
         // For capturing views that we want to keep

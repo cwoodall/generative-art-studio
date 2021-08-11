@@ -5,6 +5,7 @@ import kotlinx.cli.ArgType
 import kotlinx.cli.default
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
+import org.openrndr.draw.DrawStyle
 import org.openrndr.draw.Drawer
 import org.openrndr.draw.isolated
 import org.openrndr.extensions.Screenshots
@@ -83,7 +84,7 @@ class Node(
   }
 }
 
-class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2.0) {
+class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2.0, growthRate: Double = 0.0025) {
   var attractors: MutableSet<Attractor> = mutableSetOf()
   var nodes: MutableSet<Node> = mutableSetOf()
   var qtree: Quadtree<Node> = Quadtree(bounds, maxObjects) { it.position }
@@ -97,12 +98,23 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
   var nodesCircleRadius = 4.0
   var minRadius = 2.0
   var maxRadius = 15.0
-  var growthRate = 0.0025
+  var growthRate = growthRate
+
+  fun reset() {
+    qtree.clear()
+    attractors.clear()
+    nodes.clear()
+    nodesAdded = true
+  }
 
   fun addAttractor(attractor: Attractor) {
     attractors.add(attractor)
     nodesAdded = true
   }
+
+  fun addRootNode(node :Node) = nodes.add(node)
+  fun addRootNode(nodes :List<Node>) = this.nodes.addAll(nodes)
+  fun rootNodes(): List<Node> = nodes.filter { it.parent == null }
 
   fun buildSpatialIndex() {
     qtree.clear()
@@ -159,16 +171,7 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
 
     // Remove all lone nodes
     if (count == 2) {
-      var loneNodes: MutableSet<Node> = mutableSetOf()
-      // Remove lone nodes
-      for (node in nodes) {
-        val nearestNode = findNearestNeighbors(node.position, loneRadius)
-        if (nearestNode == null || nearestNode?.size == 1) {
-          loneNodes.add(node)
-          nodesAdded = true
-        }
-      }
-      nodes.removeAll(loneNodes)
+      nodes.removeAll(rootNodes().filter { it.children.size == 0 })
     }
     count++
   }
@@ -184,6 +187,22 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
       })
     }
   }
+
+  fun drawPath(drawer: Drawer) {
+    // Change this to create a contour of the whole tree then draw it in one batch
+    fun drawChildrenPath(drawer: Drawer, node: Node) {
+      if (node.children.size > 0) {
+        for (child in node.children) {
+          drawer.strokeWeight = (maxRadius *(node.numDescendants()/node.numChildren())  * growthRate).clamp(minRadius, maxRadius)
+          drawer.stroke = node.color
+          drawer.fill = node.color
+          drawer.lineSegment(node.position, child.position)
+          drawChildrenPath(drawer, child)
+        }
+      }
+    }
+    rootNodes().forEach { drawChildrenPath(drawer, it) }
+  }
 }
 
 fun main(args: Array<String>) = application {
@@ -195,7 +214,9 @@ fun main(args: Array<String>) = application {
     .default(1000)
   // 9432
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(1223)
-  val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterations").default(-1)
+  val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterationCount").default(0)
+  val monoline by parser.option(ArgType.Boolean, shortName = "m", description = "Grow at a rate or force monoline").default(false)
+  val quitOnCompletion by parser.option(ArgType.Boolean, shortName = "q", description = "Quite when completed wiht given iterations").default(false)
 
   parser.parse(args)
 
@@ -206,32 +227,20 @@ fun main(args: Array<String>) = application {
 
   program {
     var stateManager = DrawingStateManager()
-    stateManager.max_iterations = _max_iterations
+    stateManager.maxIterations = _max_iterations
+    stateManager.isDebug = false
+    stateManager.onCompletionHandler = {
+      if (quitOnCompletion) program.application.exit()
+    }
 
     // Setup the seed value
     Random.rnd = kotlin.random.Random(seed)
-
-    // Setup the picture for presentation mode which will go to the next
-    // iteration on button press
-//    window.presentationMode = PresentationMode.MANUAL
-    mouse.buttonUp.listen {
-      stateManager.reset()
-      window.requestDraw()
-    }
-
-    // Setup listener events for turning on and off debug mode or pausing
-    //   d -> toggle debug mode
-    //   p -> toggle paused
-    keyboard.keyUp.listen {
-      if (it.name == "d") {
-        stateManager.isDebug = !stateManager.isDebug
-      } else if (it.name == "p") {
-        stateManager.is_paused = !stateManager.is_paused
-      }
-    }
-
     val centerOfImage = Vector2(width * .5, height * .5)
-    var theWorld = Network(Rectangle.fromCenter(centerOfImage, width * .5, height * .5))
+    val growthRate = if (monoline) 0.0 else 0.0025
+
+    var theWorld: Network = Network(
+      Rectangle.fromCenter(centerOfImage, width.toDouble(), height.toDouble()),
+      growthRate=growthRate)
 
 
     val palettes: Array<BasePalette> = arrayOf(
@@ -245,12 +254,13 @@ fun main(args: Array<String>) = application {
     recorder.maximumDuration = 60.0
     var camera = Screenshots()
     var contours = listOf<ShapeContour>()
+
     /**
      * Internal function for what we do to reset the drawing, this means regenerating new contours and arcs
      */
     fun reset() {
       palette = palettes[Random.int0(palettes.lastIndex)]
-      theWorld = Network(Rectangle.fromCenter(centerOfImage, width.toDouble(), height.toDouble()))
+      theWorld.reset()
       val number_shapes = Random.int(1, 20)
       contours = (0 until number_shapes).map {
         val shape_type = Random.int(0, 3)
@@ -274,12 +284,11 @@ fun main(args: Array<String>) = application {
 
       val num_seed_nodes = Random.int(1, 20)
       for (i in 0 until num_seed_nodes) {
-        theWorld.nodes.add(Node(Random.vector2(0.0, width * 1.0), color = palette.random()))
+        theWorld.addRootNode(Node(Random.vector2(0.0, width * 1.0), color = palette.random()))
       }
     }
 
-    stateManager.reset_fn = ::reset
-    stateManager.max_iterations = 100
+    stateManager.resetHandler = ::reset
     stateManager.reset()
     // Take a timestamped screenshot with the space bar
     extend(camera)
@@ -287,10 +296,9 @@ fun main(args: Array<String>) = application {
       profile = MP4Profile()
     }
 
-    stateManager.isDebug = false
     extend {
       drawer.clear(palette.background)
-      if (!stateManager.is_paused) {
+      if (!stateManager.isPaused) {
         theWorld.step(drawer)
       }
 
@@ -301,12 +309,30 @@ fun main(args: Array<String>) = application {
           drawer.contours(contours)
         }
       }
-      theWorld.draw(drawer)
-
+      theWorld.drawPath(drawer)
 
       // If no more nodes have been added then this iteration is done
-      stateManager.isComplete = !theWorld.nodesAdded
+      stateManager.isIterationComplete = !theWorld.nodesAdded
       stateManager.postUpdate(camera)
     }
+
+    // Setup the picture for presentation mode which will go to the next
+    // iteration on button press
+    mouse.buttonUp.listen {
+      stateManager.reset()
+      window.requestDraw()
+    }
+
+    // Setup listener events for turning on and off debug mode or pausing
+    //   d -> toggle debug mode
+    //   p -> toggle paused
+    keyboard.keyUp.listen {
+      if (it.name == "d") {
+        stateManager.isDebug = !stateManager.isDebug
+      } else if (it.name == "p") {
+        stateManager.isPaused = !stateManager.isPaused
+      }
+    }
+
   }
 }

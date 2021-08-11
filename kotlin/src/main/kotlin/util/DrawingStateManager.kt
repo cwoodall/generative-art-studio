@@ -3,42 +3,59 @@ package util
 import org.openrndr.extensions.Screenshots
 
 class DrawingStateManager {
-  var max_iterations = 0
-  var is_paused = false
-  var wait_frames = 0
+  var maxIterations = 0
+  var isPaused = false
+  var waitFrameCount = 0
   var isDebug = true
-  var isComplete = false // Is the shape drawing complete?
-  var iterations = 0
-  var reset_fn: (() -> Unit)? = null
+  private var isComplete = false
+    set(value) {
+      if (value && (value != field)) onCompletionHandler?.invoke()
+      field = value
+    }
+  var isIterationComplete = false // Is the shape drawing complete?
+    set(value) {
+      if (value && (value != field)) iterationStateChangeHandler?.invoke()
+      field = value
+    }
 
+  var iterationCount = 0
+  var resetHandler: (() -> Unit)? = null
+  var iterationStateChangeHandler: (() -> Unit)? = null
+  var onCompletionHandler: (() -> Unit)? = null
   fun reset() {
-    iterations = 0
+    iterationCount = 0
+    isIterationComplete = false
+    waitFrameCount = 0
     isComplete = false
-    wait_frames = 0
-    reset_fn?.invoke()
+    resetHandler?.invoke()
   }
 
   fun postUpdate(camera: Screenshots? = null) {
     // If we are complete and paused, don't do anything
     // If we are complete and not paused take a screenshot, this involves waiting for a frame or two
     // before resetting the drawing
-    if (isComplete) {
-      if (!is_paused) {
-        if (wait_frames == 0) {
+    if (isIterationComplete) {
+      if (!isPaused) {
+        if (waitFrameCount == 0) {
           camera?.trigger()
-          wait_frames += 1
-        } else if (wait_frames >= 5) {
-          if ((iterations <= 0) || !(iterations >= (max_iterations - 1))) {
-            iterations++
+          waitFrameCount += 1
+        } else if (waitFrameCount >= 5) {
+          if ((maxIterations <= 0) || (iterationCount < (maxIterations - 1))) {
+            iterationCount++
             if (isDebug) {
-              println("Iteration $iterations")
+              println("Iteration $iterationCount")
             }
-            reset_fn?.invoke()
-            wait_frames = 0
-            isComplete = false
+            resetHandler?.invoke()
+            waitFrameCount = 0
+            isIterationComplete = false
+          } else {
+            if (isComplete == false) {
+              isComplete = true
+              println("Complete")
+            }
           }
         } else {
-          wait_frames += 1
+          waitFrameCount += 1
         }
       }
     }
