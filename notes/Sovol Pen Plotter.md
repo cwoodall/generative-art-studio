@@ -73,9 +73,27 @@ init valid:
 ```
 
 
-```mermaid
-graph s
-```
-### Axidraw
 
-https://wiki.evilmadscientist.com/AxiDraw
+When sending G-Code commands wait for `ok` to return before continuing.
+
+#### Startup Sequence
+
+- Connect to serial port
+- Wait for bootup sequence (if necessary)
+- Set the mode to absolute, set the units to mm
+- Auto-home
+- Wait for home to be done
+- Move to starting location
+- pen down
+- draw
+- move to next location, etc.
+
+#### Ideas
+
+- Suction cup for a basic pick and place machine
+- Add vision?
+- Bed leveling?
+- Pressure feedback for painting?
+- Could it do water colors??? It would be fun to try
+- Interactive / collaborative art with a webcam + cv (https://towardsdatascience.com/live-video-sketching-through-webcam-using-computer-vision-30beed29f33e)
+- ob
