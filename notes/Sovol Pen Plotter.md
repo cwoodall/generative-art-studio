@@ -29,6 +29,8 @@ Supports `G2` and `G3` for clockwise and counter clockwise arcs
 
 Uses the "Marlin" firmware. Here is the G-Code reference for the [Marlin Firmware](https://marlinfw.org/meta/gcode/)
 
+Bezier curves do not seem to work (G5), arcs and linear moves do
+
 
 Startup message
 
@@ -73,8 +75,21 @@ init valid:
 ```
 
 
-
 When sending G-Code commands wait for `ok` to return before continuing.
+
+#### Todo
+
+- [ ] Disable motors and close so they do not overheat
+- [ ] Package and release as a library for [[Python]]
+- [ ] Port to java for use with OpenRNDR
+- [ ] Write up post
+- [ ] See if I can get bezier curves to work (probably not)
+- [ ] Reproducibility is low
+- [ ] Write-up a bring-up blog post, since I think that would be useful.
+- [ ] Autoconnect
+	- [ ] Shows up as: Bus 001 Device 009: ID 1a86:7523 QinHeng Electronics HL-340 USB-Serial adapter:
+	- Bus 001 Device 010: ID 1a86:7523 QinHeng Electronics HL-340 USB-Serial adapter
+
 
 #### Startup Sequence
 
@@ -87,6 +102,7 @@ When sending G-Code commands wait for `ok` to return before continuing.
 - pen down
 - draw
 - move to next location, etc.
+-
 
 #### Ideas
 
@@ -97,3 +113,4 @@ When sending G-Code commands wait for `ok` to return before continuing.
 - Could it do water colors??? It would be fun to try
 - Interactive / collaborative art with a webcam + cv (https://towardsdatascience.com/live-video-sketching-through-webcam-using-computer-vision-30beed29f33e)
 - ob
+
