@@ -28,13 +28,14 @@ The following code is a little sloppy, but gives a good example of how to use th
 # Set the seed to different values to get different arcs
 from sovol_xy import SovolSO1, PenState, Rotation
 import random
+import numpy as np
 
 random.seed(123)
 
 with SovolSO1("/dev/ttyUSB1", timeout=0.0) as plotter:
     origin = np.array((100, 100.0))
     max_circle_radius = 30
-    margin = 0.0
+    margin = .25
     box_size = max_circle_radius * (2 + margin)
 
     plotter.autoHome()
@@ -47,7 +48,7 @@ with SovolSO1("/dev/ttyUSB1", timeout=0.0) as plotter:
     plotter.moveTo( origin + box_size * np.array((1,1)))
 
     # Put the pen down for drawing
-    plotter.setSpeed(1000)
+    plotter.setSpeed(3000)
     plotter.pause(50)
     plotter.setPen(PenState.DOWN)
     plotter.pause(50)
@@ -55,7 +56,7 @@ with SovolSO1("/dev/ttyUSB1", timeout=0.0) as plotter:
     # Draw a box
     plotter.moveTo(origin + box_size * np.array((-1,1)))
     plotter.moveTo(origin + box_size * np.array((-1,-1)))
-    plotter.moveTo(origin + box_size * np.array((-1,1)))
+    plotter.moveTo(origin + box_size * np.array((1,-1)))
     plotter.moveTo(origin + box_size * np.array((1,1)))
     plotter.pause(50)
 
@@ -64,7 +65,7 @@ with SovolSO1("/dev/ttyUSB1", timeout=0.0) as plotter:
     plotter.setPen(PenState.HIGH_UP)
     plotter.pause(50)
     plotter.moveTo(origin)
-    plotter.setSpeed(1000)
+    plotter.setSpeed(3000)
     plotter.pause(50)
     plotter.setPen(PenState.DOWN)
 
