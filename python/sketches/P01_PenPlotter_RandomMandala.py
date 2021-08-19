@@ -5,41 +5,60 @@ import random
 random.seed(123)
 
 with SovolSO1("/dev/ttyUSB1", timeout=0.0) as plotter:
-    center_of_image = (50,200.0)
+    origin = np.array((50, 200.0))
+    max_circle_radius = 20
+    margin = 0.0
+    box_size = max_circle_radius * (2 + margin)
 
     plotter.autoHome()
     plotter.setTravelSpeed()
     plotter.setPen(PenState.HIGH_UP)
     plotter.pause(50)
-    plotter.pause(50)
-    plotter.pause(50)
-    plotter.moveTo((50+40,200.0+40))
+
+    # Draw a rectangle around the origin
+    # Move to the edge of the box
+    plotter.moveTo( origin + box_size * np.array((1,1)))
+
+    # Put the pen down for drawing
     plotter.setSpeed(1000)
     plotter.pause(50)
     plotter.setPen(PenState.DOWN)
     plotter.pause(50)
-    plotter.moveTo((50-40,200.0+40))
-    plotter.moveTo((50-40,200.0-40))
-    plotter.moveTo((50+40,200.0-40))
-    plotter.moveTo((50+40,200.0+40))
+
+    # Draw a box
+    plotter.moveTo(origin + box_size * np.array((-1,1)))
+    plotter.moveTo(origin + box_size * np.array((-1,-1)))
+    plotter.moveTo(origin + box_size * np.array((-1,1)))
+    plotter.moveTo(origin + box_size * np.array((1,1)))
     plotter.pause(50)
+
+    # Move to the origin
     plotter.setTravelSpeed()
     plotter.setPen(PenState.HIGH_UP)
     plotter.pause(50)
-    plotter.moveTo((50, 200.0))
+    plotter.moveTo(origin)
     plotter.setSpeed(1000)
     plotter.pause(50)
     plotter.setPen(PenState.DOWN)
 
     for i in range(10):
-        center = (random.randrange(-20,20), random.randrange(-20,20))
+        # Select random center of  the circle
+        center = (
+            random.randrange(-max_circle_radius,max_circle_radius), 
+            random.randrange(-max_circle_radius,max_circle_radius)
+        )
+
+        # If we are in the left half plane rotate counter clockwise
         if center[0] < 0:
             rot = Rotation.COUNTER_CLOCKWISE
+        # Otherwise rotate clockwise
         else:
             rot = Rotation.CLOCKWISE
 
+        # Draw the circle
         plotter.arcTo(center=center, rot=rot)
  
+    # Return to home
     plotter.setPen(PenState.HIGH_UP)
     plotter.pause(50)   
     plotter.setTravelSpeed()
