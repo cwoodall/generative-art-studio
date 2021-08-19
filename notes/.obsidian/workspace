@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "index.md",
+            "file": "sketches/P01_PenPlotter_RandomMandala.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
+                "file": "sketches/P01_PenPlotter_RandomMandala.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,15 +104,15 @@
   },
   "active": "a09de92fa40e3b16",
   "lastOpenFiles": [
-    "index.md",
     "sketches/P01_PenPlotter_RandomMandala.md",
+    "sketches/M01_SimpleMountains.md",
+    "index.md",
     "static/sketches/P01_PenPlotter_RandomMandala/P01_PenPlotter_RandomMandala.mp4",
     "tools/pen-plotter/Sovol Pen Plotter.md",
     "tools/pen-plotter/Using OpenRNDR with Pen Plotter.md",
     "sketches/Untitled.md",
     "tools/pen-plotter/Pen Plotter Video Setup.md",
     "tools/Using OpenRNDR with Pen Plotter.md",
-    "tools/visual/OpenRNDR in Presentation Mode.md",
-    "tools/visual/OpenRNDR.md"
+    "tools/visual/OpenRNDR in Presentation Mode.md"
   ]
 }
