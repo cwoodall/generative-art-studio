@@ -1,8 +1,3 @@
-# To add a new cell, type '# %%'
-# To add a new markdown cell, type '# %% [markdown]'
-# %% [markdown]
-# 
-
 # %%
 from sovol_xy import SovolSO1, PenState, Rotation
 import random
@@ -49,7 +44,3 @@ with SovolSO1("/dev/ttyUSB1", timeout=0.0) as plotter:
     plotter.pause(50)   
     plotter.setTravelSpeed()
     plotter.moveTo((0.0,0.0))
-
-    
-
-
