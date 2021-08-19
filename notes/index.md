@@ -4,20 +4,22 @@ feed:
   count: 5
 ---
 
-- [The Studio](#the-studio)
-- [Tools](#tools)
-	- [Music](#music)
-- [Techniques](#techniques)
-- [Inspiration](#inspiration)
-- [Pieces and Series](#pieces-and-series)
-	- [Random](#random)
-	- [Flow Fields](#flow-fields)
-	- [Mountain](#mountain)
-	- [Color Studies](#color-studies)
-- [Next actions](#next-actions)
-	- [Completed actions](#completed-actions)
-	- [Idea holding area](#idea-holding-area)
-	- [Cheat Sheets](#cheat-sheets)
+- [[#The Studio|The Studio]]
+- [[#Tools|Tools]]
+	- [[#Music|Music]]
+- [[#Techniques|Techniques]]
+- [[#Inspiration|Inspiration]]
+- [[#Pieces and Series|Pieces and Series]]
+	- [[#Random|Random]]
+	- [[#Flow Fields|Flow Fields]]
+	- [[#Mountain|Mountain]]
+	- [[#Color Studies|Color Studies]]
+	- [[#Generative Algorithms|Generative Algorithms]]
+	- [[#Pen PLotter|Pen PLotter]]
+- [[#Next actions|Next actions]]
+	- [[#Completed actions|Completed actions]]
+	- [[#Idea holding area|Idea holding area]]
+	- [[#Cheat Sheets|Cheat Sheets]]
 
 
 Generative Art (and [[Creative Coding]]) is a broad term for any computer generated form of art, this could be audio, random, algorithmic, or even mixed media between an algorithm and human input. There are many techniques here and tools. One of the early ones was [[Processing]], which also influenced [[Arduino]] (on the embedded side). I was introduced to the concept through an interview with [[Tyler Hobbs]] (about his [[NFTs]] [[Fidenza]]) which uses a [[Flow Fields]]
@@ -102,6 +104,9 @@ http://www.complexification.net/gallery/machines/happyPlace/
 
 - [[G01_SpaceColonization]]
 - [[G02_SpaceColonization_NodeSizeBasedOnChildCount]]
+
+#### Pen PLotter
+- [[P01_PenPlotter_RandomMandala]]
 
 ### Next actions
 
