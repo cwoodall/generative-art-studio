@@ -125,9 +125,10 @@ fun main(args: Array<String>) = application {
     extend {
       drawer.clear(palette.background)
       if (!stateManager.isPaused) {
-        theWorld.step(drawer)
+        theWorld.step()
       }
 
+      theWorld.draw(drawer)
       if (stateManager.isDebug) {
         drawer.isolated {
           drawer.stroke = palette.colors[0].opacify(.5)
@@ -135,16 +136,16 @@ fun main(args: Array<String>) = application {
           drawer.contours(contours)
         }
       }
-
       // If no more nodes have been added then this iteration is done
       if (!theWorld.nodesAdded && !stateManager.isIterationComplete) {
         println("Saving compositions")
         var composition = drawComposition {
+          fill = null
           theWorld.drawComposition(this)
+          rectangle(0.0,0.0, width.toDouble(), height.toDouble())
         }
-//        composition.ded()
 
-        composition.saveToFile(File("/home/cwoodall/Desktop/test.svg"))
+        composition.dedupe().saveToFile(File("/home/cwoodall/Desktop/${seed}-${stateManager.iterationCount}.svg"))
       }
       stateManager.isIterationComplete = !theWorld.nodesAdded
 

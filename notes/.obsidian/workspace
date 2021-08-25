@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "sketches/P01_PenPlotter_RandomMandala.md",
+            "file": "sketches/P02_G02_SpaceColonization_Paths.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sketches/P01_PenPlotter_RandomMandala.md",
+                "file": "sketches/P02_G02_SpaceColonization_Paths.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,13 +104,13 @@
   },
   "active": "a09de92fa40e3b16",
   "lastOpenFiles": [
+    "sketches/Untitled.md",
     "sketches/P01_PenPlotter_RandomMandala.md",
     "sketches/M01_SimpleMountains.md",
     "index.md",
     "static/sketches/P01_PenPlotter_RandomMandala/P01_PenPlotter_RandomMandala.mp4",
     "tools/pen-plotter/Sovol Pen Plotter.md",
     "tools/pen-plotter/Using OpenRNDR with Pen Plotter.md",
-    "sketches/Untitled.md",
     "tools/pen-plotter/Pen Plotter Video Setup.md",
     "tools/Using OpenRNDR with Pen Plotter.md",
     "tools/visual/OpenRNDR in Presentation Mode.md"

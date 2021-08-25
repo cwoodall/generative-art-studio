@@ -2,10 +2,7 @@ package techniques.space_colonization
 
 import kotlinx.coroutines.yield
 import org.openrndr.color.ColorRGBa
-import org.openrndr.draw.DrawQuality
-import org.openrndr.draw.Drawer
-import org.openrndr.draw.LineCap
-import org.openrndr.draw.isolated
+import org.openrndr.draw.*
 import org.openrndr.math.Vector2
 import org.openrndr.math.clamp
 import org.openrndr.shape.*
@@ -118,7 +115,20 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
     return nearest.nearest
   }
 
-  fun step(drawer: Drawer) {
+  @OptIn(ExperimentalStdlibApi::class)
+  private fun findYoungestDescendents(node: Node): List<Node> {
+    return buildList<Node> {
+      if (node.numChildren().toInt() == 0) {
+        add(node)
+      } else {
+        for (child in node.children) {
+          addAll(findYoungestDescendents(child))
+        }
+      }
+    }
+  }
+
+  fun step() {
     nodesAdded = false
     nodes.forEach { it.reset() }
 
@@ -202,30 +212,70 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
     }
   }
 
-  // TODO(cw) the compositions still seem to close themselves
   fun drawComposition(drawer: CompositionDrawer) {
-    fun addChildrenToContour(contourBuilder: ContourBuilder, node: Node) {
-      if (node.children.size > 0) {
-        // Add nodes in a depth first manner
-        for (child in node.children.sortedBy { node.numDescendants() }.reversed()) {
-          contourBuilder.lineTo(node.position)
-          addChildrenToContour(contourBuilder, child)
+    // Draw each branch from end back to the core node
+
+//    fun addChildrenToContour(contourBuilder: ContourBuilder, node: Node) {
+//      if (node.children.size > 0) {
+//        // Add nodes in a depth first manner
+//        for (child in node.children.sortedBy { node.numDescendants() }) {
+//          contourBuilder.lineTo(node.position)
+//          addChildrenToContour(contourBuilder, child)
+//          contourBuilder.moveTo(node.position)
+//        }
+//      }
+//    }
+    drawer.clipMode = ClipMode.UNION
+    rootNodes.forEach { rootNode ->
+      var endNodes = findYoungestDescendents(rootNode)
+      var lines = endNodes.map {
+        var current_node: Node = it
+        contour {
+          moveTo(it.position)
+          while (current_node.parent != null) {
+            lineTo(current_node.parent?.position!!)
+            current_node = current_node?.parent!!
+          }
         }
-        // Once a branch is exhausted  move back to the root node to create a new contour
-        contourBuilder.moveTo(node.position)
       }
-    }
-
-    rootNodes.forEach {
-      val c = contours {
-        moveTo(it.position)
-        addChildrenToContour(this, it)
-      }
-
-      drawer.stroke = it.color
-      drawer.strokeWeight = 10.0
-      drawer.fill = ColorRGBa.TRANSPARENT
-      drawer.contours(c)
+      println(lines.size)
+      drawer.contours(lines)
     }
   }
 }
+
+/**
+ * For a Composition, filter out bezier segments contained in longer bezier segments.
+ * The goal is to avoid drawing lines multiple times with a plotter.
+ */
+fun Composition.dedupe(err: Double = 1.0): Composition {
+  val segments = this.findShapes().flatMap {
+    it.shape.contours.flatMap { contour -> contour.segments }
+  }
+  val deduped = mutableListOf<Segment>()
+  segments.forEach { curr ->
+    if (deduped.none { other -> other.contains(curr, err) }) {
+      deduped.add(curr)
+    }
+  }
+  return drawComposition {
+    fill = null
+    clipMode = ClipMode.UNION
+    stroke = ColorRGBa.BLACK
+    strokeWeight = 10.0
+    contours(deduped.map { it.contour })
+  }
+}
+
+/**
+ * Simple test to see if a segment contains a different Segment.
+ * Compares start, end and two points at 1/3 and 2/3.
+ * Returns false when comparing a Segment to itself.
+ */
+fun Segment.contains(other: Segment, error: Double = 0.5): Boolean =
+  this !== other &&
+    this.on(other.start, error) != null &&
+    this.on(other.end, error) != null &&
+    this.on(other.position(1.0 / 3), error) != null &&
+    this.on(other.position(2.0 / 3), error) != null
+
