@@ -118,7 +118,7 @@ import random
 import numpy as np
 import logging
 logging.getLogger().setLevel(logging.INFO)
-with SovolSO1("/dev/ttyUSB1", timeout=0.5) as plotter:
+with SovolSO1("/dev/pts/2", timeout=0.0, startup_timeout=0.0) as plotter:
     plotter.autoHome()
     plotter.setTravelSpeed()
     plotter.setPen(PenState.HIGH_UP)
