@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G03_TreesAndRoots.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/G03_TreesAndRoots.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G03_TreesAndRoots.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/techniques/space_colonization/space_colonization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/techniques/space_colonization/space_colonization.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

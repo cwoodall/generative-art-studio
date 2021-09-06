@@ -1,8 +1,10 @@
+# TODO: Does not seem to handle the rectangular paths correctly
 #%%
 from xml.dom import minidom
 from svg.path import parse_path, Path
 import math
 from sovol_xy.sovol_xy import Point
+import time
 
 def toPoint(line: complex) -> Point:
     return (line.imag, line.real)
@@ -118,12 +120,12 @@ import random
 import numpy as np
 import logging
 logging.getLogger().setLevel(logging.INFO)
-with SovolSO1("/dev/pts/2", timeout=0.0, startup_timeout=0.0) as plotter:
+with SovolSO1("/dev/pts/5", timeout=0.0, startup_timeout=0.0) as plotter:
     plotter.autoHome()
     plotter.setTravelSpeed()
     plotter.setPen(PenState.HIGH_UP)
     plotter.pause(100)
-
+    plotter.moveTo(toPoint(lines_of_lines[0][0].start))
     for line in lines_of_lines:
         try:
             # Move to the origin

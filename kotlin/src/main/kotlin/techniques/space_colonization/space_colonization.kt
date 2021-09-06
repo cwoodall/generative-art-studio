@@ -10,7 +10,7 @@ import util.Quadtree
 
 class Attractor(position: Vector2, influenceRadius: Double = 500.0, killRadius: Double = 10.0) {
   val position = position
-  val influenceRadius = influenceRadius
+  var influenceRadius = influenceRadius
   val killRadius = killRadius
 
   fun draw(drawer: Drawer, fill: ColorRGBa = ColorRGBa.BLUE, radius: Double = 1.0) {
@@ -70,10 +70,15 @@ class Node(
   }
 }
 
-class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2.0, growthRate: Double = 0.0025) {
+class Network(bounds: Rectangle,
+              maxObjects: Int = 30,
+              segmentLength: Double = 2.0,
+              growthRate: Double = 0.0025,
+              attractionDistance: Double = 500.0) {
   private var attractors: MutableList<Attractor> = mutableListOf()
   private var nodes: MutableList<Node> = mutableListOf()
   private var rootNodes: MutableList<Node> = mutableListOf()
+  private  var attractionDistance = attractionDistance
   var qtree: Quadtree<Node> = Quadtree(bounds, maxObjects) { it.position }
   val segmentLength = segmentLength
 
@@ -93,6 +98,7 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
   }
 
   fun addAttractor(attractor: Attractor) {
+    attractor.influenceRadius = attractionDistance
     attractors.add(attractor)
     nodesAdded = true
   }
@@ -215,30 +221,25 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
   fun drawComposition(drawer: CompositionDrawer) {
     // Draw each branch from end back to the core node
 
-//    fun addChildrenToContour(contourBuilder: ContourBuilder, node: Node) {
-//      if (node.children.size > 0) {
-//        // Add nodes in a depth first manner
-//        for (child in node.children.sortedBy { node.numDescendants() }) {
-//          contourBuilder.lineTo(node.position)
-//          addChildrenToContour(contourBuilder, child)
-//          contourBuilder.moveTo(node.position)
-//        }
-//      }
-//    }
-    drawer.clipMode = ClipMode.UNION
-    rootNodes.forEach { rootNode ->
-      var endNodes = findYoungestDescendents(rootNode)
-      var lines = endNodes.map {
-        var current_node: Node = it
-        contour {
-          moveTo(it.position)
-          while (current_node.parent != null) {
-            lineTo(current_node.parent?.position!!)
-            current_node = current_node?.parent!!
-          }
+    fun addChildrenToContour(contourBuilder: ContourBuilder, node: Node) {
+      if (node.children.size > 0) {
+        // Add nodes in a depth first manner
+        for (child in node.children.sortedBy { node.numDescendants() }.reversed()) {
+          contourBuilder.moveOrLineTo(node.position)
+          addChildrenToContour(contourBuilder, child)
         }
+        // Once a branch is exhausted  move back to the root node to create a new contour
+        contourBuilder.moveTo(node.position)
       }
-      drawer.contours(lines)
+    }
+
+    rootNodes.forEach {
+      val c = contours {
+        moveTo(it.position)
+        addChildrenToContour(this, it)
+      }
+
+      drawer.contours(c)
     }
   }
 }

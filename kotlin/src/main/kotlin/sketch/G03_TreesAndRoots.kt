@@ -5,9 +5,11 @@ import kotlinx.cli.ArgType
 import kotlinx.cli.default
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
+import org.openrndr.draw.LineCap
 import org.openrndr.draw.isolated
 import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.noise.Random
+import org.openrndr.extra.videoprofiles.ProresProfile
 import org.openrndr.ffmpeg.MP4Profile
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
@@ -18,6 +20,9 @@ import util.DrawingStateManager
 
 import techniques.space_colonization.*
 import java.io.File
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import kotlin.math.max
 
 
 enum class TreeShapes(val value: Int) {
@@ -71,7 +76,7 @@ fun main(args: Array<String>) = application {
   // 9432
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(1223)
   val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterationCount")
-    .default(0)
+    .default(1)
   val monoline by parser.option(ArgType.Boolean, shortName = "m", description = "Grow at a rate or force monoline")
     .default(false)
   val quitOnCompletion by parser.option(
@@ -102,12 +107,15 @@ fun main(args: Array<String>) = application {
 
     var theTree: Network = Network(
       Rectangle.fromCenter(CENTER_OF_IMAGE, width.toDouble(), height.toDouble()),
-      growthRate = growthRate
+      growthRate = growthRate,
+      segmentLength = 2.0,
+      attractionDistance = 500.0
     )
 
     var theRoots: Network = Network(
       Rectangle.fromCenter(CENTER_OF_IMAGE, width.toDouble(), height.toDouble()),
-      growthRate = growthRate
+      growthRate = growthRate,
+      segmentLength = 2.0
     )
 
 
@@ -118,8 +126,15 @@ fun main(args: Array<String>) = application {
     var palette: BasePalette = Palette_00()
 
     var recorder = ScreenRecorder()
-    recorder.maximumDuration = 3000.0
+
+    val currentTime = LocalDateTime.now()
+    val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss")
+    val dateString = currentTime.format(dateTimeFormatter)
+
+    val outFolder = "outputs/g03"
+    val file_name = "${outFolder}/${dateString}-${name}-s${seed}-w${width}-h${height}-m${monoline}"
     var camera = Screenshots()
+    camera.name = "${file_name}.png"
     var contours = mutableListOf<ShapeContour>()
     var rootContours = mutableListOf<ShapeContour>()
 
@@ -140,12 +155,13 @@ fun main(args: Array<String>) = application {
       val MAX_TREE_HEIGHT = 200.0
       val STEM_HEIGHT_MIN = 5.0
       val STEM_HEIGHT_MAX = 20.0
+      val Y_MARGIN_MIN = 25.0
+      val Y_MARGIN_MAX = height - 150.0
 
       val tree_height = Random.double(MIN_TREE_HEIGHT, MAX_TREE_HEIGHT)
       val outer_tree_width = Random.double(200.0, 600.0)
       val tree_layers = Random.int(5, 20)
-      val tree_teirs_distance = Random.double(10.0, 30.0)
-      val tree_height_ratio = Random.double0(2.0)
+      val tree_height_ratio = Random.double0(1.5)
       contours.addAll(
         (0 until tree_layers).map {
           val tree_teirs_distance = Random.double(.8, 1.2) * outer_tree_width / tree_layers
@@ -158,10 +174,13 @@ fun main(args: Array<String>) = application {
 
             }
             TreeShapes.Triangle -> {
+              // Make sure the tree top is within the image
+              var x3= CENTER_OF_IMAGE + Vector2(0.0,
+                max(-1.0*tree_height - layer_width*tree_height_ratio, -1.0*(CENTER_OF_IMAGE.y - Y_MARGIN_MIN)))
               val shape = Triangle(
                 CENTER_OF_IMAGE + Vector2(-layer_width*.5, tree_height),
-                CENTER_OF_IMAGE + Vector2(layer_width*.5, tree_height),
-                CENTER_OF_IMAGE + Vector2(0.0, -tree_height-layer_width*tree_height_ratio)
+                CENTER_OF_IMAGE + Vector2(layer_width*.5, tree_height), x3
+
               ).contour
               val split_line = LineSegment(0.0, CENTER_OF_IMAGE.y-tree_height, width.toDouble(), CENTER_OF_IMAGE.y - tree_height).contour
               shape.split(split_line).first()
@@ -186,8 +205,8 @@ fun main(args: Array<String>) = application {
         val center_pt = Vector2(
           Random.double(-.25*width, 0.25*width) + CENTER_OF_IMAGE.x,
           Random.double(CENTER_OF_IMAGE.y+10.0, height*.6))
-        val shape_type = Random.int(0, 3)
-        val shape: ShapeContour = when (shape_type) {
+        val root_shape = Random.int(0, 3)
+        when (root_shape) {
           0 ->
           {
             Circle(center_pt, Random.double(0.0, 0.75 * (center_pt.y - CENTER_OF_IMAGE.y))).contour
@@ -204,7 +223,6 @@ fun main(args: Array<String>) = application {
             ).contour
           }
         }
-        shape
       })
 
       contours.forEach {
@@ -214,14 +232,12 @@ fun main(args: Array<String>) = application {
         }
       }
 
-      val Y_MARGIN_MIN = 25.0
-      val Y_MARGIN_MAX = height - 150.0
       rootContours.forEach {
-        val numAttractors = Random.int(10, 100)
-        it.equidistantPositions(numAttractors).forEach { it ->
+        val numAttractors = Random.int(50, 400)
+        it.equidistantPositions(numAttractors).forEach { pt ->
           // Check if we are within the margins
-          if (it.y > Y_MARGIN_MIN && it.y < Y_MARGIN_MAX) {
-            theRoots.addAttractor(Attractor(it))
+          if (pt.y > Y_MARGIN_MIN && pt.y < Y_MARGIN_MAX) {
+            theRoots.addAttractor(Attractor(pt))
           }
         }
       }
@@ -231,12 +247,29 @@ fun main(args: Array<String>) = application {
 
     }
 
+    fun onComplete() {
+      println("Saving compositions")
+      var composition = drawComposition {
+        fill = null
+        theTree.drawComposition(this)
+        theRoots.drawComposition(this)
+//        rectangle(0.0,0.0, width.toDouble(), height.toDouble())
+      }
+      composition.dedupe().saveToFile(File("${file_name}.svg"))
+      application.exit()
+
+    }
+
     stateManager.resetHandler = ::reset
+    stateManager.onCompletionHandler =::onComplete
+
     stateManager.reset()
     // Take a timestamped screenshot with the space bar
     extend(camera)
     extend(recorder) {
-      profile = MP4Profile()
+      profile = ProresProfile()
+      maximumDuration = 3000.0
+      outputFile = "${file_name}.${profile.fileExtension}"
     }
 
     extend {
@@ -256,28 +289,6 @@ fun main(args: Array<String>) = application {
           drawer.contours(rootContours)
 
         }
-      }
-
-      // If no more nodes have been added then this iteration is done
-      if (!theTree.nodesAdded && !theRoots.nodesAdded && !stateManager.isIterationComplete) {
-        recorder.shutdown(program)
-
-        println("Saving compositions")
-        var composition = drawComposition {
-          fill = null
-          theTree.drawComposition(this)
-          theRoots.drawComposition(this)
-          rectangle(0.0,0.0, width.toDouble(), height.toDouble())
-        }
-
-        composition.dedupe().saveToFile(File("/home/cwoodall/Desktop/${seed}-${stateManager.iterationCount}.svg"))
-        recorder = ScreenRecorder()
-        extend(recorder) {
-          profile = MP4Profile()
-        }
-        recorder.setup(program)
-
-
       }
 
       stateManager.isIterationComplete = !theTree.nodesAdded && !theRoots.nodesAdded
