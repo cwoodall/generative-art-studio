@@ -238,7 +238,6 @@ class Network(bounds: Rectangle, maxObjects: Int = 30, segmentLength: Double = 2
           }
         }
       }
-      println(lines.size)
       drawer.contours(lines)
     }
   }

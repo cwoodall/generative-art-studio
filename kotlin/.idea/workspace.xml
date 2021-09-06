@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G03_TreesAndRoots.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/G02_SpaceColonization_NodeSizeBasedOnChildCount.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G02_SpaceColonization_NodeSizeBasedOnChildCount.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/techniques/space_colonization/space_colonization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/techniques/space_colonization/space_colonization.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notes/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../notes/.obsidian/workspace" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +96,7 @@
       <recent name="palettes" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Sketch G02_SpaceColonization_NodeSizeBasedOnChildCount [sketch]  (1)">
+  <component name="RunManager" selected="Gradle.Sketch G03_TreesAndRoots">
     <configuration name="Sketch C01_ColorStudy_AddingIndex [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -244,6 +244,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Sketch G03_TreesAndRoots" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-Ptitle=g03.G03_TreesAndRoots --scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="sketch" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Sketch M01_SimpleMountains [sketch]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="env">
@@ -357,6 +378,7 @@
       <item itemvalue="Gradle.Sketch C03_ShaderExperiment [sketch]" />
       <item itemvalue="Gradle.Sketch G01_SpaceColonization [sketch] " />
       <item itemvalue="Gradle.Sketch G02_SpaceColonization_NodeSizeBasedOnChildCount [sketch]  (1)" />
+      <item itemvalue="Gradle.Sketch G03_TreesAndRoots" />
       <item itemvalue="Gradle.Sketch FlowFieldsExperiment [sketch] (1)" />
       <item itemvalue="Gradle.Sketch F01_PerinNoise [sketch]" />
       <item itemvalue="Kotlin.C01_ColorStudy_AddingIndexKt" />
