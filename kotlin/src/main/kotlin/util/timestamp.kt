@@ -1,9 +1,10 @@
 package util
 
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
-fun timestamp(time: LocalDateTime = LocalDateTime.now()): String =
-  "%04d-%02d-%02dT%02d.%02d.%02d".format(
-    time.year, time.month.value, time.dayOfMonth,
-    time.hour, time.minute, time.second
-  )
+fun timestamp(time: LocalDateTime = LocalDateTime.now()): String {
+  val currentTime = LocalDateTime.now()
+  val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss")
+  return currentTime.format(dateTimeFormatter)
+}

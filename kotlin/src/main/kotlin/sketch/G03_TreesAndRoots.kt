@@ -19,6 +19,7 @@ import palettes.*
 import util.DrawingStateManager
 
 import techniques.space_colonization.*
+import util.timestamp
 import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -34,37 +35,6 @@ enum class TreeShapes(val value: Int) {
     fun getByValue(value: Int) = VALUES.firstOrNull { it.value == value }
   }
 }
-
-class BlackBG_White : BasePalette() {
-  override val colors = listOf(
-    ColorRGBa.WHITE,
-  )
-
-  override val background = ColorRGBa.BLACK
-
-  override fun background(): ColorRGBa {
-    return background
-  }
-  override fun random(): ColorRGBa {
-    return colors.random()
-  }
-}
-
-class WhiteBG_Black : BasePalette() {
-  override val colors = listOf(
-    ColorRGBa.BLACK,
-  )
-
-  override val background = ColorRGBa.WHITE
-
-  override fun background(): ColorRGBa {
-    return background
-  }
-  override fun random(): ColorRGBa {
-    return colors.random()
-  }
-}
-
 
 fun main(args: Array<String>) = application {
   // Setup argument parsing
@@ -127,12 +97,9 @@ fun main(args: Array<String>) = application {
 
     var recorder = ScreenRecorder()
 
-    val currentTime = LocalDateTime.now()
-    val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss")
-    val dateString = currentTime.format(dateTimeFormatter)
 
     val outFolder = "outputs/g03"
-    val file_name = "${outFolder}/${dateString}-${name}-s${seed}-w${width}-h${height}-m${monoline}"
+    val file_name = "${outFolder}/${timestamp()}-${name}-s${seed}-w${width}-h${height}-m${monoline}"
     var camera = Screenshots()
     camera.name = "${file_name}.png"
     var contours = mutableListOf<ShapeContour>()

@@ -9,32 +9,31 @@ import org.openrndr.draw.Drawer
 import org.openrndr.draw.isolated
 import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.noise.Random
+import org.openrndr.extra.videoprofiles.ProresProfile
 import org.openrndr.ffmpeg.MP4Profile
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.math.clamp
 import org.openrndr.shape.*
 import org.openrndr.svg.saveToFile
-import palettes.BasePalette
-import palettes.PalettePastelGreen
-import palettes.PaletteTwilight
-import palettes.Palette_00
+import palettes.*
 import util.DrawingStateManager
 
 import techniques.space_colonization.*
+import util.timestamp
 import java.io.File
 
 fun main(args: Array<String>) = application {
   // Setup argument parsing
   val parser = ArgParser("sketch")
   val width_arg by parser.option(ArgType.Int, fullName = "width", shortName = "w", description = "width (px)")
-    .default(1000)
+    .default(1920)
   val height_arg by parser.option(ArgType.Int, fullName = "height", shortName = "e", description = "height (px)")
-    .default(1000)
+    .default(1080)
   // 9432
   val seed by parser.option(ArgType.Int, shortName = "s", description = "seed").default(1223)
   val _max_iterations by parser.option(ArgType.Int, shortName = "n", description = "Number of iterationCount")
-    .default(0)
+    .default(1)
   val monoline by parser.option(ArgType.Boolean, shortName = "m", description = "Grow at a rate or force monoline")
     .default(false)
   val quitOnCompletion by parser.option(
@@ -72,20 +71,25 @@ fun main(args: Array<String>) = application {
     val palettes: Array<BasePalette> = arrayOf(
       PalettePastelGreen(),
       Palette_00(),
-      PaletteTwilight()
+      PaletteTwilight(),
+      WhiteBG_Black(),
+      BlackBG_White(),
     )
     var palette: BasePalette = Palette_00()
 
-    var recorder = ScreenRecorder()
-    recorder.maximumDuration = 60.0
+    val outFolder = "outputs/g02"
+    val file_name = "${outFolder}/${timestamp()}-${name}-s${seed}-w${width}-h${height}-m${monoline}"
     var camera = Screenshots()
+    camera.name = "${file_name}.png"
+    var recorder = ScreenRecorder()
+
     var contours = listOf<ShapeContour>()
 
     /**
      * Internal function for what we do to reset the drawing, this means regenerating new contours and arcs
      */
     fun reset() {
-      palette = palettes[Random.int0(palettes.lastIndex)]
+      palette = palettes[Random.int0(palettes.size)]
       theWorld.reset()
       val number_shapes = Random.int(1, 20)
       contours = (0 until number_shapes).map {
@@ -114,12 +118,25 @@ fun main(args: Array<String>) = application {
       }
     }
 
+    fun onComplete() {
+      println("Saving compositions")
+      var composition = drawComposition {
+        fill = null
+        theWorld.drawComposition(this)
+      }
+      composition.dedupe().saveToFile(File("${file_name}.svg"))
+      application.exit()
+    }
+
     stateManager.resetHandler = ::reset
+    stateManager.onCompletionHandler = ::onComplete
     stateManager.reset()
     // Take a timestamped screenshot with the space bar
     extend(camera)
     extend(recorder) {
-      profile = MP4Profile()
+      profile = ProresProfile()
+      maximumDuration = 3000.0
+      outputFile = "${file_name}.${profile.fileExtension}"
     }
 
     extend {
@@ -136,17 +153,7 @@ fun main(args: Array<String>) = application {
           drawer.contours(contours)
         }
       }
-      // If no more nodes have been added then this iteration is done
-      if (!theWorld.nodesAdded && !stateManager.isIterationComplete) {
-        println("Saving compositions")
-        var composition = drawComposition {
-          fill = null
-          theWorld.drawComposition(this)
-          rectangle(0.0,0.0, width.toDouble(), height.toDouble())
-        }
 
-        composition.dedupe().saveToFile(File("/home/cwoodall/Desktop/${seed}-${stateManager.iterationCount}.svg"))
-      }
       stateManager.isIterationComplete = !theWorld.nodesAdded
 
       stateManager.postUpdate(camera)
