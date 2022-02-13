@@ -9,5 +9,7 @@
     "shaders",
     "reproducibility"
   ],
-  "defaultViewMode": "source"
+  "defaultViewMode": "source",
+  "legacyEditor": false,
+  "livePreview": true
 }

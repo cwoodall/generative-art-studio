@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a066d30c-8df5-4b3b-bdae-d751f8a3f2cc" name="Default Changelist" comment="Cleaned up random circles into a nice base template">
+      <change afterPath="$PROJECT_DIR$/../.idea/generative-art-studio.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlin.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/G03_Generate.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/palettes/TwoTone_BlackAndWhite.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/G02_SpaceColonization_NodeSizeBasedOnChildCount.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G02_SpaceColonization_NodeSizeBasedOnChildCount.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/sketch/G03_TreesAndRoots.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/sketch/G03_TreesAndRoots.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/timestamp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/timestamp.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,8 +81,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/kotlin/sketch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
